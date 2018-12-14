@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headline_text_size">24sp</dimen> <!-- Roboto - Regular -->
+    <dimen name="headline_line_height_headline">32dp</dimen>
+    <dimen name="headline_line_spacing_extra">4sp</dimen>
+    <dimen name="title_text_size">20sp</dimen> <!-- Roboto - Medium -->
+    <dimen name="sub_heading_text_size">16sp</dimen> <!-- Roboto - Medium -->
+    <dimen name="sub_heading_line_height">24dp</dimen>
+    <dimen name="sub_heading_line_spacing_extra">4sp</dimen>
+    <dimen name="body2_text_size">14sp</dimen> <!-- Roboto - Medium -->
+    <dimen name="body2_line_height">24dp</dimen>
+    <dimen name="body2_line_spacing_extra">5sp</dimen>
+    <dimen name="body1_text_size">14sp</dimen> <!-- Roboto - Regular -->
+    <dimen name="body1_line_height">20dp</dimen>
+    <dimen name="body1_line_spacing_extra">3sp</dimen>
+    <dimen name="caption_text_size">12sp</dimen> <!-- Roboto - Regular -->
+    <dimen name="base_text_size">14sp</dimen>
+    <dimen name="badge_count_textsize">14sp</dimen>
+</resources>

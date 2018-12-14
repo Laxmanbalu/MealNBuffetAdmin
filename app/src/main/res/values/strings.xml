@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MealNBuffetAdmin</string>
+    <string name="menu_item_home">Home</string>
+    <string name="error_network">Something went wrong. Check Network Settings and try again</string>
+    <string name="title_meal">Meal</string>
+    <string name="title_nbuffet">nbuffet</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/orange_app</color>
+    <color name="colorPrimaryDark">@color/orange_app</color>
+    <color name="colorAccent">@color/orange_app</color>
+    <color name="orange_app">#e74f0e</color>
+    <color name="theme_light_black_500_87">#DE000000</color>
+    <color name="theme_light_brand_500_100">#FF052467</color>
+    <color name="theme_light_black_200_100">#FF999999</color>
+    <color name="theme_black">#FF111823</color>
+    <color name="black">#000000</color>
+    <color name="theme_light_lime_500_6">#0FA9C23F</color>
+    <color name="theme_dark_white_500_37">#5EFFFFFF</color>
+    <color name="theme_light_black_500_10">#19000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="splash_screen_bg">#111823</color>
+    <color name="color_brown">#8b7452</color>
+    <color name="color_green">#37773a</color>
+    <color name="color_yellow">#B6B60E</color>
+    <color name="color_red">#B6160E</color>
+    <color name="theme_light_black_25_100">#FFF2F2F2</color>
+    <color name="theme_light_white_500_100">#FFFFFFFF</color>
+    <color name="theme_dark_sky_500_87">#DE98CAEC</color>
+    <color name="theme_light_black_500_54">#8A000000</color>
+    <color name="theme_light_white_500_54">#8AFFFFFF</color>
+    <color name="theme_dark_slate_475_100">#FF222738</color>
+    <color name="theme_light_blue_500_100">#FF004990</color>
+    <color name="theme_dark_white_500_87">#DEFFFFFF</color>
+    <color name="theme_light_black_50_100">#FFE5E5E5</color>
+    <color name="transparent">#00000000</color>
+</resources>
