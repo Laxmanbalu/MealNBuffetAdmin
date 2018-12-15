@@ -8,12 +8,17 @@
     <string name="price">Price</string>
     <string name="desc">Description</string>
     <string name="category">Category</string>
+    <string name="custom">Custom</string>
     <array name="categories">
         <item name="category1">Category1</item>
         <item name="category2">Category2</item>
-        <item name="custom">Custom</item>
+        <item name="custom">@string/custom</item>
     </array>
-    <string name="custom_category">CustomCategoryName</string>
+    <string name="custom_category">Custom Category Name</string>
     <string name="upload_item_image">Item Image</string>
     <string name="choose_file">Choose File</string>
+    <string name="add_item_name_warning">ItemNameEmpty</string>
+    <string name="add_item_price_warning">ItemPriceEmpty</string>
+    <string name="add_item_desc_warning">AddSomePointsAboutItem</string>
+
 </resources>

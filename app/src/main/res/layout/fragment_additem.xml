@@ -16,7 +16,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/et_username"
+                android:id="@+id/et_additem_name"
                 style="@style/body1_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +27,6 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/black" />
         </android.support.design.widget.TextInputLayout>
-
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:hint="@string/price"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@android:color/black" />
         </android.support.design.widget.TextInputLayout>
@@ -64,16 +63,17 @@
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/additem_category_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:entries="@array/categories"
             android:prompt="@string/category" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/tv_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -87,37 +87,46 @@
                 android:hint="@string/custom_category"
                 android:inputType="text"
                 android:textAlignment="center"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:visibility="visible" />
         </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp">
 
             <TextView
-                style="@style/subheading_text"
+                android:id="@+id/add_item_image"
+                style="@style/body2_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/upload_item_image"
-                android:textColor="@color/theme_black" />
-
-            <TextView
-                style="@style/caption_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/add_cakeImg"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
-                android:layout_marginStart="50dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/common_background"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="@string/choose_file"
                 android:textColor="@color/black" />
-        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/add_cakeImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/add_item_image"
+                android:visibility="visible" />
+
+        </RelativeLayout>
 
         <Button
+            android:id="@+id/add_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
