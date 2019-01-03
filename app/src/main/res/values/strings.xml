@@ -8,12 +8,19 @@
     <string name="price">Price</string>
     <string name="desc">Description</string>
     <string name="category">Category</string>
+    <string name="foodtype">FoodType</string>
     <string name="custom">Custom</string>
     <array name="categories">
         <item name="category1">Category1</item>
         <item name="category2">Category2</item>
         <item name="custom">@string/custom</item>
     </array>
+
+    <array name="food_type">
+        <item name="veg">Veg</item>
+        <item name="non-veg">NonVeg</item>
+    </array>
+
     <string name="custom_category">Custom Category Name</string>
     <string name="upload_item_image">Item Image</string>
     <string name="choose_file">Choose File</string>

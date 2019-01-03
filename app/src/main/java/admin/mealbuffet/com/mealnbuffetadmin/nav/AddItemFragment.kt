@@ -4,7 +4,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.Category
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
-import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
 import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import android.Manifest
@@ -18,7 +17,6 @@ import android.provider.MediaStore
 import android.provider.MediaStore.MediaColumns
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -75,23 +73,21 @@ class AddItemFragment : BaseFragment() {
         if (isValidEntry(et_additem_price, R.string.add_item_price_warning)) return
         if (isValidEntry(et_additem_desc, R.string.add_item_desc_warning)) return
 
-
         val itemName = et_additem_name.text.toString()
         val price = et_additem_price.text.toString().toFloat()
         val desc = et_additem_desc.text.toString()
-        var category = additem_category_spinner.selectedItem.toString()
-        if (category == getString(R.string.custom)) {
-            category = et_additem_custom_category.text.toString()
-        }
-        val addItem = AddItem(itemName, price, "VEG", desc, category, filePath)
+        val categoryId = categoryLst.get(additem_category_spinner.selectedItemId.toInt()).id ?: EMPTY_STRING
+        val foodType = additem_foodtype_spinner.selectedItem.toString()
+        val addItem = AddItem(itemName, price, foodType, desc, categoryId, filePath)
 
-        addItemToServer(addItem, object : ResponseCallback {
-            override fun onError(data: Any?) {
-            }
+        /* addItemToServer(addItem, object : ResponseCallback {
+             override fun onError(data: Any?) {
+                 showNetworkError()
+             }
 
-            override fun onSuccess(data: Any?) {
-            }
-        })
+             override fun onSuccess(data: Any?) {
+             }
+         })*/
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
