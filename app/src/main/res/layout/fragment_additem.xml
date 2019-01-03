@@ -69,13 +69,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:entries="@array/categories"
             android:prompt="@string/category" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tv_category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <EditText
                 android:id="@+id/et_additem_custom_category"
@@ -99,11 +99,21 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/tv_image"
+                style="@style/caption_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:text="Image"
+                android:textColor="@color/black" />
+
+            <TextView
                 android:id="@+id/add_item_image"
                 style="@style/body2_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/add_cakeImg"
+                android:layout_alignBaseline="@+id/item_image"
+                android:layout_below="@+id/tv_image"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 android:layout_marginLeft="20dp"
@@ -113,7 +123,7 @@
                 android:textColor="@color/black" />
 
             <ImageView
-                android:id="@+id/add_cakeImg"
+                android:id="@+id/item_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginBottom="5dp"
@@ -126,7 +136,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/add_item"
+            android:id="@+id/btn_add_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

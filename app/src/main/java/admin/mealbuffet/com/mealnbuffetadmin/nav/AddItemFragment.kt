@@ -1,41 +1,73 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.model.addItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.Category
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
+import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
+import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.MediaColumns
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
-import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_additem.*
-import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 
-open class AddItemFragment : BaseFragment() {
+class AddItemFragment : BaseFragment() {
     private val REQUEST_STORAGE_PERMISSION = 1001
     private val RESULT_LOAD_IMAGE = 1
     private var uploadBitmapImage: Bitmap? = null
+    private var filePath: String = EMPTY_STRING
+    private lateinit var categoryLst: ArrayList<Category>
 
     override fun layoutResource(): Int = R.layout.fragment_additem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addSpinnerClickListener()
-        add_item.setOnClickListener {
+
+        btn_add_item.setOnClickListener {
             sendAddItemDataToService()
         }
         add_item_image.setOnClickListener { loadImageFromGallery() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!::categoryLst.isInitialized) {
+            fetchCategories()
+        }
+    }
+
+    private fun fetchCategories() {
+        showProgress()
+        getCategoriesList(object : ResponseCallback {
+            override fun onSuccess(data: Any?) {
+                categoryLst = data as ArrayList<Category>
+                hideProgress()
+                addSpinnerClickListener()
+            }
+
+            override fun onError(data: Any?) {
+                hideProgress()
+                showNetworkError()
+            }
+        })
     }
 
     private fun sendAddItemDataToService() {
@@ -51,12 +83,15 @@ open class AddItemFragment : BaseFragment() {
         if (category == getString(R.string.custom)) {
             category = et_additem_custom_category.text.toString()
         }
-        val baos = ByteArrayOutputStream()
-        uploadBitmapImage?.compress(Bitmap.CompressFormat.PNG, 100, baos)
-        val imageBytes = baos.toByteArray()
-        val itemImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        val addItem = AddItem(itemName, price, "VEG", desc, category, filePath)
 
-        val addItem = addItem(itemName, price, desc, category, itemImage)
+        addItemToServer(addItem, object : ResponseCallback {
+            override fun onError(data: Any?) {
+            }
+
+            override fun onSuccess(data: Any?) {
+            }
+        })
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
@@ -83,7 +118,7 @@ open class AddItemFragment : BaseFragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val cakeImageView = add_cakeImg
+        val cakeImageView = item_image
         //super method removed
         if (resultCode == RESULT_OK) {
             if (requestCode == RESULT_LOAD_IMAGE) {
@@ -92,7 +127,9 @@ open class AddItemFragment : BaseFragment() {
                     uploadBitmapImage = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, returnUri)
                     cakeImageView.setImageBitmap(uploadBitmapImage)
                     cakeImageView.visibility = View.VISIBLE
+                    val selectedImage = data.data
 
+                    filePath = getPath(selectedImage) ?: EMPTY_STRING
                 } catch (e: IOException) {
                     showCustomError("Loading Image Failed.. try from camera Folder")
                     cakeImageView.visibility = View.GONE
@@ -101,6 +138,16 @@ open class AddItemFragment : BaseFragment() {
         } else {
             showCustomError("Loading Image Failed.. try from camera Folder")
         }
+    }
+
+    private fun getPath(uri: Uri): String? {
+        val projection = arrayOf(MediaColumns.DATA)
+        val cursor = context?.contentResolver?.query(uri, projection, null, null, null)
+        val columnIndex = cursor?.getColumnIndexOrThrow(MediaColumns.DATA)
+        cursor?.moveToFirst()
+        val data = cursor?.getString(columnIndex ?: 0)
+        cursor?.close()
+        return data
     }
 
     private fun loadImageFromGallery() {
@@ -120,14 +167,10 @@ open class AddItemFragment : BaseFragment() {
     }
 
     private fun addSpinnerClickListener() {
+        additem_category_spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryLst)
         additem_category_spinner.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                var category = additem_category_spinner.selectedItem.toString()
-                if (category == getString(R.string.custom)) {
-                    tv_category.visibility = View.VISIBLE
-                } else {
-                    tv_category.visibility = View.GONE
-                }
+//                Log.d("TEST123", "Maincourse" + categoryLst[position])
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
