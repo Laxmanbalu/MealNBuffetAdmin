@@ -49,8 +49,8 @@
       <file leaf-file-name="AddItemFragment.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="161" column="69" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="177" selection-end-column="1" />
+            <state relative-caret-position="646">
+              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2590,7 +2590,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt</url>
-          <line>81</line>
+          <line>82</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
@@ -2755,8 +2755,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="161" column="69" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="177" selection-end-column="1" />
+        <state relative-caret-position="646">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding />
         </state>
       </provider>

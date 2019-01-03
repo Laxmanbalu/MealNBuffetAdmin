@@ -4,6 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.Category
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
 import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import android.Manifest
@@ -81,14 +82,14 @@ class AddItemFragment : BaseFragment() {
         val foodType = additem_foodtype_spinner.selectedItem.toString()
         val addItem = AddItem(itemName, price, foodType, desc, categoryId, filePath)
 
-        /* addItemToServer(addItem, object : ResponseCallback {
-             override fun onError(data: Any?) {
-                 showNetworkError()
-             }
+        addItemToServer(addItem, object : ResponseCallback {
+            override fun onError(data: Any?) {
+                showNetworkError()
+            }
 
-             override fun onSuccess(data: Any?) {
-             }
-         })*/
+            override fun onSuccess(data: Any?) {
+            }
+        })
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
