@@ -76,7 +76,8 @@ class AddItemFragment : BaseFragment() {
         val itemName = et_additem_name.text.toString()
         val price = et_additem_price.text.toString().toFloat()
         val desc = et_additem_desc.text.toString()
-        val categoryId = categoryLst.get(additem_category_spinner.selectedItemId.toInt()).id ?: EMPTY_STRING
+        val categoryId = categoryLst.get(additem_category_spinner.selectedItemId.toInt()).id
+                ?: EMPTY_STRING
         val foodType = additem_foodtype_spinner.selectedItem.toString()
         val addItem = AddItem(itemName, price, foodType, desc, categoryId, filePath)
 
@@ -106,7 +107,7 @@ class AddItemFragment : BaseFragment() {
                                             permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_STORAGE_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                startGallery()
+                browsePickFromGallery()
             } else {
                 showCustomError("To access Gallery App Permissions are must...")
             }
@@ -153,11 +154,11 @@ class AddItemFragment : BaseFragment() {
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     REQUEST_STORAGE_PERMISSION)
         } else {
-            startGallery()
+            browsePickFromGallery()
         }
     }
 
-    private fun startGallery() {
+    private fun browsePickFromGallery() {
         val cameraIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(cameraIntent, RESULT_LOAD_IMAGE)
     }
