@@ -12,14 +12,13 @@ abstract class NavigationSupportActivity : BaseActivity() {
         when (item.itemId) {
             R.id.leftNavHome -> showHomepageFragment()
             R.id.leftNavAddItem -> showAddItemFragment()
-//            R.id.leftnav_myorders -> showMyOrdersFragment()
         }
     }
 
     private fun showAddItemFragment() {
         menuItemId = R.id.leftNavAddItem
         title = getString(R.string.menu_add_item)
-        setHomeIcon(R.drawable.ic_menu_white)
+        setHomeIcon(R.drawable.ic_arrow_back_white)
         showFragment(addItemFragment)
     }
 

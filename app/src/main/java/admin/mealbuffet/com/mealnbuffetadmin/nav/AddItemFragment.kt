@@ -7,6 +7,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
 import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
+import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -81,8 +82,8 @@ class AddItemFragment : BaseFragment() {
                 ?: EMPTY_STRING
         val foodType = additem_foodtype_spinner.selectedItem.toString()
         val addItem = AddItem(itemName, price, foodType, desc, categoryId, filePath)
-
-        addItemToServer(addItem, object : ResponseCallback {
+        val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
+        addItemToServer(addItem, restaurantId, object : ResponseCallback {
             override fun onError(data: Any?) {
                 showNetworkError()
             }

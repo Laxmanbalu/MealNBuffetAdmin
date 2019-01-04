@@ -23,13 +23,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-fun addItemToServer(addItem: AddItem, responseCallBack: ResponseCallback) {
+fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
-    val requestUrl = ADD_ITEM
 
     val addItemObject = JSONObject()
-
-    addItemObject.put(PARAM_ADD_ITEM_RESTAURANT_ID, "R002")
+    addItemObject.put(PARAM_ADD_ITEM_RESTAURANT_ID, restaurantId)
     addItemObject.put(PARAM_ADD_ITEM_NAME, addItem.itemName)
     addItemObject.put(PARAM_ADD_ITEM_DESC, addItem.desc)
     addItemObject.put(PARAM_ADD_ITEM_PRICE, addItem.price.toString())
@@ -37,7 +35,7 @@ fun addItemToServer(addItem: AddItem, responseCallBack: ResponseCallback) {
     addItemObject.put(PARAM_ADD_ITEM_STATUS, "Active")
     addItemObject.put(PARAM_ADD_ITEM_CATEGORY_ID, "1811170316321132")
 
-    val smr = object : SimpleMultiPartRequest(Request.Method.POST, requestUrl,
+    val smr = object : SimpleMultiPartRequest(Request.Method.POST, ADD_ITEM,
             Response.Listener<String> { response ->
                 responseCallBack.onSuccess()
             }, Response.ErrorListener {
@@ -57,10 +55,9 @@ fun addItemToServer(addItem: AddItem, responseCallBack: ResponseCallback) {
 }
 
 fun getCategoriesList(responseCallBack: ResponseCallback) {
-    val requestUrl = GET_CATEGORIES
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
     val arrayRequest = JsonArrayRequest(Request.Method.GET,
-            requestUrl, null, Response.Listener<JSONArray> {
+            GET_CATEGORIES, null, Response.Listener<JSONArray> {
         val listType = object : TypeToken<List<Category>>() {}.type
         val categoriesLst = Gson().fromJson<List<Category>>(it.toString(), listType)
         responseCallBack.onSuccess(categoriesLst)
