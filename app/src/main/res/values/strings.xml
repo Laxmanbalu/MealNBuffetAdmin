@@ -29,5 +29,6 @@
     <string name="add_item_name_warning">ItemNameEmpty</string>
     <string name="add_item_price_warning">ItemPriceEmpty</string>
     <string name="add_item_desc_warning">AddSomePointsAboutItem</string>
+    <string name="item_price">Price: $%.2f</string>
 
 </resources>
