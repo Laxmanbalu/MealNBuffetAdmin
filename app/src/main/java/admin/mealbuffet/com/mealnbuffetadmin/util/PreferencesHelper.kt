@@ -16,6 +16,7 @@ object PreferencesHelper {
 
     fun getRestaurantId(context: Context): String {
         val sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
-        return sharedPreferences.getString(KEY_RESTAURANT_ID, EMPTY_STRING)
+       // return sharedPreferences.getString(KEY_RESTAURANT_ID, EMPTY_STRING)
+        return "R002"
     }
 }

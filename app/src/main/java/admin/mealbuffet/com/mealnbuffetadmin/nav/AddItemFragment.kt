@@ -1,6 +1,9 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_desc
+import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_name
+import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_price
 import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.Category
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
@@ -8,8 +11,11 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
 import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
+import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.CategoryViewModel
 import android.Manifest
 import android.app.Activity.RESULT_OK
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -35,40 +41,30 @@ class AddItemFragment : BaseFragment() {
     private var uploadBitmapImage: Bitmap? = null
     private var filePath: String = EMPTY_STRING
     private lateinit var categoryLst: ArrayList<Category>
+    private lateinit var categoryViewModel: CategoryViewModel
 
     override fun layoutResource(): Int = R.layout.fragment_additem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initCategoryViewModel()
         btn_add_item.setOnClickListener {
             sendAddItemDataToService()
         }
         add_item_image.setOnClickListener { loadImageFromGallery() }
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (!::categoryLst.isInitialized) {
-            fetchCategories()
-        }
-    }
-
-    private fun fetchCategories() {
-        showProgress()
-        getCategoriesList(object : ResponseCallback {
-            override fun onSuccess(data: Any?) {
-                categoryLst = data as ArrayList<Category>
-                hideProgress()
-                addSpinnerClickListener()
-            }
-
-            override fun onError(data: Any?) {
-                hideProgress()
-                showNetworkError()
-            }
+    private fun initCategoryViewModel() {
+        categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel::class.java)
+        categoryViewModel.liveData.observe(this, Observer {
+            hideProgress()
+            categoryLst = it!!
+            addSpinnerClickListener()
         })
+        showProgress()
+        categoryViewModel.getCategoriesListData()
     }
+
 
     private fun sendAddItemDataToService() {
         if (isValidEntry(et_additem_name, R.string.add_item_name_warning)) return

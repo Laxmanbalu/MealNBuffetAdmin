@@ -11,17 +11,8 @@
         android:icon="@drawable/ic_add_item"
         android:title="@string/menu_add_item" />
 
-    <!--<item android:title="Personal">
-        <menu>
-            <item
-                android:id="@+id/leftnav_myaccount"
-                android:icon="@drawable/ic_account"
-                android:title="@string/my_profile" />
-            <item
-                android:id="@+id/leftnav_myorders"
-                android:icon="@drawable/ic_view_list"
-                android:title="@string/my_orders" />
-        </menu>
-    </item>-->
-
+    <item
+        android:id="@+id/leftNavItemsList"
+        android:icon="@drawable/ic_view_list"
+        android:title="@string/menu_items_list" />
 </menu>

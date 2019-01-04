@@ -27,12 +27,17 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        itemsListFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
         when {
             addItemFragment.isVisible -> showHomepageFragment()
+            itemsListFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }
