@@ -21,6 +21,7 @@ class CategoryViewModel : ViewModel() {
 
                 override fun onError(data: Any?) {
                     liveData.value = null
+                    categoryList = null
                 }
             })
         }

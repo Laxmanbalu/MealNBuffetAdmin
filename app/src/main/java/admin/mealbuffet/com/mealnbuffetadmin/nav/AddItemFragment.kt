@@ -1,14 +1,10 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_desc
-import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_name
-import admin.mealbuffet.com.mealnbuffetadmin.R.id.et_additem_price
 import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.Category
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.addItemToServer
-import admin.mealbuffet.com.mealnbuffetadmin.network.getCategoriesList
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.CategoryViewModel
@@ -26,14 +22,11 @@ import android.provider.MediaStore.MediaColumns
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
 import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_additem.*
 import java.io.IOException
-
 
 class AddItemFragment : BaseFragment() {
     private val REQUEST_STORAGE_PERMISSION = 1001
@@ -57,11 +50,9 @@ class AddItemFragment : BaseFragment() {
     private fun initCategoryViewModel() {
         categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel::class.java)
         categoryViewModel.liveData.observe(this, Observer {
-            hideProgress()
             categoryLst = it!!
             addSpinnerClickListener()
         })
-        showProgress()
         categoryViewModel.getCategoriesListData()
     }
 
@@ -74,7 +65,7 @@ class AddItemFragment : BaseFragment() {
         val itemName = et_additem_name.text.toString()
         val price = et_additem_price.text.toString().toFloat()
         val desc = et_additem_desc.text.toString()
-        val categoryId = categoryLst.get(additem_category_spinner.selectedItemId.toInt()).id
+        val categoryId = categoryLst[additem_category_spinner.selectedItemId.toInt()].id
                 ?: EMPTY_STRING
         val foodType = additem_foodtype_spinner.selectedItem.toString()
         val addItem = AddItem(itemName, price, foodType, desc, categoryId, filePath)
@@ -163,14 +154,5 @@ class AddItemFragment : BaseFragment() {
 
     private fun addSpinnerClickListener() {
         additem_category_spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryLst)
-        additem_category_spinner.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-//                Log.d("TEST123", "Maincourse" + categoryLst[position])
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>) {
-                // your code here
-            }
-        }
     }
 }

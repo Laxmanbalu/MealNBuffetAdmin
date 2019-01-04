@@ -2,6 +2,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.home
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -21,6 +22,16 @@ class HomeActivity : NavigationSupportActivity() {
         showFragment(homePageFragment)
     }
 
+    override fun onPerformAction(action: String, data: Any?): Boolean {
+        when(action) {
+            ItemsListFragment.ADD_FOOD_ITEM -> {
+                showAddItemFragment()
+                true
+            }
+        }
+        return false
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         homePageFragment.isVisible -> super.onOptionsItemSelected(item)
         addItemFragment.isVisible && item.itemId == android.R.id.home -> {
@@ -36,7 +47,7 @@ class HomeActivity : NavigationSupportActivity() {
 
     override fun onBackPressed() {
         when {
-            addItemFragment.isVisible -> showHomepageFragment()
+            addItemFragment.isVisible -> showItemsListFragment()
             itemsListFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }

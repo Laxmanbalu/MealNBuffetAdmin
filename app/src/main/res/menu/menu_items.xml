@@ -7,11 +7,6 @@
         android:title="@string/menu_item_home" />
 
     <item
-        android:id="@+id/leftNavAddItem"
-        android:icon="@drawable/ic_add_item"
-        android:title="@string/menu_add_item" />
-
-    <item
         android:id="@+id/leftNavItemsList"
         android:icon="@drawable/ic_view_list"
         android:title="@string/menu_items_list" />

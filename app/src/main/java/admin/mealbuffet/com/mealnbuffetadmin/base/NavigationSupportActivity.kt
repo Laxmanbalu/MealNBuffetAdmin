@@ -13,20 +13,18 @@ abstract class NavigationSupportActivity : BaseActivity() {
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
             R.id.leftNavHome -> showHomepageFragment()
-            R.id.leftNavAddItem -> showAddItemFragment()
             R.id.leftNavItemsList -> showItemsListFragment()
         }
     }
 
-    private fun showItemsListFragment() {
+    protected fun showItemsListFragment() {
         menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_items_list)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         showFragment(itemsListFragment)
     }
 
-    private fun showAddItemFragment() {
-        menuItemId = R.id.leftNavAddItem
+    protected fun showAddItemFragment() {
         title = getString(R.string.menu_add_item)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         showFragment(addItemFragment)
