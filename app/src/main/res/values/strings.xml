@@ -30,5 +30,7 @@
     <string name="add_item_price_warning">ItemPriceEmpty</string>
     <string name="add_item_desc_warning">AddSomePointsAboutItem</string>
     <string name="item_price">Price: $%.2f</string>
-
+    <string name="publish">Publish</string>
+    <string name="unpublish">UnPublish</string>
+    <string name="delete">Delete</string>
 </resources>

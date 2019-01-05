@@ -44,7 +44,14 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
     class FoodItemViewHolder(itemView: View, wrapActionListener: ActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.setOnClickListener {
-                //                wrapActionListener.onAction(SearchFragment.ACTION_SHOW_RESTAURANT, (itemView.tag as Restaurant))
+                val foodItem = itemView.tag as FoodItem
+                if (foodItem.checked == false) {
+                    itemView.food_item_check.visibility = View.VISIBLE
+                    foodItem.checked = true
+                } else {
+                    itemView.food_item_check.visibility = View.GONE
+                    foodItem.checked = false
+                }
             }
         }
 
@@ -54,6 +61,11 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
             itemView.food_item_name.text = foodItem.item
             itemView.food_items_category.text = foodItem.categoryId
             itemView.food_items_price.text = String.format(requireContext.getString(R.string.item_price), foodItem.price)
+            if (foodItem.checked == false) {
+                itemView.food_item_check.visibility = View.GONE
+            } else {
+                itemView.food_item_check.visibility = View.VISIBLE
+            }
         }
     }
 }

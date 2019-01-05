@@ -4,10 +4,13 @@ package admin.mealbuffet.com.mealnbuffetadmin.network
 class MealAdminUrls {
     companion object {
         const val ADD_ITEM = "http://13.250.63.91:8080/admin/addItem"
+        const val DELETE_ITEM = "http://13.250.63.91:8080/admin/deleteItem"
         const val GET_CATEGORIES = "http://13.250.63.91:8080/mealnbuffet/getCategories"
         const val GET_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getItems/%s"
 
+
         const val PARAM_ADD_ITEM = "item"
+        const val PARAM_DELETE_ITEM = "itemCodeList"
         const val PARAM_ADD_ITEM_RESTAURANT_ID= "restaurantId"
         const val PARAM_ADD_ITEM_NAME = "item"
         const val PARAM_ADD_ITEM_DESC = "desc"
