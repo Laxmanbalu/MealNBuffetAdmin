@@ -73,6 +73,10 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener {
         foodItemListViewModel = ViewModelProviders.of(this).get(FoodItemListViewModel::class.java)
         foodItemListViewModel.liveData.observe(this, Observer {
             if (it == null) {
+                var tempFoodItem = ArrayList<FoodItem>()
+                tempFoodItem.add(FoodItem("R004" ))
+                foodItemsLst = tempFoodItem
+                renderFoodItemsView()
                 showNetworkError()
             } else {
                 foodItemsLst = it

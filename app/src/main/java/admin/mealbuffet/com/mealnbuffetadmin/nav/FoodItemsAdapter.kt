@@ -22,7 +22,7 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodItemViewHolder {
-        val view = LayoutInflater.from(requireContext).inflate(R.layout.fooditem_view, parent, false)
+        val view = LayoutInflater.from(requireContext).inflate(R.layout.view_holder_add_item, parent, false)
         return FoodItemViewHolder(view, wrapActionListener, requireContext)
     }
 

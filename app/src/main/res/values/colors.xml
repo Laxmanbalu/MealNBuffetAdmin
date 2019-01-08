@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">@color/orange_app</color>
     <color name="colorAccent">@color/orange_app</color>
     <color name="orange_app">#e74f0e</color>
+    <color name="orange_app_aplha_75">#B3e74f0e</color>
+
     <color name="theme_light_black_500_87">#DE000000</color>
     <color name="theme_light_brand_500_100">#FF052467</color>
     <color name="theme_light_black_200_100">#FF999999</color>
@@ -28,4 +30,6 @@
     <color name="theme_dark_white_500_87">#DEFFFFFF</color>
     <color name="theme_light_black_50_100">#FFE5E5E5</color>
     <color name="transparent">#00000000</color>
+    <color name="theme_light_black_500_12">#1E000000</color>
+
 </resources>
