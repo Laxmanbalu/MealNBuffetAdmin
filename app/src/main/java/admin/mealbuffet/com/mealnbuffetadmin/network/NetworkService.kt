@@ -5,10 +5,13 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.Category
 import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.model.User
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_CATEGORIES
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_FOOD_ITEMS_LIST
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_CATEGORY_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_DESC
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_FILE
@@ -17,6 +20,9 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_RESTAURANT_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_TYPE
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_PASSWORD
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_ROLE
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_USERID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_ITEM
 import com.android.volley.Request
@@ -25,6 +31,7 @@ import com.android.volley.error.AuthFailureError
 import com.android.volley.request.JsonArrayRequest
 import com.android.volley.request.JsonObjectRequest
 import com.android.volley.request.SimpleMultiPartRequest
+import com.android.volley.request.StringRequest
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
@@ -150,4 +157,47 @@ fun publishItems(array: ArrayList<String>, responseCallBack: ResponseCallback) {
         }
     }
     requestQueue?.add(stringRequest)
+}
+
+fun authenticateUser(user: User, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val requestUrl = AUTH_USER
+    val jsonBody = JSONObject()
+    try {
+        jsonBody.put(PARAM_AUTH_USERID, user.userId)
+        jsonBody.put(PARAM_AUTH_PASSWORD, user.password)
+        jsonBody.put(PARAM_AUTH_ROLE, user.role)
+    } catch (e: org.json.JSONException) {
+    }
+
+    val stringRequest = object : StringRequest(Request.Method.POST,
+            requestUrl, Response.Listener<String> {
+        responseCallBack.onSuccess(it)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return jsonBody.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(stringRequest)
+}
+
+fun getUserDetails(userId : String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val requestUrl = String.format(GET_USER, userId)
+    val objectRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<User>() {}.type
+        val userDetails = Gson().fromJson<User>(it.toString(), listType)
+        responseCallBack.onSuccess(userDetails)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    })
+    requestQueue?.add(objectRequest)
 }

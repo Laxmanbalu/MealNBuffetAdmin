@@ -13,6 +13,10 @@
     <string name="category">Category</string>
     <string name="foodtype">FoodType</string>
     <string name="custom">Custom</string>
+    <string name="title_login">Login</string>
+    <string name="user_id">User Id</string>
+    <string name="password">Password</string>
+
     <array name="categories">
         <item name="category1">Category1</item>
         <item name="category2">Category2</item>
@@ -35,5 +39,5 @@
     <string name="unpublish">UnPublish</string>
     <string name="delete">Delete</string>
     <string name="deleted_item_successfully">DeletedItemSuccess</string>
-
+    <string name="auth_get_user_error">Something went wrong, Check UserId &amp; Password</string>
 </resources>
