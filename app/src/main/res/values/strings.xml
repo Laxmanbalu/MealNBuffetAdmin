@@ -3,6 +3,7 @@
     <string name="menu_item_home">Home</string>
     <string name="menu_add_item">Add Item</string>
     <string name="menu_items_list">Items</string>
+    <string name="menu_buffets_list">Buffets</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
     <string name="title_meal">MealNBuffet</string>
 

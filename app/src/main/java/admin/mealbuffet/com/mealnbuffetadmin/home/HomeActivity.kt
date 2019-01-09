@@ -42,6 +42,10 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        buffetsListFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -49,6 +53,7 @@ class HomeActivity : NavigationSupportActivity() {
         when {
             addItemFragment.isVisible -> showItemsListFragment()
             itemsListFragment.isVisible -> showHomepageFragment()
+            buffetsListFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }
