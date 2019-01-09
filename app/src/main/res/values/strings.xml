@@ -1,19 +1,39 @@
 <resources>
     <string name="app_name">MealNBuffetAdmin</string>
     <string name="menu_item_home">Home</string>
+    <string name="menu_add_item">Add Item</string>
+    <string name="menu_items_list">Items</string>
+    <string name="menu_buffets_list">Buffets</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
     <string name="title_meal">MealNBuffet</string>
-    <string name="menu_add_item">Add Item</string>
+
     <string name="item_name">Item Name</string>
     <string name="price">Price</string>
     <string name="desc">Description</string>
     <string name="category">Category</string>
+    <string name="foodtype">FoodType</string>
+    <string name="custom">Custom</string>
     <array name="categories">
         <item name="category1">Category1</item>
         <item name="category2">Category2</item>
-        <item name="custom">Custom</item>
+        <item name="custom">@string/custom</item>
     </array>
-    <string name="custom_category">CustomCategoryName</string>
+
+    <array name="food_type">
+        <item name="veg">Veg</item>
+        <item name="non-veg">NonVeg</item>
+    </array>
+
+    <string name="custom_category">Custom Category Name</string>
     <string name="upload_item_image">Item Image</string>
     <string name="choose_file">Choose File</string>
+    <string name="add_item_name_warning">ItemNameEmpty</string>
+    <string name="add_item_price_warning">ItemPriceEmpty</string>
+    <string name="add_item_desc_warning">AddSomePointsAboutItem</string>
+    <string name="item_price">Price: $%.2f</string>
+    <string name="publish">Publish</string>
+    <string name="unpublish">UnPublish</string>
+    <string name="delete">Delete</string>
+    <string name="deleted_item_successfully">DeletedItemSuccess</string>
+
 </resources>

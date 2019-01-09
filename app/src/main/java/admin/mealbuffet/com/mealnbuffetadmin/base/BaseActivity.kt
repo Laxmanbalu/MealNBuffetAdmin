@@ -74,6 +74,7 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
                 return true
             }
             else -> {
+                drawer.closeDrawers()
                 handleNavigationItemSelected(item)
             }
         }

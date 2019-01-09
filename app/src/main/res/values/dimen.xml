@@ -16,4 +16,8 @@
     <dimen name="caption_text_size">12sp</dimen> <!-- Roboto - Regular -->
     <dimen name="base_text_size">14sp</dimen>
     <dimen name="badge_count_textsize">14sp</dimen>
+    <dimen name="size_1dp">1dp</dimen>
+    <dimen name="margin_82">82dp</dimen>
+    <dimen name="size_4dp">4dp</dimen>
+    <dimen name="work_items_item_view_reveal_width">100dp</dimen>
 </resources>
