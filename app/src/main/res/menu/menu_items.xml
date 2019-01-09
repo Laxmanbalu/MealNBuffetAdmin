@@ -8,6 +8,6 @@
 
     <item
         android:id="@+id/leftNavItemsList"
-        android:icon="@drawable/ic_view_list"
+        android:icon="@drawable/ic_buffet"
         android:title="@string/menu_items_list" />
 </menu>

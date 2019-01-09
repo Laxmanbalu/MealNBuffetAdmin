@@ -45,14 +45,14 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
         super.onViewCreated(view, savedInstanceState)
         initFoodItemsListViewModel()
         setHasOptionsMenu(true)
-        unpublish.setOnClickListener(this)
-        publish.setOnClickListener(this)
+        unpublish_items.setOnClickListener(this)
+        publish_items.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.publish -> publishSelectedItems()
-            R.id.unpublish -> unPublishSelectedItems()
+            R.id.publish_items -> publishSelectedItems()
+            R.id.unpublish_items -> unPublishSelectedItems()
         }
     }
 
