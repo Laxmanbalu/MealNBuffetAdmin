@@ -2,22 +2,27 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.DELETE_ITEM_FAILED
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.DELETE_ITEM_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.deleteFoodItems
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.mealbuffet.controller.ActionListener
 import kotlinx.android.synthetic.main.fooditem_view.view.*
+import kotlinx.android.synthetic.main.view_holder_add_item.view.*
 
 
-class FoodItemsAdapter(private val requireContext: Context, private val wrapActionListener: ActionListener) : RecyclerView.Adapter<FoodItemsAdapter.FoodItemViewHolder>() {
+class FoodItemsAdapter(private val requireContext: Context, private val wrapActionListener: InternalActionListener) : RecyclerView.Adapter<FoodItemsAdapter.FoodItemViewHolder>() {
 
     private var foodItemsLst: ArrayList<FoodItem>? = null
 
-    fun setData(arrayList: ArrayList<FoodItem>) {
-        this.foodItemsLst = arrayList
+    fun setData(argFoodItemsList: ArrayList<FoodItem>) {
+        foodItemsLst?.clear()
+        this.foodItemsLst = argFoodItemsList
         notifyDataSetChanged()
     }
 
@@ -41,9 +46,9 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
                 .into(foodItemViewHolder.itemView.food_item_icon)
     }
 
-    class FoodItemViewHolder(itemView: View, wrapActionListener: ActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
+    class FoodItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
-            itemView.setOnClickListener {
+            itemView.foodItemMainView.setOnClickListener {
                 val foodItem = itemView.tag as FoodItem
                 if (foodItem.checked == false) {
                     itemView.food_item_check.visibility = View.VISIBLE
@@ -53,10 +58,29 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
                     foodItem.checked = false
                 }
             }
+
+            itemView.delete.setOnClickListener {
+                deleteSelectedItem(it.tag as FoodItem)
+            }
+        }
+
+        private fun deleteSelectedItem(foodItem: FoodItem) {
+            foodItem.id?.let { it ->
+                deleteFoodItems(it, object : ResponseCallback {
+                    override fun onSuccess(data: Any?) {
+                        internalActionListener.onAction(DELETE_ITEM_SUCCESSFULLY)
+                    }
+
+                    override fun onError(data: Any?) {
+                        internalActionListener.onAction(DELETE_ITEM_FAILED)
+                    }
+                })
+            }
         }
 
         fun setData(foodItem: FoodItem) {
             itemView.tag = foodItem
+            itemView.delete.tag = foodItem
             itemView.food_items_desc.text = foodItem.desc
             itemView.food_item_name.text = foodItem.item
             itemView.food_items_category.text = foodItem.categoryId

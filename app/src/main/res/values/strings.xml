@@ -33,5 +33,6 @@
     <string name="publish">Publish</string>
     <string name="unpublish">UnPublish</string>
     <string name="delete">Delete</string>
+    <string name="deleted_item_successfully">DeletedItemSuccess</string>
 
 </resources>

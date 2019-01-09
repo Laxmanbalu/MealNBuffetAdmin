@@ -10,13 +10,13 @@ object PreferencesHelper {
     fun storeRestaurantDetails(context: Context) {
         val sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString(KEY_RESTAURANT_ID, "R002")
+        editor.putString(KEY_RESTAURANT_ID, "R004")
         editor.apply()
     }
 
     fun getRestaurantId(context: Context): String {
         val sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
        // return sharedPreferences.getString(KEY_RESTAURANT_ID, EMPTY_STRING)
-        return "R002"
+        return "R004"
     }
 }

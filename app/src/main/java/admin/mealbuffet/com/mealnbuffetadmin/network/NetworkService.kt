@@ -17,7 +17,8 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_RESTAURANT_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_TYPE
-import android.util.Log
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_ITEM
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.error.AuthFailureError
@@ -88,19 +89,55 @@ fun getFoodItemsList(restaurantId: String, responseCallBack: ResponseCallback) {
     requestQueue?.add(arrayRequest)
 }
 
-fun deleteFoodItems(array: ArrayList<String>, responseCallBack: ResponseCallback) {
+fun deleteFoodItems(itemId: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
-    val requestUrl = DELETE_ITEM
+    val requestUrl = String.format(DELETE_ITEM, itemId)
+    val deleteObjectRequest = JsonObjectRequest(Request.Method.DELETE,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val buffetRawData = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(buffetRawData)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    })
+    requestQueue?.add(deleteObjectRequest)
+}
+
+fun unpublishItems(array: ArrayList<String>, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
     val listOfIds = JSONArray(array)
 
-    Log.d("TEST123" ,"body: " + listOfIds.toString())
-    val stringRequest = object : JsonArrayRequest(Request.Method.POST,
-            requestUrl, null, Response.Listener<JSONArray> {
-//        val listType = object : TypeToken<StandardResponse>() {}.type
-//        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
-//        responseCallBack.onSuccess(response.shortDescription)
+    val stringRequest = object : JsonObjectRequest(Request.Method.POST,
+            UNPUBLISH_ITEM, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
     }, Response.ErrorListener {
-        Log.d("TEST123" ,"Error occured")
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return listOfIds.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(stringRequest)
+}
+
+
+fun publishItems(array: ArrayList<String>, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val listOfIds = JSONArray(array)
+
+    val stringRequest = object : JsonObjectRequest(Request.Method.POST,
+            PUBLISH_ITEM, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {

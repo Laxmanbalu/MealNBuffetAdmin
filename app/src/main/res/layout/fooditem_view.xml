@@ -9,9 +9,9 @@
         android:id="@+id/food_item_icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/food_item_name"
@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/food_item_icon"
         android:text="ButterScotch Cake"
         android:textColor="@color/color_red" />
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_item_name"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/food_item_icon"
         android:text="@string/category"
         android:textColor="@color/black" />
@@ -45,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_items_category"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/food_item_icon"
         android:text="@string/price"
         android:textColor="@color/black" />
@@ -56,10 +56,8 @@
         style="@style/body1_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/food_item_icon"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_below="@+id/food_items_price"
+        android:layout_margin="10dp"
         android:text="Item Description"
         android:textColor="@color/black" />
 
