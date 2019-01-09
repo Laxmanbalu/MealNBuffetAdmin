@@ -2,10 +2,12 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.R.id.menu_list_add_item
+import admin.mealbuffet.com.mealnbuffetadmin.custom.InfoDialog
 import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.publishItems
 import admin.mealbuffet.com.mealnbuffetadmin.network.unpublishItems
+import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.FoodItemListViewModel
 import android.arch.lifecycle.Observer
@@ -56,11 +58,21 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
         }
     }
 
+    private fun showAtleastOneItemSelectDialog() {
+        val dialog = InfoDialog.newInstance(getString(R.string.select_one_item_err_msg))
+        dialog.show(activity?.supportFragmentManager, "atleastOneItem")
+    }
+
     private fun unPublishSelectedItems() {
         val filteredList = foodItemsLst.filter { it.checked == true }
         val arrayList = ArrayList<String>()
         filteredList.forEach {
             it.id?.let { it1 -> arrayList.add(it1) }
+        }
+
+        if (arrayList.isEmpty()) {
+            showAtleastOneItemSelectDialog()
+            return
         }
 
         unpublishItems(arrayList, object : ResponseCallback {
@@ -81,6 +93,10 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
             it.id?.let { it1 -> arrayList.add(it1) }
         }
 
+        if (arrayList.isEmpty()) {
+            showAtleastOneItemSelectDialog()
+            return
+        }
         publishItems(arrayList, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
                 fetchGetItemsList()
