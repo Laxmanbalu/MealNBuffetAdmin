@@ -1,11 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.Category
-import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
-import admin.mealbuffet.com.mealnbuffetadmin.model.User
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
@@ -48,7 +44,7 @@ fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: Re
     addItemObject.put(PARAM_ADD_ITEM_PRICE, addItem.price.toString())
     addItemObject.put(PARAM_ADD_ITEM_TYPE, addItem.foodType)
     addItemObject.put(PARAM_ADD_ITEM_STATUS, "Active")
-    addItemObject.put(PARAM_ADD_ITEM_CATEGORY_ID, "1811170316321132")
+    addItemObject.put(PARAM_ADD_ITEM_CATEGORY_ID, addItem.category)
 
     val smr = object : SimpleMultiPartRequest(Request.Method.POST, ADD_ITEM,
             Response.Listener<String> { response ->
@@ -93,6 +89,7 @@ fun getFoodItemsList(restaurantId: String, responseCallBack: ResponseCallback) {
     }, Response.ErrorListener {
         responseCallBack.onError()
     })
+    arrayRequest.setShouldCache(false)
     requestQueue?.add(arrayRequest)
 }
 

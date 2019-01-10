@@ -76,6 +76,7 @@ class AddItemFragment : BaseFragment() {
             }
 
             override fun onSuccess(data: Any?) {
+                showCustomError(R.string.item_added_successfully)
             }
         })
     }
@@ -104,25 +105,25 @@ class AddItemFragment : BaseFragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val cakeImageView = item_image
+        val itemImageView = item_image
         //super method removed
         if (resultCode == RESULT_OK) {
             if (requestCode == RESULT_LOAD_IMAGE) {
                 val returnUri = data!!.data
                 try {
                     uploadBitmapImage = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, returnUri)
-                    cakeImageView.setImageBitmap(uploadBitmapImage)
-                    cakeImageView.visibility = View.VISIBLE
+                    itemImageView.setImageBitmap(uploadBitmapImage)
+                    itemImageView.visibility = View.VISIBLE
                     val selectedImage = data.data
 
                     filePath = getPath(selectedImage) ?: EMPTY_STRING
                 } catch (e: IOException) {
                     showCustomError("Loading Image Failed.. try from camera Folder")
-                    cakeImageView.visibility = View.GONE
+                    itemImageView.visibility = View.GONE
                 }
             }
         } else {
-            showCustomError("Loading Image Failed.. try from camera Folder")
+            showCustomError("Loading Image Failed...")
         }
     }
 

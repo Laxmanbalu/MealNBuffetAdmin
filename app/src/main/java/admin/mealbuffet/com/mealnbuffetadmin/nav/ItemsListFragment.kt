@@ -39,7 +39,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
     override fun layoutResource(): Int = R.layout.fragment_itemslist
     private lateinit var foodItemListViewModel: FoodItemListViewModel
     private lateinit var foodItemsAdapter: FoodItemsAdapter
-    private lateinit var foodItemsLst: ArrayList<FoodItem>
+    private var foodItemsLst = ArrayList<FoodItem>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,7 +60,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
         val filteredList = foodItemsLst.filter { it.checked == true }
         val arrayList = ArrayList<String>()
         filteredList.forEach {
-            it.id?.let { it1 -> arrayList.add(it1) }
+            it.itemCode?.let { it1 -> arrayList.add(it1) }
         }
 
         unpublishItems(arrayList, object : ResponseCallback {
@@ -78,7 +78,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
         val filteredList = foodItemsLst.filter { it.checked == true }
         val arrayList = ArrayList<String>()
         filteredList.forEach {
-            it.id?.let { it1 -> arrayList.add(it1) }
+            it.itemCode?.let { it1 -> arrayList.add(it1) }
         }
 
         publishItems(arrayList, object : ResponseCallback {

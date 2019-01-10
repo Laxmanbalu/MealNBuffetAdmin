@@ -65,7 +65,7 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
         }
 
         private fun deleteSelectedItem(foodItem: FoodItem) {
-            foodItem.id?.let { it ->
+            foodItem.itemCode?.let { it ->
                 deleteFoodItems(it, object : ResponseCallback {
                     override fun onSuccess(data: Any?) {
                         internalActionListener.onAction(DELETE_ITEM_SUCCESSFULLY)
