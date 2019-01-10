@@ -90,11 +90,15 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
             } else {
                 itemView.food_item_check.visibility = View.VISIBLE
             }
-            if (foodItem.status.equals("Active")) {
+            if (foodItem.status.equals(FOODITEM_STATUS_ACTIVE)) {
                 itemView.food_item_status_icon.setImageResource(R.drawable.ic_active)
             } else {
                 itemView.food_item_status_icon.setImageResource(R.drawable.ic_inactive)
             }
+        }
+
+        companion object {
+            const val FOODITEM_STATUS_ACTIVE = "Active"
         }
     }
 }

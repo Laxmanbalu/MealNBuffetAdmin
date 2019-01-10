@@ -11,11 +11,12 @@
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/food_item_name"
-        style="@style/title_text"
+        style="@style/subheading_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -36,7 +37,7 @@
 
     <TextView
         android:id="@+id/food_items_category"
-        style="@style/subheading_text"
+        style="@style/body1_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_item_name"
