@@ -2,7 +2,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.base
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.BuffetListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity

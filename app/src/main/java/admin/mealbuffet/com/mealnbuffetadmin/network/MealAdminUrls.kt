@@ -11,6 +11,7 @@ class MealAdminUrls {
         const val PUBLISH_ITEM = "http://13.250.63.91:8080/admin/publishItem"
         const val AUTH_USER = "http://13.250.63.91:8080/mealnbuffet/authenticateUser"
         const val GET_USER = "http://13.250.63.91:8080/mealnbuffet/getUserById/%s"
+        const val GET_BUFFETS_LIST = "http://13.250.63.91:8080/admin/getAllBuffets/%s"
 
         const val PARAM_ADD_ITEM_RESTAURANT_ID= "restaurantId"
         const val PARAM_ADD_ITEM_NAME = "item"

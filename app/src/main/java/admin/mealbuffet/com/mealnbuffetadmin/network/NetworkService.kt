@@ -5,6 +5,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_BUFFETS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_CATEGORIES
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_FOOD_ITEMS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_USER
@@ -86,6 +87,22 @@ fun getFoodItemsList(restaurantId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<List<FoodItem>>() {}.type
         val categoriesLst = Gson().fromJson<List<FoodItem>>(it.toString(), listType)
         responseCallBack.onSuccess(categoriesLst)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    arrayRequest.setShouldCache(false)
+    requestQueue?.add(arrayRequest)
+}
+
+
+fun getBuffetsList(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(GET_BUFFETS_LIST, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val arrayRequest = JsonArrayRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONArray> {
+        val listType = object : TypeToken<List<BuffetItem>>() {}.type
+        val buffetItemsList = Gson().fromJson<List<BuffetItem>>(it.toString(), listType)
+        responseCallBack.onSuccess(buffetItemsList)
     }, Response.ErrorListener {
         responseCallBack.onError()
     })
@@ -185,7 +202,7 @@ fun authenticateUser(user: User, responseCallBack: ResponseCallback) {
     requestQueue?.add(stringRequest)
 }
 
-fun getUserDetails(userId : String, responseCallBack: ResponseCallback) {
+fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
     val requestUrl = String.format(GET_USER, userId)
     val objectRequest = JsonObjectRequest(Request.Method.GET,
