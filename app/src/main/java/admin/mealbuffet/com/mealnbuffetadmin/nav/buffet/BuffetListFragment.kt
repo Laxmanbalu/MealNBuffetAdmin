@@ -16,6 +16,13 @@ import kotlinx.android.synthetic.main.fragment_buffetlist.*
 
 class BuffetListFragment : BaseFragment(), InternalActionListener {
     override fun onAction(action: String, data: Any?) {
+        when (action) {
+            DELETED_BUFFET_SUCCESSFULLY -> {
+                showCustomError(getString(R.string.deleted_item_successfully))
+                getBuffetsListData()
+            }
+            DELETED_BUFFET_FAILED -> showNetworkError()
+        }
     }
 
     override fun layoutResource(): Int = R.layout.fragment_buffetlist
@@ -55,5 +62,10 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
         buffetItems_recyclerView.itemAnimator = DefaultItemAnimator()
         buffetItemsAdapter.setData(buffetItemsList)
         buffetItemsAdapter.notifyDataSetChanged()
+    }
+
+    companion object {
+        const val DELETED_BUFFET_SUCCESSFULLY = "DeletedBuffetItemSuccessfully"
+        const val DELETED_BUFFET_FAILED = "DeletedBuffetItemFailed"
     }
 }

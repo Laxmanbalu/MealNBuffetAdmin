@@ -4,6 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
 import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_BUFFET_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_BUFFETS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_CATEGORIES
@@ -200,6 +201,20 @@ fun authenticateUser(user: User, responseCallBack: ResponseCallback) {
         }
     }
     requestQueue?.add(stringRequest)
+}
+
+fun deleteBuffetItem(buffetITem: String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val requestUrl = String.format(DELETE_BUFFET_ITEM, buffetITem)
+    val deleteObjectRequest = JsonObjectRequest(Request.Method.DELETE,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val buffetRawData = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(buffetRawData)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    })
+    requestQueue?.add(deleteObjectRequest)
 }
 
 fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {

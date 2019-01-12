@@ -17,14 +17,15 @@
         android:textColor="@color/orange_app"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/buffet_item_status_icon"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+    <TextView
+        android:id="@+id/buffet_item_status"
+        style="@style/caption_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_active" />
+        android:text="@string/published" />
 
     <TextView
         android:id="@+id/buffet_items_displayName"
@@ -101,7 +102,7 @@
         android:layout_below="@+id/buffet_time_view"
         android:layout_centerInParent="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/common_background"
         android:padding="5dp">

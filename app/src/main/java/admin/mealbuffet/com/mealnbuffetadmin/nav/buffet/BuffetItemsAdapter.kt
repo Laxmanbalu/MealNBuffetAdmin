@@ -3,6 +3,10 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.buffet
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_FAILED
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.deleteBuffetItem
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -38,23 +42,25 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
     class BuffetItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.delete.setOnClickListener {
-                //                deleteSelectedItem(it.tag as FoodItem)
+                deleteSelectedItem(it.tag as BuffetItem)
             }
         }
 
-        /*private fun deleteSelectedItem(foodItem: FoodItem) {
-            foodItem.itemCode?.let { it ->
-                deleteFoodItems(it, object : ResponseCallback {
-                    override fun onSuccess(data: Any?) {
-                        internalActionListener.onAction(DELETE_ITEM_SUCCESSFULLY)
-                    }
-
-                    override fun onError(data: Any?) {
-                        internalActionListener.onAction(DELETE_ITEM_FAILED)
-                    }
-                })
+        private fun deleteSelectedItem(buffetItem: BuffetItem) {
+            if (buffetItem.buffetId == null) {
+                internalActionListener.onAction(DELETED_BUFFET_FAILED)
+                return
             }
-        }*/
+            deleteBuffetItem(buffetItem.buffetId, object : ResponseCallback {
+                override fun onSuccess(data: Any?) {
+                    internalActionListener.onAction(DELETED_BUFFET_SUCCESSFULLY)
+                }
+
+                override fun onError(data: Any?) {
+                    internalActionListener.onAction(DELETED_BUFFET_FAILED)
+                }
+            })
+        }
 
         fun setData(buffetItem: BuffetItem) {
             itemView.tag = buffetItem
@@ -69,9 +75,11 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             itemView.buffet_price_view.buffet_kids_price.text = buffetItem.kidsPrice.toString()
 
             if (buffetItem.activeFlag) {
-                itemView.buffet_item_status_icon.setImageResource(R.drawable.ic_active)
+                itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_green))
+                itemView.buffet_item_status.text = requireContext.getString(R.string.published)
             } else {
-                itemView.buffet_item_status_icon.setImageResource(R.drawable.ic_inactive)
+                itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_red))
+                itemView.buffet_item_status.text = requireContext.getString(R.string.unpublished)
             }
         }
     }

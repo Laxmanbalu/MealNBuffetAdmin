@@ -37,6 +37,8 @@
     <string name="item_price">Price: $%.2f</string>
     <string name="publish">Publish</string>
     <string name="unpublish">UnPublish</string>
+    <string name="published">Published</string>
+    <string name="unpublished">UnPublished</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="deleted_item_successfully">DeletedItemSuccess</string>
