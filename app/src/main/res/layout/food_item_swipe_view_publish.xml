@@ -14,7 +14,7 @@
         android:src="@drawable/ic_publish" />
 
     <TextView
-        android:id="@+id/contentDescription"
+        android:id="@+id/tv_publish"
         style="@style/caption_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

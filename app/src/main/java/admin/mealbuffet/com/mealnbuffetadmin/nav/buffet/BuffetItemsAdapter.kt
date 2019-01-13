@@ -5,7 +5,10 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_FAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_BUFFET
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.changeBuffetPublishTypeSerivce
 import admin.mealbuffet.com.mealnbuffetadmin.network.deleteBuffetItem
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -13,7 +16,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.buffet_item_view.view.*
-import kotlinx.android.synthetic.main.view_holder_add_item.view.*
+import kotlinx.android.synthetic.main.food_item_swipe_view_publish.view.*
+import kotlinx.android.synthetic.main.view_holder_buffet_item.view.*
 
 
 class BuffetItemsAdapter(private val requireContext: Context, private val wrapActionListener: InternalActionListener) : RecyclerView.Adapter<BuffetItemsAdapter.BuffetItemViewHolder>() {
@@ -44,6 +48,38 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             itemView.delete.setOnClickListener {
                 deleteSelectedItem(it.tag as BuffetItem)
             }
+
+            itemView.publish.setOnClickListener {
+                changePublishTypeOfBuffet(it.tag as BuffetItem)
+            }
+
+            itemView.edit.setOnClickListener {
+
+            }
+        }
+
+        private fun changePublishTypeOfBuffet(buffetItem: BuffetItem) {
+            if (buffetItem.buffetId == null) {
+                internalActionListener.onAction(DELETED_BUFFET_FAILED)
+                return
+            }
+
+            var requestUrl = if (buffetItem.activeFlag) {
+                UNPUBLISH_BUFFET
+            } else {
+                PUBLISH_BUFFET
+            }
+            requestUrl = String.format(requestUrl, buffetItem.restaurantId, buffetItem.buffetId)
+
+            changeBuffetPublishTypeSerivce(requestUrl, object : ResponseCallback {
+                override fun onSuccess(data: Any?) {
+                    internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_SUCCESSFULLY)
+                }
+
+                override fun onError(data: Any?) {
+                    internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_FAILED)
+                }
+            })
         }
 
         private fun deleteSelectedItem(buffetItem: BuffetItem) {
@@ -65,6 +101,8 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
         fun setData(buffetItem: BuffetItem) {
             itemView.tag = buffetItem
             itemView.delete.tag = buffetItem
+            itemView.publish.tag = buffetItem
+            itemView.edit.tag = buffetItem
 
             itemView.buffet_item_name.text = buffetItem.buffetName
             itemView.buffet_items_desc.text = buffetItem.typeDesc
@@ -74,12 +112,15 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             itemView.buffet_price_view.buffet_adult_price.text = buffetItem.adultPrice.toString()
             itemView.buffet_price_view.buffet_kids_price.text = buffetItem.kidsPrice.toString()
 
+
             if (buffetItem.activeFlag) {
                 itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_green))
                 itemView.buffet_item_status.text = requireContext.getString(R.string.published)
+                itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.unpublish)
             } else {
                 itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_red))
                 itemView.buffet_item_status.text = requireContext.getString(R.string.unpublished)
+                itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.publish)
             }
         }
     }

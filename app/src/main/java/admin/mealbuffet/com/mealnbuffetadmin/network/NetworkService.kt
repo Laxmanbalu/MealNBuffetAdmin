@@ -230,3 +230,21 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
     })
     requestQueue?.add(objectRequest)
 }
+
+fun changeBuffetPublishTypeSerivce(requestUrl : String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val stringRequest = object : JsonObjectRequest(Request.Method.POST,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+    }
+    requestQueue?.add(stringRequest)
+}

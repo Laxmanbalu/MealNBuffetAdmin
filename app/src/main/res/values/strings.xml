@@ -42,6 +42,7 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="deleted_item_successfully">DeletedItemSuccess</string>
+    <string name="publish_item_successfully">UpdatedPublishTypeSuccessfully</string>
     <string name="auth_get_user_error">Something went wrong, Check UserId &amp; Password</string>
     <string name="item_added_successfully">Item Added Successfully</string>
     <string name="status">Status:%s</string>

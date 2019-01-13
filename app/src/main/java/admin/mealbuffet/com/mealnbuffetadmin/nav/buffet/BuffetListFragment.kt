@@ -22,6 +22,11 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
                 getBuffetsListData()
             }
             DELETED_BUFFET_FAILED -> showNetworkError()
+            PUBLISHED_BUFFET_SUCCESSFULLY -> {
+                showCustomError(getString(R.string.publish_item_successfully))
+                getBuffetsListData()
+            }
+            PUBLISHED_BUFFET_FAILED -> showNetworkError()
         }
     }
 
@@ -41,6 +46,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
             if (it == null) {
                 showNetworkError()
             } else {
+                buffetItemsList.clear()
                 buffetItemsList = it
                 renderFoodItemsView()
             }
@@ -67,5 +73,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
     companion object {
         const val DELETED_BUFFET_SUCCESSFULLY = "DeletedBuffetItemSuccessfully"
         const val DELETED_BUFFET_FAILED = "DeletedBuffetItemFailed"
+        const val PUBLISHED_BUFFET_SUCCESSFULLY = "PublishedBuffetItemSuccessfully"
+        const val PUBLISHED_BUFFET_FAILED = "PublishedBuffetItemFailed"
     }
 }
