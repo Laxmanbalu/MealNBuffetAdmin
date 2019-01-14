@@ -6,6 +6,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_BUFFET_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_ACTIVE_FOOD_ITEMS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_BUFFETS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_CATEGORIES
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_FOOD_ITEMS_LIST
@@ -231,8 +232,9 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
     requestQueue?.add(objectRequest)
 }
 
-fun changeBuffetPublishTypeSerivce(requestUrl : String, responseCallBack: ResponseCallback) {
+fun changeBuffetPublishTypeService(requestUrl: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
 
     val stringRequest = object : JsonObjectRequest(Request.Method.POST,
             requestUrl, null, Response.Listener<JSONObject> {
@@ -247,4 +249,19 @@ fun changeBuffetPublishTypeSerivce(requestUrl : String, responseCallBack: Respon
         }
     }
     requestQueue?.add(stringRequest)
+}
+
+fun getActiveItemsList(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(GET_ACTIVE_FOOD_ITEMS_LIST, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val arrayRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<HashMap<String, List<FoodItem>>>() {}.type
+        val activeFoodItems = Gson().fromJson<HashMap<String, Any>>(it.toString(), listType)
+        responseCallBack.onSuccess(activeFoodItems)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    arrayRequest.setShouldCache(false)
+    requestQueue?.add(arrayRequest)
 }

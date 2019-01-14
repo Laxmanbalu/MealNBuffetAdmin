@@ -8,7 +8,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Compa
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
-import admin.mealbuffet.com.mealnbuffetadmin.network.changeBuffetPublishTypeSerivce
+import admin.mealbuffet.com.mealnbuffetadmin.network.changeBuffetPublishTypeService
 import admin.mealbuffet.com.mealnbuffetadmin.network.deleteBuffetItem
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -71,7 +71,7 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             }
             requestUrl = String.format(requestUrl, buffetItem.restaurantId, buffetItem.buffetId)
 
-            changeBuffetPublishTypeSerivce(requestUrl, object : ResponseCallback {
+            changeBuffetPublishTypeService(requestUrl, object : ResponseCallback {
                 override fun onSuccess(data: Any?) {
                     internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_SUCCESSFULLY)
                 }

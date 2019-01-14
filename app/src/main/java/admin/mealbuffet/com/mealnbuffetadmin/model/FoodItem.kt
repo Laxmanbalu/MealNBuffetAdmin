@@ -14,5 +14,5 @@ data class FoodItem(
         val qty: Int? = null,
         val id: String? = null,
         @Transient
-        var checked : Boolean ?= false
+        var checked: Boolean? = false
 )

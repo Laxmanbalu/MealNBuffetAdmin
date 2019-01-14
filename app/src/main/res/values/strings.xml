@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">MealNBuffetAdmin</string>
     <string name="menu_item_home">Home</string>
-    <string name="menu_add_item">Add Item</string>
+    <string name="menu_add_item">AddItem</string>
+    <string name="menu_add_buffet">AddBuffet</string>
     <string name="menu_items_list">Items</string>
     <string name="menu_buffets_list">Buffets</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
@@ -28,6 +29,14 @@
         <item name="non-veg">NonVeg</item>
     </array>
 
+    <array name="buffet_type">
+        <item name="default">SelectBuffetType</item>
+        <item name="breakfast">BreakFast</item>
+        <item name="lunch">Lunch</item>
+        <item name="dinner">Dinner</item>
+        <item name="allday">AllDay</item>
+    </array>
+
     <string name="custom_category">Custom Category Name</string>
     <string name="upload_item_image">Item Image</string>
     <string name="choose_file">Choose File</string>
@@ -51,4 +60,12 @@
     <string name="adult_price">AdultsPrice:</string>
     <string name="kids_price">KidsPrice:</string>
 
+    <string name="buffet_name">BuffetName</string>
+    <string name="buffet_desc">Description</string>
+    <string name="buffet_starttime">StartTime</string>
+    <string name="buffet_endtime">EndTime</string>
+
+    <string name="buffet_adult_price">AdultsPrice($)</string>
+    <string name="buffet_kids_price">KidsPrice($)</string>
+    <string name="btn_move_next">MoveToNextPage</string>
 </resources>

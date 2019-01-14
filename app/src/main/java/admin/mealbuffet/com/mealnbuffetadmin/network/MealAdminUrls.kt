@@ -15,6 +15,7 @@ class MealAdminUrls {
         const val DELETE_BUFFET_ITEM = "http://13.250.63.91:8080/admin/deleteBuffet/%s"
         const val PUBLISH_BUFFET = "http://13.250.63.91:8080/admin/publishBuffet/%s/%s"
         const val UNPUBLISH_BUFFET = "http://13.250.63.91:8080/admin/unPublishBuffet/%s/%s"
+        const val GET_ACTIVE_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getActiveItems/%s"
 
         const val PARAM_ADD_ITEM_RESTAURANT_ID= "restaurantId"
         const val PARAM_ADD_ITEM_NAME = "item"

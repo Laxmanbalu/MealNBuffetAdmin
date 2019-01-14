@@ -3,6 +3,8 @@ package admin.mealbuffet.com.mealnbuffetadmin.home
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -23,9 +25,17 @@ class HomeActivity : NavigationSupportActivity() {
     }
 
     override fun onPerformAction(action: String, data: Any?): Boolean {
-        when(action) {
+        when (action) {
             ItemsListFragment.ADD_FOOD_ITEM -> {
                 showAddItemFragment()
+                true
+            }
+            BuffetListFragment.ADD_BUFFET -> {
+                showAddBuffet()
+                true
+            }
+            AddBuffetFragment.BUFFET_MOVE_NEXT -> {
+                showBuffetFoodItemsFragment()
                 true
             }
         }
@@ -35,6 +45,14 @@ class HomeActivity : NavigationSupportActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         homePageFragment.isVisible -> super.onOptionsItemSelected(item)
         addItemFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        addBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        buffetFoodItemsFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
@@ -53,7 +71,9 @@ class HomeActivity : NavigationSupportActivity() {
         when {
             addItemFragment.isVisible -> showItemsListFragment()
             itemsListFragment.isVisible -> showHomepageFragment()
+            buffetFoodItemsFragment.isVisible -> showAddBuffet()
             buffetsListFragment.isVisible -> showHomepageFragment()
+            addBuffetFragment.isVisible -> showBuffetItemsFragment()
             else -> super.onBackPressed()
         }
     }
