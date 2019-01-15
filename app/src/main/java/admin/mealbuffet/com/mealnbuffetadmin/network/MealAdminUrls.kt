@@ -1,4 +1,3 @@
-
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 class MealAdminUrls {
@@ -16,17 +15,31 @@ class MealAdminUrls {
         const val PUBLISH_BUFFET = "http://13.250.63.91:8080/admin/publishBuffet/%s/%s"
         const val UNPUBLISH_BUFFET = "http://13.250.63.91:8080/admin/unPublishBuffet/%s/%s"
         const val GET_ACTIVE_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getActiveItems/%s"
+        const val ADD_BUFFET = "http://13.250.63.91:8080/admin/addBuffet"
 
-        const val PARAM_ADD_ITEM_RESTAURANT_ID= "restaurantId"
+        const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_ADD_ITEM_NAME = "item"
         const val PARAM_ADD_ITEM_DESC = "desc"
         const val PARAM_ADD_ITEM_PRICE = "price"
         const val PARAM_ADD_ITEM_TYPE = "type"
-        const val PARAM_ADD_ITEM_STATUS= "status"
+        const val PARAM_ADD_ITEM_STATUS = "status"
         const val PARAM_ADD_ITEM_FILE = "file"
         const val PARAM_ADD_ITEM_CATEGORY_ID = "categoryId"
         const val PARAM_AUTH_PASSWORD = "password"
         const val PARAM_AUTH_ROLE = "role"
         const val PARAM_AUTH_USERID = "userId"
+
+        const val PARAM_ADULT_PRICE = "adultPrice"
+        const val PARAM_ACTIVE_FLAG = "activeFlag"
+        const val PARAM_BUFFET_NAME = "buffetName"
+        const val PARAM_DISPLAY_NAME = "displayName"
+        const val PARAM_END_TIME = "endTime"
+        const val PARAM_KIDS_PRICE = "kidsPrice"
+        const val PARAM_START_TIME = "startTime"
+        const val PARAM_STATUS = "status"
+        const val PARAM_TYPE_DESC = "typeDesc"
+        const val PARAM_TYPE = "type"
+        const val PARAM_BUFFET_ITEMS = "buffetItems"
+        const val PARAM_ITEMS_LST = "itemsList"
     }
 }

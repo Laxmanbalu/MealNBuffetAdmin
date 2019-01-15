@@ -24,6 +24,25 @@
             android:textColor="@android:color/black" />
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/et_buffetdisplayname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/buffet_display_name"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black" />
+    </android.support.design.widget.TextInputLayout>
+
     <Spinner
         android:id="@+id/spin_buffettype"
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.base
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
@@ -31,10 +32,11 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(itemsListFragment)
     }
 
-    protected fun showBuffetFoodItemsFragment() {
+    protected fun showBuffetFoodItemsFragment(buffetBasicData: BuffetBasicData) {
         menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_add_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
+        buffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
         showFragment(buffetFoodItemsFragment)
     }
 

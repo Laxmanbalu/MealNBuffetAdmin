@@ -15,3 +15,10 @@ data class User(var id: String? = EMPTY_STRING,
                 val password: String,
                 val role: String? = EMPTY_STRING,
                 val restaurantId: String? = EMPTY_STRING)
+
+
+data class CreateBuffetItem(var status: Int, var typeDes: String, var itemsList: ArrayList<String>, var buffetBasicData: BuffetBasicData)
+
+data class BuffetBasicData(var adultPrice: Double, var buffetName: String, var displayName: String, var endTime: String,
+                           var kidsPrice: Double, var restaurantId: String, var startTime: String, var desc: String,
+                           var type: String)

@@ -1,6 +1,8 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav.buffet
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
+import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -22,9 +24,18 @@ class AddBuffetFragment : BaseFragment() {
 
         et_buffetendTime.inputType = InputType.TYPE_NULL
         et_buffetendTime.setOnClickListener { showEndTimePickerDialog() }
-        buffet_movenext.setOnClickListener{
-            wrapActionListener().onAction(BUFFET_MOVE_NEXT)
+        buffet_movenext.setOnClickListener {
+
+            wrapActionListener().onAction(BUFFET_MOVE_NEXT, makeBuffetBasicObject())
         }
+    }
+
+    private fun makeBuffetBasicObject(): BuffetBasicData {
+        val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
+        var buffetBasic = BuffetBasicData(buffetName = et_buffetname.text.toString(), desc = et_buffetdesc.text.toString(), type = spin_buffettype.selectedItem.toString(),
+                startTime = et_buffetstartTime.text.toString(), endTime = et_buffetendTime.text.toString(), adultPrice = et_buffetadult_price.text.toString().toDouble(),
+                kidsPrice = et_buffetkids_price.text.toString().toDouble(), displayName = et_buffetdisplayname.text.toString(), restaurantId = restaurantId)
+        return buffetBasic
     }
 
     private fun showStartTimePickerDialog() {

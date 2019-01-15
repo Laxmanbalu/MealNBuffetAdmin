@@ -61,6 +61,7 @@
     <string name="kids_price">KidsPrice:</string>
 
     <string name="buffet_name">BuffetName</string>
+    <string name="buffet_display_name">DisplayName</string>
     <string name="buffet_desc">Description</string>
     <string name="buffet_starttime">StartTime</string>
     <string name="buffet_endtime">EndTime</string>

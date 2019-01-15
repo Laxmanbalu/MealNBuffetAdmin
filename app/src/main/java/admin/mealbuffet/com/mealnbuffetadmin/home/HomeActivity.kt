@@ -2,8 +2,10 @@ package admin.mealbuffet.com.mealnbuffetadmin.home
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment.Companion.BUFFET_ADDED_SUCCESSFULLY
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
 import android.os.Bundle
 import android.view.MenuItem
@@ -35,7 +37,12 @@ class HomeActivity : NavigationSupportActivity() {
                 true
             }
             AddBuffetFragment.BUFFET_MOVE_NEXT -> {
-                showBuffetFoodItemsFragment()
+                showBuffetFoodItemsFragment(data as BuffetBasicData)
+                true
+            }
+
+            BUFFET_ADDED_SUCCESSFULLY -> {
+                showBuffetItemsFragment()
                 true
             }
         }
