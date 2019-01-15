@@ -3,6 +3,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.buffet
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.BUFFET_EDIT
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_FAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_SUCCESSFULLY
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_BUFFET
@@ -46,15 +47,21 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
     class BuffetItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.delete.setOnClickListener {
-                deleteSelectedItem(it.tag as BuffetItem)
+                if(itemView.swipeLayout.isOpened) {
+                    deleteSelectedItem(it.tag as BuffetItem)
+                }
             }
 
             itemView.publish.setOnClickListener {
-                changePublishTypeOfBuffet(it.tag as BuffetItem)
+                if(itemView.swipeLayout.isOpened) {
+                    changePublishTypeOfBuffet(it.tag as BuffetItem)
+                }
             }
 
             itemView.edit.setOnClickListener {
-
+                if(itemView.swipeLayout.isOpened) {
+                    internalActionListener.onAction(BUFFET_EDIT, it.tag as BuffetItem)
+                }
             }
         }
 
@@ -63,7 +70,6 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
                 internalActionListener.onAction(DELETED_BUFFET_FAILED)
                 return
             }
-
             var requestUrl = if (buffetItem.activeFlag) {
                 UNPUBLISH_BUFFET
             } else {

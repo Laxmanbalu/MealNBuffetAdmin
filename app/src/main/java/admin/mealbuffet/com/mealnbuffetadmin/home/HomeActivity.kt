@@ -3,10 +3,13 @@ package admin.mealbuffet.com.mealnbuffetadmin.home
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment.Companion.BUFFET_ADDED_SUCCESSFULLY
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.EditBuffetFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -45,6 +48,18 @@ class HomeActivity : NavigationSupportActivity() {
                 showBuffetItemsFragment()
                 true
             }
+
+            BuffetListFragment.BUFFET_EDIT -> {
+                if (data != null) {
+                    showEditBuffet(data as BuffetItem)
+                }
+                true
+            }
+
+            EditBuffetFragment.EDIT_BUFFET_MOVE_NEXT -> {
+                showBuffetEditFoodItemsFragment(data as EditBuffetData)
+                true
+            }
         }
         return false
     }
@@ -71,6 +86,10 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        editBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -78,9 +97,10 @@ class HomeActivity : NavigationSupportActivity() {
         when {
             addItemFragment.isVisible -> showItemsListFragment()
             itemsListFragment.isVisible -> showHomepageFragment()
-            buffetFoodItemsFragment.isVisible -> showAddBuffet()
             buffetsListFragment.isVisible -> showHomepageFragment()
             addBuffetFragment.isVisible -> showBuffetItemsFragment()
+            buffetFoodItemsFragment.isVisible -> showAddBuffet()
+            editBuffetFragment.isVisible -> showBuffetItemsFragment()
             else -> super.onBackPressed()
         }
     }

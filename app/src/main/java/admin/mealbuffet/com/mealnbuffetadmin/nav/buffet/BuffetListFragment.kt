@@ -30,6 +30,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
                 getBuffetsListData()
             }
             PUBLISHED_BUFFET_FAILED -> showNetworkError()
+            BUFFET_EDIT -> wrapActionListener().onAction(BUFFET_EDIT, data)
         }
     }
 
@@ -92,6 +93,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
         const val DELETED_BUFFET_SUCCESSFULLY = "DeletedBuffetItemSuccessfully"
         const val DELETED_BUFFET_FAILED = "DeletedBuffetItemFailed"
         const val PUBLISHED_BUFFET_SUCCESSFULLY = "PublishedBuffetItemSuccessfully"
+        const val BUFFET_EDIT = "EditBuffetItem"
         const val PUBLISHED_BUFFET_FAILED = "PublishedBuffetItemFailed"
         const val ADD_BUFFET: String = "addBuffet"
     }

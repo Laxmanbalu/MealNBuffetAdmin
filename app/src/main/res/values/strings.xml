@@ -3,6 +3,7 @@
     <string name="menu_item_home">Home</string>
     <string name="menu_add_item">AddItem</string>
     <string name="menu_add_buffet">AddBuffet</string>
+    <string name="menu_edit_buffet">EditBuffet</string>
     <string name="menu_items_list">Items</string>
     <string name="menu_buffets_list">Buffets</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
@@ -29,12 +30,17 @@
         <item name="non-veg">NonVeg</item>
     </array>
 
+    <string name="breakfast">BreakFast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="allday">AllDay</string>
+
     <array name="buffet_type">
         <item name="default">SelectBuffetType</item>
-        <item name="breakfast">BreakFast</item>
-        <item name="lunch">Lunch</item>
-        <item name="dinner">Dinner</item>
-        <item name="allday">AllDay</item>
+        <item name="breakfast">@string/breakfast</item>
+        <item name="lunch">@string/lunch</item>
+        <item name="dinner">@string/dinner</item>
+        <item name="allday">@string/allday</item>
     </array>
 
     <string name="custom_category">Custom Category Name</string>
