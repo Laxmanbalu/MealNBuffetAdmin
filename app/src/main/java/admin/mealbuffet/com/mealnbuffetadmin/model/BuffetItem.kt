@@ -35,3 +35,13 @@ data class BMFoodItem(var restaurantId: String = EMPTY_STRING,
                       var id: String = EMPTY_STRING,
                       var qty: Int = 0)
 
+data class MealItem(var mealId: String = EMPTY_STRING,
+                    var mealName: String = EMPTY_STRING,
+                    var restaurantId: String = EMPTY_STRING,
+                    var complimentory: String = EMPTY_STRING,
+                    var mealItems: String = EMPTY_STRING,
+                    var id: String = EMPTY_STRING,
+                    var activeFlag: Boolean = false,
+                    var itemsQty: Int = 0,
+                    @SerializedName("itemsMap")
+                    var items: HashMap<String, List<BMFoodItem>>? = null)

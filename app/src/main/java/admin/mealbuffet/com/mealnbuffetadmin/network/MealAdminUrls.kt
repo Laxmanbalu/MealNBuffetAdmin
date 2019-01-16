@@ -17,6 +17,7 @@ class MealAdminUrls {
         const val GET_ACTIVE_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getActiveItems/%s"
         const val ADD_BUFFET = "http://13.250.63.91:8080/admin/addBuffet"
         const val UPDATE_BUFFET = "http://13.250.63.91:8080/admin/updateBuffet"
+        const val GET_MEALS_LIST = "http://13.250.63.91:8080/admin/getMealByRestaurantId/%s"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"

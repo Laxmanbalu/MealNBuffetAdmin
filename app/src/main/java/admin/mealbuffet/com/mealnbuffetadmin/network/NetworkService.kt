@@ -11,6 +11,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_BUFFETS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_CATEGORIES
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_FOOD_ITEMS_LIST
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_MEALS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_USER
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ACTIVE_FLAG
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_CATEGORY_ID
@@ -372,4 +373,20 @@ fun updateSelectedBuffetItem(buffetItem: CreateBuffetItem, buffetId: String, res
         }
     }
     requestQueue?.add(buffetUpdateRequest)
+}
+
+
+fun getMealsList(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(GET_MEALS_LIST, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val arrayRequest = JsonArrayRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONArray> {
+        val listType = object : TypeToken<List<MealItem>>() {}.type
+        val buffetItemsList = Gson().fromJson<List<MealItem>>(it.toString(), listType)
+        responseCallBack.onSuccess(buffetItemsList)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    arrayRequest.setShouldCache(false)
+    requestQueue?.add(arrayRequest)
 }

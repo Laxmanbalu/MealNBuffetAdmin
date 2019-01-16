@@ -27,14 +27,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,35 +57,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NavigationSupportActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
+      <file leaf-file-name="NetworkService.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="46" column="51" selection-end-line="88" selection-end-column="1" />
-              <folding>
-                <element signature="e#1822#1856#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="355">
+              <caret line="359" column="27" selection-start-line="359" selection-start-column="27" selection-end-line="359" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddItemFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt">
+      <file leaf-file-name="MealListFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="80" column="69" selection-start-line="80" selection-start-column="46" selection-end-line="80" selection-end-column="69" />
+            <state relative-caret-position="480">
+              <caret line="32" selection-end-line="36" selection-end-column="1" />
               <folding>
-                <element signature="e#3410#3442#1" expanded="true" />
+                <element signature="e#56#148#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeActivity.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -2542,9 +2527,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetListFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/UserSelection.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetEditFoodItemsFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fooditem_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/FoodItemsAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/custom/InfoDialog.kt" />
@@ -2558,11 +2540,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_meallist.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/AddItemFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt" />
       </list>
     </option>
   </component>
@@ -2883,7 +2868,7 @@
       <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.32820514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5548718" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
@@ -2893,7 +2878,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.32820514" />
       <window_info id="Captures" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13431014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13431014" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4993895" weight="0.32923076" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -2973,7 +2958,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="132" />
+      <option name="time" value="135" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -3181,13 +3166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/FoodItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_buffet_fooditems.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -3205,31 +3183,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/dev.dworks.libs/volleyplus/0.1.4/8b36aed61d800712de741bace466ec2d3e024dde/volleyplus-0.1.4-sources.jar!/com/android/volley/request/JsonRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="707">
           <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="297" column="71" selection-start-line="297" selection-start-column="71" selection-end-line="297" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -3426,16 +3383,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="22" />
-          <folding>
-            <element signature="e#56#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -3465,8 +3412,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+        <state relative-caret-position="174">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/FoodItem.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="359" column="27" selection-start-line="359" selection-start-column="27" selection-end-line="359" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" selection-end-line="36" selection-end-column="1" />
+          <folding>
+            <element signature="e#56#148#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
