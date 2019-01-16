@@ -4,6 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.custom.InfoDialog
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
+import admin.mealbuffet.com.mealnbuffetadmin.util.hideKeyboard
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -22,10 +23,15 @@ class AddBuffetFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         et_buffetstartTime.inputType = InputType.TYPE_NULL
-        et_buffetstartTime.setOnClickListener { showStartTimePickerDialog() }
+        et_buffetstartTime.setOnClickListener {
+            showStartTimePickerDialog()
+        }
 
         et_buffetendTime.inputType = InputType.TYPE_NULL
-        et_buffetendTime.setOnClickListener { showEndTimePickerDialog() }
+        et_buffetendTime.setOnClickListener {
+            hideKeyboard(requireActivity())
+            showEndTimePickerDialog()
+        }
         buffet_movenext.setOnClickListener {
             val data = makeBuffetBasicObject()
             if (data != null) {
@@ -40,7 +46,7 @@ class AddBuffetFragment : BaseFragment() {
             return null
         }
 
-        if (spin_buffettype.selectedItem.toString().equals(getString(R.string.default_selection_msg))) {
+        if (spin_buffettype.selectedItem.toString() == getString(R.string.default_selection_msg)) {
             showFoodSelectionError("Select Buffet Type")
             return null
         }
@@ -80,6 +86,6 @@ class AddBuffetFragment : BaseFragment() {
     }
 
     companion object {
-        const val BUFFET_MOVE_NEXT = "buffetMoveNext"
+        const val BUFFET_MOVE_NEXT: String = "buffetMoveNext"
     }
 }

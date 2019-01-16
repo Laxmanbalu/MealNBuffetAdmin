@@ -30,6 +30,7 @@
         <item name="non-veg">NonVeg</item>
     </array>
 
+    <string name="buffet_fooditems_select">Select atleast one Food item to Buffet</string>
     <string name="ok">Ok</string>
     <string name="default_selection_msg">SelectBuffetType</string>
     <string name="breakfast">BreakFast</string>

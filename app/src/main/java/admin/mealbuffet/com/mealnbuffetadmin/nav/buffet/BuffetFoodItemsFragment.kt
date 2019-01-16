@@ -1,6 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav.buffet
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.custom.InfoDialog
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.model.CreateBuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
@@ -40,6 +41,11 @@ class BuffetFoodItemsFragment : BaseFragment() {
             }
         }
 
+        if (arrayList.isEmpty()) {
+            showItemSelectionError(getString(R.string.buffet_fooditems_select))
+            return
+        }
+
         val buffetItem = CreateBuffetItem(status = 1, typeDes = EMPTY_STRING, buffetBasicData = buffetBasicData, itemsList = arrayList)
         addNewBuffet(buffetItem, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
@@ -50,6 +56,12 @@ class BuffetFoodItemsFragment : BaseFragment() {
                 showNetworkError()
             }
         })
+    }
+
+
+    private fun showItemSelectionError(message: String) {
+        val dialog = InfoDialog.newInstance(message)
+        dialog.show(activity?.supportFragmentManager, message)
     }
 
     override fun onResume() {
