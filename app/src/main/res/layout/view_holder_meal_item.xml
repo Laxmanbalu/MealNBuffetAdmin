@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dragEdge="right">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/delete"
+                layout="@layout/food_item_swipe_view_delete" />
+
+            <include
+                android:id="@+id/edit"
+                layout="@layout/food_item_swipe_view_edit" />
+
+            <include
+                android:id="@+id/publish"
+                layout="@layout/food_item_swipe_view_publish" />
+
+        </LinearLayout>
+
+        <include layout="@layout/meal_item_view" />
+    </admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout>
+</FrameLayout>

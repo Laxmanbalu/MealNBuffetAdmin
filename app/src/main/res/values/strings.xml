@@ -80,4 +80,5 @@
     <string name="buffet_kids_price">KidsPrice($)</string>
     <string name="btn_move_next">MoveToNextPage</string>
     <string name="empty_field">Input is Empty</string>
+    <string name="max_meal">MaxItemsPerMeal %d</string>
 </resources>
