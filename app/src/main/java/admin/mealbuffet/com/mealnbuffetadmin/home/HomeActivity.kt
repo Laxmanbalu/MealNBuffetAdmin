@@ -14,7 +14,6 @@ import android.os.Bundle
 import android.view.MenuItem
 
 class HomeActivity : NavigationSupportActivity() {
-    private val homePageFragment = HomeFragment()
     private lateinit var selectedBuffetItem: BuffetItem
     override var menuItemId = R.id.leftNavHome
 
@@ -27,7 +26,7 @@ class HomeActivity : NavigationSupportActivity() {
         menuItemId = R.id.leftNavHome
         title = getSpannableTitle()
         setHomeIcon(R.drawable.ic_menu_white)
-        showFragment(homePageFragment)
+        showFragment(itemsListFragment)
     }
 
     override fun onPerformAction(action: String, data: Any?): Boolean {
@@ -67,7 +66,7 @@ class HomeActivity : NavigationSupportActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
-        homePageFragment.isVisible -> super.onOptionsItemSelected(item)
+        itemsListFragment.isVisible -> super.onOptionsItemSelected(item)
         addItemFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -84,10 +83,6 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
-        itemsListFragment.isVisible && item.itemId == android.R.id.home -> {
-            onBackPressed()
-            true
-        }
         buffetsListFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -101,8 +96,7 @@ class HomeActivity : NavigationSupportActivity() {
 
     override fun onBackPressed() {
         when {
-            addItemFragment.isVisible -> showItemsListFragment()
-            itemsListFragment.isVisible -> showHomepageFragment()
+            addItemFragment.isVisible -> showHomepageFragment()
             buffetsListFragment.isVisible -> showHomepageFragment()
             addBuffetFragment.isVisible -> showBuffetItemsFragment()
             buffetFoodItemsFragment.isVisible -> showAddBuffet()

@@ -9,8 +9,4 @@
         android:id="@+id/leftNavBuffetList"
         android:icon="@drawable/ic_buffet"
         android:title="@string/menu_buffets_list" />
-    <item
-        android:id="@+id/leftNavItemsList"
-        android:icon="@drawable/ic_item"
-        android:title="@string/menu_items_list" />
 </menu>

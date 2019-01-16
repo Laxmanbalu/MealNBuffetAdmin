@@ -23,20 +23,18 @@ abstract class NavigationSupportActivity : BaseActivity() {
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
             R.id.leftNavHome -> showHomepageFragment()
-            R.id.leftNavItemsList -> showItemsListFragment()
             R.id.leftNavBuffetList -> showBuffetItemsFragment()
         }
     }
 
-    protected fun showItemsListFragment() {
+    /*protected fun showItemsListFragment() {
         menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_items_list)
-        setHomeIcon(R.drawable.ic_arrow_back_white)
+        setHomeIcon(R.drawable.ic_menu_white)
         showFragment(itemsListFragment)
     }
-
+*/
     protected fun showBuffetFoodItemsFragment(buffetBasicData: BuffetBasicData) {
-        menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_add_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         buffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
@@ -44,7 +42,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     }
 
     protected fun showBuffetEditFoodItemsFragment(buffetBasicData: EditBuffetData) {
-        menuItemId = R.id.leftNavItemsList
+        menuItemId = R.id.leftNavBuffetList
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         editBuffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
@@ -52,7 +50,6 @@ abstract class NavigationSupportActivity : BaseActivity() {
     }
 
     protected fun showEditBuffet(selectedBuffetItem: BuffetItem) {
-        menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         editBuffetFragment.setSelectedBuffetData(selectedBuffetItem)
