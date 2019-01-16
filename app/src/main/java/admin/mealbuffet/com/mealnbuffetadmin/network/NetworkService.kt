@@ -24,6 +24,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_PASSWORD
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_ROLE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_USERID
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ITEMS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_NAME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_DISPLAY_NAME
@@ -37,6 +38,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_TYPE_DESC
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_BUFFET
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.error.AuthFailureError
@@ -285,7 +287,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
 
     val addItemObject = JSONObject()
     addItemObject.put(PARAM_RESTAURANT_ID, buffetItem.buffetBasicData.restaurantId)
-    addItemObject.put(PARAM_ACTIVE_FLAG, 1)
+    addItemObject.put(PARAM_ACTIVE_FLAG, true)
     addItemObject.put(PARAM_ADULT_PRICE, buffetItem.buffetBasicData.adultPrice)
     addItemObject.put(PARAM_BUFFET_NAME, buffetItem.buffetBasicData.buffetName)
     addItemObject.put(PARAM_DISPLAY_NAME, buffetItem.buffetBasicData.displayName)
@@ -322,4 +324,52 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
         }
     }
     requestQueue?.add(stringRequest)
+}
+
+
+fun updateSelectedBuffetItem(buffetItem: CreateBuffetItem, buffetId: String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val addItemObject = JSONObject()
+    addItemObject.put(PARAM_RESTAURANT_ID, buffetItem.buffetBasicData.restaurantId)
+    addItemObject.put(PARAM_BUFFET_ID, buffetId)
+    addItemObject.put(PARAM_ACTIVE_FLAG, true)
+    addItemObject.put(PARAM_ADULT_PRICE, buffetItem.buffetBasicData.adultPrice)
+    addItemObject.put(PARAM_BUFFET_NAME, buffetItem.buffetBasicData.buffetName)
+    addItemObject.put(PARAM_DISPLAY_NAME, buffetItem.buffetBasicData.displayName)
+    addItemObject.put(PARAM_END_TIME, buffetItem.buffetBasicData.endTime)
+    addItemObject.put(PARAM_KIDS_PRICE, buffetItem.buffetBasicData.kidsPrice)
+    addItemObject.put(PARAM_START_TIME, buffetItem.buffetBasicData.startTime)
+    addItemObject.put(PARAM_STATUS, 1)
+    addItemObject.put(PARAM_TYPE_DESC, buffetItem.typeDes)
+    addItemObject.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
+
+    val buffetItemsObject = JSONObject()
+    val array = JSONArray()
+    buffetItem.itemsList.forEach {
+        array.put(it)
+    }
+    buffetItemsObject.put(PARAM_ITEMS_LST, array)
+    buffetItemsObject.put(PARAM_BUFFET_ID, buffetId)
+    addItemObject.put(PARAM_BUFFET_ITEMS, buffetItemsObject)
+
+
+    val buffetUpdateRequest = object : JsonObjectRequest(Request.Method.POST,
+            UPDATE_BUFFET, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return addItemObject.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(buffetUpdateRequest)
 }

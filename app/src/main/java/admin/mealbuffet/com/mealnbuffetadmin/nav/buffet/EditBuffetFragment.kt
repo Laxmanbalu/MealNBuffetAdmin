@@ -27,7 +27,6 @@ class EditBuffetFragment : BaseFragment() {
         et_buffetendTime.inputType = InputType.TYPE_NULL
         et_buffetendTime.setOnClickListener { showEndTimePickerDialog() }
         buffet_movenext.setOnClickListener {
-
             wrapActionListener().onAction(EDIT_BUFFET_MOVE_NEXT, makeBuffetBasicObject())
         }
 

@@ -18,7 +18,7 @@ data class BuffetItem(var restaurantId: String = EMPTY_STRING,
                       var buffetItems: String = EMPTY_STRING,
                       var id: String = EMPTY_STRING,
                       @SerializedName("items")
-                      private var items: HashMap<String, List<BMFoodItem>>? = null
+                      var items: HashMap<String, List<BMFoodItem>>? = null
 
 )
 

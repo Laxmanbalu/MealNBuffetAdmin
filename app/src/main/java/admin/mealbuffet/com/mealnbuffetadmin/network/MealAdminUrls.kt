@@ -16,8 +16,10 @@ class MealAdminUrls {
         const val UNPUBLISH_BUFFET = "http://13.250.63.91:8080/admin/unPublishBuffet/%s/%s"
         const val GET_ACTIVE_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getActiveItems/%s"
         const val ADD_BUFFET = "http://13.250.63.91:8080/admin/addBuffet"
+        const val UPDATE_BUFFET = "http://13.250.63.91:8080/admin/updateBuffet"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
+        const val PARAM_BUFFET_ID = "buffetId"
         const val PARAM_ADD_ITEM_NAME = "item"
         const val PARAM_ADD_ITEM_DESC = "desc"
         const val PARAM_ADD_ITEM_PRICE = "price"
@@ -41,5 +43,6 @@ class MealAdminUrls {
         const val PARAM_TYPE = "type"
         const val PARAM_BUFFET_ITEMS = "buffetItems"
         const val PARAM_ITEMS_LST = "itemsList"
+        const val PARAM_ITEMS = "items"
     }
 }

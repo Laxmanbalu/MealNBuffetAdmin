@@ -14,7 +14,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val addItemFragment: AddItemFragment by lazy { AddItemFragment() }
     protected val addBuffetFragment: AddBuffetFragment by lazy { AddBuffetFragment() }
     protected val buffetFoodItemsFragment: BuffetFoodItemsFragment by lazy { BuffetFoodItemsFragment() }
-    protected val buffetEditFoodItemsFragment: BuffetEditFoodItemsFragment by lazy { BuffetEditFoodItemsFragment() }
+    protected val editBuffetFoodItemsFragment: EditBuffetFoodItemsFragment by lazy { EditBuffetFoodItemsFragment() }
     protected val itemsListFragment: ItemsListFragment by lazy { ItemsListFragment() }
     protected val buffetsListFragment: BuffetListFragment by lazy { BuffetListFragment() }
     protected val editBuffetFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
@@ -47,8 +47,8 @@ abstract class NavigationSupportActivity : BaseActivity() {
         menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_add_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
-        buffetEditFoodItemsFragment.setBasicBuffetData(buffetBasicData)
-        showFragment(buffetFoodItemsFragment)
+        editBuffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
+        showFragment(editBuffetFoodItemsFragment)
     }
 
     protected fun showEditBuffet(buffetBasicData: BuffetItem) {
