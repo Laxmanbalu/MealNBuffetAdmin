@@ -21,15 +21,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,29 +51,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NavigationSupportActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
+      <file leaf-file-name="fragment_edit_buffet_fooditems.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="786">
-              <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
-              <folding>
-                <element signature="e#1843#1878#0" expanded="true" />
-                <element signature="e#2153#2189#0" expanded="true" />
-                <element signature="e#2454#2490#0" expanded="true" />
-                <element signature="e#2718#2751#0" expanded="true" />
-                <element signature="e#2902#2937#0" expanded="true" />
-                <element signature="e#3143#3180#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeActivity.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="85" column="9" selection-end-line="105" />
-            </state>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -2535,7 +2517,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/UserSelection.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetEditFoodItemsFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fooditem_view.xml" />
@@ -2551,6 +2532,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_additem.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml" />
       </list>
     </option>
   </component>
@@ -2879,7 +2861,7 @@
       <window_info anchor="right" id="Preview" order="3" weight="0.25824177" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32820514" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.32820514" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13431014" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4993895" weight="0.32923076" />
@@ -2958,32 +2940,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt</url>
-          <line>23</line>
-          <properties />
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -3199,6 +3155,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="545">
           <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding>
+            <element signature="e#58#589#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3243,16 +3202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="39" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3383,17 +3332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/EditBuffetFoodItemsFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="58" selection-start-line="58" selection-end-line="62" selection-end-column="5" />
-          <folding>
-            <element signature="e#58#826#0" expanded="true" />
-            <element signature="e#1998#2041#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetFoodItemsFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
@@ -3468,10 +3406,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="85" column="9" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="786">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+        <state relative-caret-position="570">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
           <folding>
             <element signature="e#1843#1878#0" expanded="true" />
             <element signature="e#2153#2189#0" expanded="true" />
@@ -3483,11 +3428,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/EditBuffetFoodItemsFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="85" column="9" selection-end-line="105" />
+        <state relative-caret-position="165">
+          <caret line="24" column="71" selection-start-line="58" selection-end-line="62" selection-end-column="5" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_buffet_fooditems.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>
