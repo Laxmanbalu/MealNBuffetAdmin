@@ -295,7 +295,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
     addItemObject.put(PARAM_KIDS_PRICE, buffetItem.buffetBasicData.kidsPrice)
     addItemObject.put(PARAM_START_TIME, buffetItem.buffetBasicData.startTime)
     addItemObject.put(PARAM_STATUS, 1)
-    addItemObject.put(PARAM_TYPE_DESC, buffetItem.typeDes)
+    addItemObject.put(PARAM_TYPE_DESC, buffetItem.buffetBasicData.desc)
     addItemObject.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
 
     val buffetItemsObject = JSONObject()
@@ -341,7 +341,7 @@ fun updateSelectedBuffetItem(buffetItem: CreateBuffetItem, buffetId: String, res
     addItemObject.put(PARAM_KIDS_PRICE, buffetItem.buffetBasicData.kidsPrice)
     addItemObject.put(PARAM_START_TIME, buffetItem.buffetBasicData.startTime)
     addItemObject.put(PARAM_STATUS, 1)
-    addItemObject.put(PARAM_TYPE_DESC, buffetItem.typeDes)
+    addItemObject.put(PARAM_TYPE_DESC, buffetItem.buffetBasicData.desc)
     addItemObject.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
 
     val buffetItemsObject = JSONObject()

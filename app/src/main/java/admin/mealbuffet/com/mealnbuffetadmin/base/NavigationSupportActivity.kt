@@ -45,17 +45,17 @@ abstract class NavigationSupportActivity : BaseActivity() {
 
     protected fun showBuffetEditFoodItemsFragment(buffetBasicData: EditBuffetData) {
         menuItemId = R.id.leftNavItemsList
-        title = getString(R.string.menu_add_buffet)
+        title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         editBuffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
         showFragment(editBuffetFoodItemsFragment)
     }
 
-    protected fun showEditBuffet(buffetBasicData: BuffetItem) {
+    protected fun showEditBuffet(selectedBuffetItem: BuffetItem) {
         menuItemId = R.id.leftNavItemsList
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
-        editBuffetFragment.setSelectedBuffetData(buffetBasicData)
+        editBuffetFragment.setSelectedBuffetData(selectedBuffetItem)
         showFragment(editBuffetFragment)
     }
 

@@ -15,6 +15,7 @@ import android.view.MenuItem
 
 class HomeActivity : NavigationSupportActivity() {
     private val homePageFragment = HomeFragment()
+    private lateinit var selectedBuffetItem: BuffetItem
     override var menuItemId = R.id.leftNavHome
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,8 @@ class HomeActivity : NavigationSupportActivity() {
 
             BuffetListFragment.BUFFET_EDIT -> {
                 if (data != null) {
-                    showEditBuffet(data as BuffetItem)
+                    selectedBuffetItem = data as BuffetItem
+                    showEditBuffet(selectedBuffetItem)
                 }
                 true
             }
@@ -78,6 +80,10 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        editBuffetFoodItemsFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         itemsListFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -101,6 +107,7 @@ class HomeActivity : NavigationSupportActivity() {
             addBuffetFragment.isVisible -> showBuffetItemsFragment()
             buffetFoodItemsFragment.isVisible -> showAddBuffet()
             editBuffetFragment.isVisible -> showBuffetItemsFragment()
+            editBuffetFoodItemsFragment.isVisible -> showEditBuffet(selectedBuffetItem)
             else -> super.onBackPressed()
         }
     }

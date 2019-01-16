@@ -91,9 +91,11 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
                 itemView.food_item_check.visibility = View.VISIBLE
             }
             if (foodItem.status.equals(FOODITEM_STATUS_ACTIVE)) {
-                itemView.food_item_status_icon.setImageResource(R.drawable.ic_active)
+                itemView.food_item_status.setTextColor(requireContext.getColor(R.color.color_green))
+                itemView.food_item_status.text = requireContext.getString(R.string.published)
             } else {
-                itemView.food_item_status_icon.setImageResource(R.drawable.ic_inactive)
+                itemView.food_item_status.setTextColor(requireContext.getColor(R.color.color_red))
+                itemView.food_item_status.text = requireContext.getString(R.string.unpublished)
             }
         }
 

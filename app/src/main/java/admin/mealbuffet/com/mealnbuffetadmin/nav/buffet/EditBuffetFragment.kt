@@ -40,6 +40,7 @@ class EditBuffetFragment : BaseFragment() {
         et_buffetendTime.setText(selectedBuffetItem.endTime)
         et_buffetadult_price.setText(selectedBuffetItem.adultPrice.toString())
         et_buffetkids_price.setText(selectedBuffetItem.kidsPrice.toString())
+        et_buffetdesc.setText(selectedBuffetItem.typeDesc.toString())
         spin_buffettype.setSelection(getFoodType())
     }
 
