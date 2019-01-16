@@ -42,7 +42,6 @@ abstract class NavigationSupportActivity : BaseActivity() {
     }
 
     protected fun showBuffetEditFoodItemsFragment(buffetBasicData: EditBuffetData) {
-        menuItemId = R.id.leftNavBuffetList
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         editBuffetFoodItemsFragment.setBasicBuffetData(buffetBasicData)
@@ -70,8 +69,9 @@ abstract class NavigationSupportActivity : BaseActivity() {
     }
 
     protected fun showBuffetItemsFragment() {
+        menuItemId = R.id.leftNavBuffetList
         title = getString(R.string.menu_buffets_list)
-        setHomeIcon(R.drawable.ic_arrow_back_white)
+        setHomeIcon(R.drawable.ic_menu_white)
         showFragment(buffetsListFragment)
     }
 
