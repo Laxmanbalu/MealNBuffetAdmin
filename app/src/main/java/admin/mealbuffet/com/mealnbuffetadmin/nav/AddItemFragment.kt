@@ -77,8 +77,17 @@ class AddItemFragment : BaseFragment() {
 
             override fun onSuccess(data: Any?) {
                 showCustomError(R.string.item_added_successfully)
+                resetData()
+                wrapActionListener().onAction(ADDED_ITEM_SUCCESSFULLY)
             }
         })
+    }
+
+    private fun resetData() {
+        et_additem_name.text.clear()
+        et_additem_price.text.clear()
+        et_additem_desc.text.clear()
+        categoryLst.clear()
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
@@ -155,5 +164,9 @@ class AddItemFragment : BaseFragment() {
 
     private fun addSpinnerClickListener() {
         additem_category_spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryLst)
+    }
+
+    companion object {
+        const val ADDED_ITEM_SUCCESSFULLY = "AddedItemSuccessfully"
     }
 }

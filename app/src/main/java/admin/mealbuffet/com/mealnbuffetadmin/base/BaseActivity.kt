@@ -1,6 +1,7 @@
 package com.mealbuffet.controller
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -100,7 +101,7 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
     // initializing the navigation drawer views
     private fun initNavigationDrawer() {
         val headerView = leftNavMenu.getHeaderView(0)
-        headerView.nav_header_username.text = "DODDA"
+        headerView.nav_header_username.text = PreferencesHelper.getRestaurantId(this)
 
     }
 

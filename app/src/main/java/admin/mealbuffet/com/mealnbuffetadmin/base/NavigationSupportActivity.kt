@@ -7,6 +7,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -18,13 +19,21 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val itemsListFragment: ItemsListFragment by lazy { ItemsListFragment() }
     protected val buffetsListFragment: BuffetListFragment by lazy { BuffetListFragment() }
     protected val editBuffetFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
-
+    protected val mealListFragment: MealListFragment by lazy { MealListFragment() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
             R.id.leftNavHome -> showHomepageFragment()
             R.id.leftNavBuffetList -> showBuffetItemsFragment()
+            R.id.leftNavMealList -> showMealListFragment()
         }
+    }
+
+    private fun showMealListFragment() {
+        menuItemId = R.id.leftNavMealList
+        title = getString(R.string.menu_meal_list)
+        setHomeIcon(R.drawable.ic_menu_white)
+        showFragment(mealListFragment)
     }
 
     /*protected fun showItemsListFragment() {

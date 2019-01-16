@@ -5,6 +5,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
+import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment.Companion.BUFFET_ADDED_SUCCESSFULLY
@@ -33,6 +34,10 @@ class HomeActivity : NavigationSupportActivity() {
         when (action) {
             ItemsListFragment.ADD_FOOD_ITEM -> {
                 showAddItemFragment()
+                true
+            }
+            AddItemFragment.ADDED_ITEM_SUCCESSFULLY -> {
+                showHomepageFragment()
                 true
             }
             BuffetListFragment.ADD_BUFFET -> {
