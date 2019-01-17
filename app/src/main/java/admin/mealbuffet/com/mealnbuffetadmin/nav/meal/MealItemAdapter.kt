@@ -3,6 +3,11 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.meal
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_MEAL
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.changeSelectedItemPublishTypeService
+import admin.mealbuffet.com.mealnbuffetadmin.network.deleteBuffetItem
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -53,50 +58,50 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
 
             itemView.edit.setOnClickListener {
                 if (itemView.swipeLayout.isOpened) {
-//                    internalActionListener.onAction(BuffetListFragment.BUFFET_EDIT, it.tag as MealItem)
+                    internalActionListener.onAction(MealListFragment.MEAL_EDIT, it.tag as MealItem)
                 }
             }
         }
 
-        private fun changePublishTypeOfBuffet(buffetItem: MealItem) {
-            /*if (buffetItem.mealId == null) {
-                internalActionListener.onAction(BuffetListFragment.DELETED_BUFFET_FAILED)
+        private fun changePublishTypeOfBuffet(mealItem: MealItem) {
+            if (mealItem.mealId == null) {
+                internalActionListener.onAction(MealListFragment.DELETED_MEAL_FAILED)
                 return
             }
-            var requestUrl = if (buffetItem.activeFlag) {
-                MealAdminUrls.UNPUBLISH_BUFFET
+            var requestUrl = if (mealItem.activeFlag) {
+                MealAdminUrls.UNPUBLISH_MEAL
             } else {
-                MealAdminUrls.PUBLISH_BUFFET
-            }*/
-//            requestUrl = String.format(requestUrl, buffetItem.restaurantId, buffetItem.buffetId)
+                MealAdminUrls.PUBLISH_MEAL
+            }
+            requestUrl = String.format(requestUrl, mealItem.mealId)
 
-            /* changeBuffetPublishTypeService(requestUrl, object : ResponseCallback {
-                 override fun onSuccess(data: Any?) {
-                     internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_SUCCESSFULLY)
-                 }
+            changeSelectedItemPublishTypeService(requestUrl, object : ResponseCallback {
+                override fun onSuccess(data: Any?) {
+                    internalActionListener.onAction(MealListFragment.PUBLISHED_MEAL_SUCCESSFULLY)
+                }
 
-                 override fun onError(data: Any?) {
-                     internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_FAILED)
-                 }
-             })*/
+                override fun onError(data: Any?) {
+                    internalActionListener.onAction(MealListFragment.PUBLISHED_MEAL_FAILED)
+                }
+            })
         }
 
         private fun deleteSelectedItem(mealItem: MealItem) {
             if (mealItem.mealId == null) {
-//                internalActionListener.onAction(BuffetListFragment.DELETED_BUFFET_FAILED)
+                internalActionListener.onAction(MealListFragment.DELETED_MEAL_FAILED)
                 return
             }
-            /*deleteBuffetItem(buffetItem.buffetId, object : ResponseCallback {
+            val requestUrl = String.format(DELETE_MEAL, mealItem.mealId)
+            deleteBuffetItem(requestUrl, object : ResponseCallback {
                 override fun onSuccess(data: Any?) {
-                    internalActionListener.onAction(BuffetListFragment.DELETED_BUFFET_SUCCESSFULLY)
+                    internalActionListener.onAction(MealListFragment.DELETED_MEAL_SUCCESSFULLY)
                 }
 
                 override fun onError(data: Any?) {
-                    internalActionListener.onAction(BuffetListFragment.DELETED_BUFFET_FAILED)
+                    internalActionListener.onAction(MealListFragment.DELETED_MEAL_FAILED)
                 }
-            })*/
+            })
         }
-
 
         fun setData(mealItem: MealItem) {
             itemView.tag = mealItem
@@ -115,7 +120,7 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
             } else {
                 itemView.meal_item_status.setTextColor(requireContext.getColor(R.color.color_red))
                 itemView.meal_item_status.text = requireContext.getString(R.string.unpublished)
-                itemView.meal_item_status.publish.tv_publish.text = requireContext.getString(R.string.publish)
+                itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.publish)
             }
         }
 

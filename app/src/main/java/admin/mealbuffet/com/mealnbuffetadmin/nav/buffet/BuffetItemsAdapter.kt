@@ -6,10 +6,11 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.BUFFET_EDIT
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_FAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
-import admin.mealbuffet.com.mealnbuffetadmin.network.changeBuffetPublishTypeService
+import admin.mealbuffet.com.mealnbuffetadmin.network.changeSelectedItemPublishTypeService
 import admin.mealbuffet.com.mealnbuffetadmin.network.deleteBuffetItem
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -77,7 +78,7 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             }
             requestUrl = String.format(requestUrl, buffetItem.restaurantId, buffetItem.buffetId)
 
-            changeBuffetPublishTypeService(requestUrl, object : ResponseCallback {
+            changeSelectedItemPublishTypeService(requestUrl, object : ResponseCallback {
                 override fun onSuccess(data: Any?) {
                     internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_SUCCESSFULLY)
                 }
@@ -93,7 +94,8 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
                 internalActionListener.onAction(DELETED_BUFFET_FAILED)
                 return
             }
-            deleteBuffetItem(buffetItem.buffetId, object : ResponseCallback {
+            val requestUrl = String.format(MealAdminUrls.DELETE_BUFFET_ITEM, buffetItem.buffetId)
+            deleteBuffetItem(requestUrl, object : ResponseCallback {
                 override fun onSuccess(data: Any?) {
                     internalActionListener.onAction(DELETED_BUFFET_SUCCESSFULLY)
                 }

@@ -18,6 +18,9 @@ class MealAdminUrls {
         const val ADD_BUFFET = "http://13.250.63.91:8080/admin/addBuffet"
         const val UPDATE_BUFFET = "http://13.250.63.91:8080/admin/updateBuffet"
         const val GET_MEALS_LIST = "http://13.250.63.91:8080/admin/getMealByRestaurantId/%s"
+        const val PUBLISH_MEAL = "http://13.250.63.91:8080/admin/publishMeal/%s"
+        const val UNPUBLISH_MEAL = "http://13.250.63.91:8080/admin/unPublishMeal/%s"
+        const val DELETE_MEAL = "http://13.250.63.91:8080/admin/deleteMeal/%s"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"

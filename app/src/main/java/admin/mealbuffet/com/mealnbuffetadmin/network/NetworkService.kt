@@ -220,9 +220,8 @@ fun authenticateUser(user: User, responseCallBack: ResponseCallback) {
     requestQueue?.add(stringRequest)
 }
 
-fun deleteBuffetItem(buffetITem: String, responseCallBack: ResponseCallback) {
+fun deleteBuffetItem(requestUrl: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
-    val requestUrl = String.format(DELETE_BUFFET_ITEM, buffetITem)
     val deleteObjectRequest = JsonObjectRequest(Request.Method.DELETE,
             requestUrl, null, Response.Listener<JSONObject> {
         val listType = object : TypeToken<StandardResponse>() {}.type
@@ -248,7 +247,7 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
     requestQueue?.add(objectRequest)
 }
 
-fun changeBuffetPublishTypeService(requestUrl: String, responseCallBack: ResponseCallback) {
+fun changeSelectedItemPublishTypeService(requestUrl: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
 
 

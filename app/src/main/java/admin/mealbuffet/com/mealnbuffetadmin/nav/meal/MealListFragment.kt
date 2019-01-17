@@ -3,7 +3,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.meal
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
-import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.getMealsList
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
@@ -30,7 +29,7 @@ class MealListFragment : BaseFragment(), InternalActionListener {
                 fetchMealsList()
             }
             PUBLISHED_MEAL_FAILED -> showNetworkError()
-            MEAL_EDIT -> wrapActionListener().onAction(BuffetListFragment.BUFFET_EDIT, data)
+            MEAL_EDIT -> wrapActionListener().onAction(MealListFragment.MEAL_EDIT, data)
         }
     }
 
@@ -41,6 +40,7 @@ class MealListFragment : BaseFragment(), InternalActionListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         fetchMealsList()
     }
 
