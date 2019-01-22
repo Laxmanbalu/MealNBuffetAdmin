@@ -22,6 +22,7 @@ class MealAdminUrls {
         const val UNPUBLISH_MEAL = "http://13.250.63.91:8080/admin/unPublishMeal/%s"
         const val DELETE_MEAL = "http://13.250.63.91:8080/admin/deleteMeal/%s"
         const val CREATE_MEAL = "http://13.250.63.91:8080/admin/addMeal"
+        const val UPDATE_MEAL = "http://13.250.63.91:8080/admin/updateMeal"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"
@@ -52,6 +53,7 @@ class MealAdminUrls {
         const val PARAM_COMP_MSG = "complimentory"
         const val PARAM_MAX_ITEMS_QTY = "itemsQty"
         const val PARAM_MEAL_NAME = "mealName"
+        const val PARAM_MEAL_ID = "mealId"
 
     }
 }

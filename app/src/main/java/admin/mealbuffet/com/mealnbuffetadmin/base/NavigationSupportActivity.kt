@@ -1,16 +1,11 @@
 package admin.mealbuffet.com.mealnbuffetadmin.base
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealBasicData
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
-import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.AddMealFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -25,7 +20,8 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val editBuffetFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
     protected val mealListFragment: MealListFragment by lazy { MealListFragment() }
     protected val addMealFragment: AddMealFragment by lazy { AddMealFragment() }
-    protected val editMealFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
+    protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
+    protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -70,6 +66,13 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(editBuffetFoodItemsFragment)
     }
 
+    protected fun showMealEditFoodItemsFragment(mealEditData: EditMealData) {
+        title = getString(R.string.menu_edit_buffet)
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        editMealFoodItemsFragment.setMealData(mealEditData)
+        showFragment(editMealFoodItemsFragment)
+    }
+
     protected fun showEditBuffet(selectedBuffetItem: BuffetItem) {
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
@@ -77,12 +80,18 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(editBuffetFragment)
     }
 
+    protected fun showEditMeal(selectedMealItem: MealItem) {
+        title = getString(R.string.menu_edit_buffet)
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        editMealFragment.setSelectedMealItem(selectedMealItem)
+        showFragment(editMealFragment)
+    }
+
     protected fun showAddItemFragment() {
         title = getString(R.string.menu_add_item)
         setHomeIcon(R.drawable.ic_arrow_back_white)
         showFragment(addItemFragment)
     }
-
 
     protected fun showAddMealPage() {
         title = getString(R.string.menu_add_meal)

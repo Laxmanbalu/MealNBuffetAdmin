@@ -34,6 +34,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ITEMS_LST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_KIDS_PRICE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MAX_ITEMS_QTY
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MEAL_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MEAL_ITEMS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MEAL_NAME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_RESTAURANT_ID
@@ -44,6 +45,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_BUFFET
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_MEAL
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.error.AuthFailureError
@@ -420,6 +422,48 @@ fun createMealService(mealItem: CreateMealItem, responseCallBack: ResponseCallba
 
     val stringRequest = object : JsonObjectRequest(Request.Method.POST,
             CREATE_MEAL, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return addItemObject.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(stringRequest)
+}
+
+
+fun updateSelectedMeal(mealItem: CreateMealItem, mealId : String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val addItemObject = JSONObject()
+    addItemObject.put(PARAM_RESTAURANT_ID, mealItem.mealBasicData.restaurantId)
+    addItemObject.put(PARAM_ACTIVE_FLAG, true)
+    addItemObject.put(PARAM_MEAL_ID, mealId)
+    addItemObject.put(PARAM_MEAL_NAME, mealItem.mealBasicData.mealName)
+    addItemObject.put(PARAM_STATUS, 1)
+    addItemObject.put(PARAM_TYPE_DESC, mealItem.mealBasicData.mealDesc)
+    addItemObject.put(PARAM_MAX_ITEMS_QTY, mealItem.mealBasicData.itemQty)
+    addItemObject.put(PARAM_COMP_MSG, mealItem.mealBasicData.meaCompMsg)
+
+    val mealItemsObject = JSONObject()
+    val array = JSONArray()
+    mealItem.itemsList.forEach {
+        array.put(it)
+    }
+    mealItemsObject.put(PARAM_ITEMS_LST, array)
+    addItemObject.put(PARAM_MEAL_ITEMS, mealItemsObject)
+
+    val stringRequest = object : JsonObjectRequest(Request.Method.POST,
+            UPDATE_MEAL, null, Response.Listener<JSONObject> {
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
