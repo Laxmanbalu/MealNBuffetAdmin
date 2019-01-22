@@ -3,6 +3,7 @@
     <string name="menu_item_home">Home</string>
     <string name="menu_add_item">AddItem</string>
     <string name="menu_add_buffet">AddBuffet</string>
+    <string name="menu_add_meal">AddMeal</string>
     <string name="menu_edit_buffet">EditBuffet</string>
     <string name="menu_items_list">Items</string>
     <string name="menu_buffets_list">Buffets</string>
@@ -70,6 +71,9 @@
     <string name="adult_price">AdultsPrice:</string>
     <string name="kids_price">KidsPrice:</string>
 
+    <string name="meal_name">MealName</string>
+    <string name="meal_comp_msg">Complimentary</string>
+    <string name="meal_items_qty">ItemQuantity</string>
     <string name="buffet_name">BuffetName</string>
     <string name="buffet_display_name">DisplayName</string>
     <string name="buffet_desc">Description</string>
@@ -81,4 +85,5 @@
     <string name="btn_move_next">MoveToNextPage</string>
     <string name="empty_field">Input is Empty</string>
     <string name="max_meal">MaxItemsPerMeal %d</string>
+    <string name="create_meal">CreateMeal</string>
 </resources>

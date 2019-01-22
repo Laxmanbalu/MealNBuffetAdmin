@@ -5,7 +5,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
-import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_BUFFET_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.CREATE_MEAL
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_ACTIVE_FOOD_ITEMS_LIST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_BUFFETS_LIST
@@ -28,10 +28,14 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ITEMS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_NAME
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_COMP_MSG
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_DISPLAY_NAME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_END_TIME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ITEMS_LST
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_KIDS_PRICE
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MAX_ITEMS_QTY
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MEAL_ITEMS
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_MEAL_NAME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_RESTAURANT_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_START_TIME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_STATUS
@@ -281,6 +285,9 @@ fun getActiveItemsList(restaurantId: String, responseCallBack: ResponseCallback)
     requestQueue?.add(arrayRequest)
 }
 
+fun addNewMeal(responseCallBack: ResponseCallback) {
+
+}
 
 fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
@@ -388,4 +395,45 @@ fun getMealsList(restaurantId: String, responseCallBack: ResponseCallback) {
     })
     arrayRequest.setShouldCache(false)
     requestQueue?.add(arrayRequest)
+}
+
+
+fun createMealService(mealItem: CreateMealItem, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val addItemObject = JSONObject()
+    addItemObject.put(PARAM_RESTAURANT_ID, mealItem.mealBasicData.restaurantId)
+    addItemObject.put(PARAM_ACTIVE_FLAG, true)
+    addItemObject.put(PARAM_MEAL_NAME, mealItem.mealBasicData.mealName)
+    addItemObject.put(PARAM_STATUS, 1)
+    addItemObject.put(PARAM_TYPE_DESC, mealItem.mealBasicData.mealDesc)
+    addItemObject.put(PARAM_MAX_ITEMS_QTY, mealItem.mealBasicData.itemQty)
+    addItemObject.put(PARAM_COMP_MSG, mealItem.mealBasicData.meaCompMsg)
+
+    val mealItemsObject = JSONObject()
+    val array = JSONArray()
+    mealItem.itemsList.forEach {
+        array.put(it)
+    }
+    mealItemsObject.put(PARAM_ITEMS_LST, array)
+    addItemObject.put(PARAM_MEAL_ITEMS, mealItemsObject)
+
+    val stringRequest = object : JsonObjectRequest(Request.Method.POST,
+            CREATE_MEAL, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return addItemObject.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(stringRequest)
 }

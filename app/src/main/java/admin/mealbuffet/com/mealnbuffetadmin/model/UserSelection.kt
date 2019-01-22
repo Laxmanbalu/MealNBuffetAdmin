@@ -24,3 +24,7 @@ data class BuffetBasicData(var adultPrice: Double, var buffetName: String, var d
                            var type: String)
 
 data class EditBuffetData(val buffetBasicData: BuffetBasicData, val buffetItem: BuffetItem)
+
+data class MealBasicData(var mealName: String, var itemQty: Int, var mealDesc: String, var meaCompMsg: String, var restaurantId: String)
+
+data class CreateMealItem(var status: Int, var typeDes: String, var itemsList: ArrayList<String>, var mealBasicData: MealBasicData)

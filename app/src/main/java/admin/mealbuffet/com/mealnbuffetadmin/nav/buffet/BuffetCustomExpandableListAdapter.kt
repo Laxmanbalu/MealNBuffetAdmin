@@ -49,14 +49,14 @@ class BuffetCustomExpandableListAdapter(var context: Context) : BaseExpandableLi
         if (foodItemDetails.checked == true) {
             convertView?.food_item_check?.visibility = View.VISIBLE
         } else {
-            convertView?.food_item_check?.visibility = View.GONE
+            convertView?.food_item_check?.visibility = View.INVISIBLE
         }
         convertView?.tag = foodItemDetails
         convertView?.setOnClickListener {
             val foodItemDetails = it.tag as FoodItem
             if (foodItemDetails.checked == true) {
                 foodItemDetails.checked = false
-                it.food_item_check.visibility = View.GONE
+                it.food_item_check.visibility = View.INVISIBLE
             } else {
                 foodItemDetails.checked = true
                 it.food_item_check.visibility = View.VISIBLE

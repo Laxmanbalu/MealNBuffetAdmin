@@ -5,12 +5,16 @@ import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
 import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealBasicData
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment.Companion.BUFFET_ADDED_SUCCESSFULLY
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.EditBuffetFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.AddMealFragment.Companion.MEAL_MOVE_NEXT
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -44,13 +48,27 @@ class HomeActivity : NavigationSupportActivity() {
                 showAddBuffet()
                 true
             }
+            MealListFragment.ADD_MEAL -> {
+                showAddMealPage()
+                true
+            }
+
             AddBuffetFragment.BUFFET_MOVE_NEXT -> {
                 showBuffetFoodItemsFragment(data as BuffetBasicData)
                 true
             }
 
+            MEAL_MOVE_NEXT -> {
+                showMealFoodItemsFragment(data as MealBasicData)
+            }
+
             BUFFET_ADDED_SUCCESSFULLY -> {
                 showBuffetItemsFragment()
+                true
+            }
+
+            MealFoodItemsFragment.MEAL_ADDED_SUCCESSFULLY -> {
+                showMealListFragment()
                 true
             }
 
@@ -81,7 +99,15 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        addMealFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         buffetFoodItemsFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        mealFoodItemsFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
@@ -101,7 +127,9 @@ class HomeActivity : NavigationSupportActivity() {
             addItemFragment.isVisible -> showHomepageFragment()
             buffetsListFragment.isVisible -> showHomepageFragment()
             addBuffetFragment.isVisible -> showBuffetItemsFragment()
+            addMealFragment.isVisible -> showMealListFragment()
             buffetFoodItemsFragment.isVisible -> showAddBuffet()
+            mealFoodItemsFragment.isVisible -> showAddMealPage()
             editBuffetFragment.isVisible -> showBuffetItemsFragment()
             editBuffetFoodItemsFragment.isVisible -> showEditBuffet(selectedBuffetItem)
             else -> super.onBackPressed()

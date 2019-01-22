@@ -24,7 +24,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/food_icon"
-        android:text="ButterScotch Cake"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -37,8 +36,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/food_item_check"
         android:layout_toRightOf="@+id/food_icon"
-        android:text="ButterScotch Cake"
         android:textColor="@color/theme_light_black_200_100"
         android:textSize="14sp" />
 
@@ -50,5 +49,5 @@
         android:layout_centerInParent="true"
         android:layout_marginRight="10dp"
         android:src="@drawable/ic_check"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 </RelativeLayout>
