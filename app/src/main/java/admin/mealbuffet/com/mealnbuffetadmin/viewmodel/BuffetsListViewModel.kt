@@ -5,10 +5,10 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.getBuffetsList
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 
 class BuffetsListViewModel : ViewModel() {
     var liveData: MutableLiveData<ArrayList<BuffetItem>> = MutableLiveData()
+        private set
 
     fun fetchBuffetsList(restaurantId: String) {
         getBuffetsList(restaurantId, object : ResponseCallback {
@@ -21,7 +21,6 @@ class BuffetsListViewModel : ViewModel() {
             }
         })
     }
-
 
 
 }
