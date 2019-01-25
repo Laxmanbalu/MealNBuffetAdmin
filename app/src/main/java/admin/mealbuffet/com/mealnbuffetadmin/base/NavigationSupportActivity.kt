@@ -11,7 +11,8 @@ import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
 abstract class NavigationSupportActivity : BaseActivity() {
-    protected val addItemFragment: AddItemFragment by lazy { AddItemFragment() }
+    //    protected val addItemFragment: AddItemFragment by lazy { AddItemFragment() }
+    protected lateinit var addItemFragment: AddItemFragment
     protected val addBuffetFragment: AddBuffetFragment by lazy { AddBuffetFragment() }
     protected val buffetFoodItemsFragment: BuffetFoodItemsFragment by lazy { BuffetFoodItemsFragment() }
     protected val mealFoodItemsFragment: MealFoodItemsFragment by lazy { MealFoodItemsFragment() }
@@ -23,7 +24,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val addMealFragment: AddMealFragment by lazy { AddMealFragment() }
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
-    protected val buffetOrderDashboard : BuffetOrderBoard by lazy {BuffetOrderBoard()}
+    protected val buffetOrderDashboard: BuffetOrderBoard by lazy { BuffetOrderBoard() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -93,6 +94,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected fun showAddItemFragment() {
         title = getString(R.string.menu_add_item)
         setHomeIcon(R.drawable.ic_arrow_back_white)
+        addItemFragment = AddItemFragment()
         showFragment(addItemFragment)
     }
 
@@ -124,5 +126,21 @@ abstract class NavigationSupportActivity : BaseActivity() {
     }
 
     abstract fun showHomepageFragment()
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
+        ::addItemFragment.isInitialized && addItemFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        when {
+            ::addItemFragment.isInitialized && addItemFragment.isVisible -> showHomepageFragment()
+            else -> super.onBackPressed()
+        }
+    }
 
 }

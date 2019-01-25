@@ -109,10 +109,7 @@ class HomeActivity : NavigationSupportActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         itemsListFragment.isVisible -> super.onOptionsItemSelected(item)
         buffetsListFragment.isVisible -> super.onOptionsItemSelected(item)
-        addItemFragment.isVisible && item.itemId == android.R.id.home -> {
-            onBackPressed()
-            true
-        }
+
         addBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -154,7 +151,6 @@ class HomeActivity : NavigationSupportActivity() {
 
     override fun onBackPressed() {
         when {
-            addItemFragment.isVisible -> showHomepageFragment()
             buffetsListFragment.isVisible -> showHomepageFragment()
             addBuffetFragment.isVisible -> showBuffetItemsFragment()
             addMealFragment.isVisible -> showMealListFragment()

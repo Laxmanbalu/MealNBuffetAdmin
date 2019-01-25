@@ -49,9 +49,13 @@ class AddItemFragment : BaseFragment() {
 
     private fun initCategoryViewModel() {
         categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel::class.java)
-        categoryViewModel.liveData.observe(this, Observer {
-            categoryLst = it!!
-            addSpinnerClickListener()
+        categoryViewModel.liveData.observe(this, Observer { it ->
+            if (it == null) {
+                showNetworkError()
+            } else {
+                categoryLst = it
+                addSpinnerClickListener()
+            }
         })
         categoryViewModel.getCategoriesListData()
     }
@@ -77,16 +81,9 @@ class AddItemFragment : BaseFragment() {
 
             override fun onSuccess(data: Any?) {
                 showCustomError(R.string.item_added_successfully)
-                resetData()
                 wrapActionListener().onAction(ADDED_ITEM_SUCCESSFULLY)
             }
         })
-    }
-
-    private fun resetData() {
-        et_additem_name.text.clear()
-        et_additem_price.text.clear()
-        et_additem_desc.text.clear()
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
@@ -107,7 +104,7 @@ class AddItemFragment : BaseFragment() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 browsePickFromGallery()
             } else {
-                showCustomError("To access Gallery App Permissions are must...")
+                showCustomError("To access Gallery App, need to Accepting Permissions")
             }
         }
     }
