@@ -87,7 +87,6 @@ class AddItemFragment : BaseFragment() {
         et_additem_name.text.clear()
         et_additem_price.text.clear()
         et_additem_desc.text.clear()
-        categoryLst.clear()
     }
 
     private fun isValidEntry(editText: EditText, errorId: Int): Boolean {
@@ -167,6 +166,6 @@ class AddItemFragment : BaseFragment() {
     }
 
     companion object {
-        const val ADDED_ITEM_SUCCESSFULLY = "AddedItemSuccessfully"
+        const val ADDED_ITEM_SUCCESSFULLY: String = "AddedItemSuccessfully"
     }
 }

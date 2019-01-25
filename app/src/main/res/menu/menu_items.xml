@@ -14,4 +14,14 @@
         android:id="@+id/leftNavMealList"
         android:icon="@drawable/ic_meal"
         android:title="@string/menu_meal_list" />
+
+    <item
+        android:id="@+id/leftNavBuffetOrderDashboard"
+        android:icon="@drawable/ic_meal"
+        android:title="@string/menu_buffet_dashboard" />
+
+    <item
+        android:id="@+id/leftNavMealOrderDashboard"
+        android:icon="@drawable/ic_meal"
+        android:title="@string/menu_meal_dashboard" />
 </menu>

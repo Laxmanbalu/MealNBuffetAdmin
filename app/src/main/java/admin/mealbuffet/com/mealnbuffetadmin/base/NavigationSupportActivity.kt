@@ -6,6 +6,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoard
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -22,12 +23,14 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val addMealFragment: AddMealFragment by lazy { AddMealFragment() }
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
+    protected val buffetOrderDashboard : BuffetOrderBoard by lazy {BuffetOrderBoard()}
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
             R.id.leftNavHome -> showHomepageFragment()
             R.id.leftNavBuffetList -> showBuffetItemsFragment()
             R.id.leftNavMealList -> showMealListFragment()
+            R.id.leftNavBuffetOrderDashboard -> showBuffetOrderDashBoardFragment()
         }
     }
 
@@ -110,6 +113,14 @@ abstract class NavigationSupportActivity : BaseActivity() {
         title = getString(R.string.menu_buffets_list)
         setHomeIcon(R.drawable.ic_menu_white)
         showFragment(buffetsListFragment)
+    }
+
+
+    protected fun showBuffetOrderDashBoardFragment() {
+        menuItemId = R.id.leftNavBuffetOrderDashboard
+        title = getString(R.string.menu_buffet_dashboard)
+        setHomeIcon(R.drawable.ic_menu_white)
+        showFragment(buffetOrderDashboard)
     }
 
     abstract fun showHomepageFragment()

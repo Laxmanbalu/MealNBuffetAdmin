@@ -145,6 +145,10 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        buffetOrderDashboard.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -160,6 +164,7 @@ class HomeActivity : NavigationSupportActivity() {
             editBuffetFoodItemsFragment.isVisible -> showEditBuffet(selectedBuffetItem)
             editMealFragment.isVisible -> showMealListFragment()
             editMealFoodItemsFragment.isVisible -> showEditMeal(selectedMealItem)
+            buffetOrderDashboard.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }

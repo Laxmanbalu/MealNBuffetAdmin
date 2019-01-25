@@ -8,6 +8,8 @@
     <string name="menu_items_list">Items</string>
     <string name="menu_buffets_list">Buffets</string>
     <string name="menu_meal_list">Meals</string>
+    <string name="menu_buffet_dashboard">BuffetDashBoard</string>
+    <string name="menu_meal_dashboard">MealDashBoard</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
     <string name="title_meal">MealNBuffet</string>
 
