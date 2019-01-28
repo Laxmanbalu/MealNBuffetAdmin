@@ -20,12 +20,11 @@ import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_buffetdashboard.*
 
 class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
-    private lateinit var foodItemsAdapter: BuffetOrderItemsAdapter
+    private lateinit var buffetOrderItemsAdapter: BuffetOrderItemsAdapter
     private var buffetOrdersList = ArrayList<BuffetOrder>()
     private lateinit var buffetOrdersViewModel: BuffetOrdersViewModel
 
     override fun onAction(action: String, data: Any?) {
-
         when (action) {
             UPDATE_BUFFET_ORDER_STATUS -> displayOrderChangeDialog(data as BuffetOrder)
         }
@@ -83,14 +82,14 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
     }
 
     private fun renderFoodItemsView() {
-        foodItemsAdapter = BuffetOrderItemsAdapter(requireContext(), this as InternalActionListener)
+        buffetOrderItemsAdapter = BuffetOrderItemsAdapter(requireContext(), this as InternalActionListener)
         rc_buffet_dashboard.apply {
-            adapter = foodItemsAdapter
+            adapter = buffetOrderItemsAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
         rc_buffet_dashboard.itemAnimator = DefaultItemAnimator()
-        foodItemsAdapter.setData(buffetOrdersList)
-        foodItemsAdapter.notifyDataSetChanged()
+        buffetOrderItemsAdapter.setData(buffetOrdersList)
+        buffetOrderItemsAdapter.notifyDataSetChanged()
     }
 
     companion object {

@@ -5,7 +5,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
-import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.BUFFET_ORDERS_HISTORY
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.CREATE_MEAL
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.GET_ACTIVE_FOOD_ITEMS_LIST
@@ -484,17 +483,3 @@ fun updateSelectedMeal(mealItem: CreateMealItem, mealId: String, responseCallBac
 }
 
 
-fun getBuffetOrdersHistory(restaurantId: String, responseCallBack: ResponseCallback) {
-    val requestUrl = String.format(BUFFET_ORDERS_HISTORY, restaurantId)
-    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
-    val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
-            requestUrl, null, Response.Listener<JSONObject> {
-        val dataType = object : TypeToken<BuffetOrderRawData>() {}.type
-        val buffetOrderRawData = Gson().fromJson<BuffetOrderRawData>(it.toString(), dataType)
-        responseCallBack.onSuccess(buffetOrderRawData)
-    }, Response.ErrorListener {
-        responseCallBack.onError()
-    })
-    jsonObjectRequest.setShouldCache(false)
-    requestQueue?.add(jsonObjectRequest)
-}

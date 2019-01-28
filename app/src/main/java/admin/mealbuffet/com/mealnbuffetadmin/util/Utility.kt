@@ -25,7 +25,15 @@ fun getBuffetOrderStatus(context: Context, status: Int): String = when (status) 
     BuffetOrderStatus.ACCEPTED.status -> context.getString(R.string.buffet_order_accepted)
     BuffetOrderStatus.COMPLETED.status -> context.getString(R.string.buffet_order_completed)
     BuffetOrderStatus.REJECTED.status -> context.getString(R.string.buffet_order_rejected)
-    else -> context.getString(R.string.buffet_order_pending)
+    else -> context.getString(R.string.order_pending)
+}
+
+fun getMealOrderStatus(context: Context, status: Int): String = when (status) {
+    MealOrderStatus.IN_PROGRESS.status -> context.getString(R.string.meal_order_inprogress)
+    MealOrderStatus.READY_TO_PICKUP.status -> context.getString(R.string.meal_order_ready)
+    MealOrderStatus.COMPLETED.status -> context.getString(R.string.meal_order_completed)
+    MealOrderStatus.REJECTED.status -> context.getString(R.string.meal_order_rejected)
+    else -> context.getString(R.string.order_pending)
 }
 
 fun getBuffetOrderStatusValu(context: Context, status: String) = when (status) {

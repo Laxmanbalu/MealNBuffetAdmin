@@ -1,6 +1,8 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
 import com.android.volley.Request
 import com.android.volley.Response
@@ -20,5 +22,36 @@ fun updateBuffetOrderStatus(buffetId: String, status: Int, responseCallBack: Res
     }, Response.ErrorListener {
         responseCallBack.onError()
     })
+    requestQueue?.add(jsonObjectRequest)
+}
+
+fun getBuffetOrdersHistory(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(MealAdminUrls.BUFFET_ORDERS_HISTORY, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val dataType = object : TypeToken<BuffetOrderRawData>() {}.type
+        val buffetOrderRawData = Gson().fromJson<BuffetOrderRawData>(it.toString(), dataType)
+        responseCallBack.onSuccess(buffetOrderRawData)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    jsonObjectRequest.setShouldCache(false)
+    requestQueue?.add(jsonObjectRequest)
+}
+
+
+fun getMealOrdersHistory(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(MealAdminUrls.MEAL_ORDERS_HISTORY, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val dataType = object : TypeToken<MealOrderRawData>() {}.type
+        val mealOrderRawData = Gson().fromJson<MealOrderRawData>(it.toString(), dataType)
+        responseCallBack.onSuccess(mealOrderRawData)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    jsonObjectRequest.setShouldCache(false)
     requestQueue?.add(jsonObjectRequest)
 }

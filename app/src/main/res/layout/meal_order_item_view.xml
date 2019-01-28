@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/foodItemMainView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_light_white_500_100">
+
+    <TextView
+        android:id="@+id/meal_orderid"
+        style="@style/subheading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:text="orderId"
+        android:textColor="@color/orange_app" />
+
+    <TextView
+        android:id="@+id/meal_order_status"
+        style="@style/subheading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:text="Pending"
+        android:textColor="@color/orange_app" />
+
+    <TextView
+        android:id="@+id/meal_billedamount"
+        style="@style/body1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_orderid"
+        android:layout_marginLeft="10dp"
+        android:text="@string/bill_amount"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/total_meals_num"
+        style="@style/body1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_orderid"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Number of Meals : 3"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/food_items_desc"
+        android:background="@color/theme_light_black_200_100" />
+</RelativeLayout>

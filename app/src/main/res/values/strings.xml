@@ -42,7 +42,7 @@
     <string name="dinner">Dinner</string>
     <string name="allday">AllDay</string>
 
-    <string name="buffet_order_pending">Pending</string>
+    <string name="order_pending">Pending</string>
     <string name="buffet_order_accepted">Accepted</string>
     <string name="buffet_order_completed">Completed</string>
     <string name="buffet_order_rejected">Rejected</string>
@@ -54,6 +54,11 @@
         <item name="buffet_order_completed">@string/buffet_order_completed</item>
         <item name="buffet_order_rejected">@string/buffet_order_rejected</item>
     </array>
+
+    <string name="meal_order_inprogress">InProgress</string>
+    <string name="meal_order_ready">ReadyToPickUp</string>
+    <string name="meal_order_completed">Completed</string>
+    <string name="meal_order_rejected">Rejected</string>
 
     <array name="buffet_type">
         <item name="default">SelectBuffetType</item>
@@ -106,4 +111,5 @@
     <string name="number_kids">Kids:%d</string>
     <string name="present_status">Status:%s</string>
     <string name="order_id">OrderId:%s</string>
+    <string name="total_num_meal">NoOfMeals:%d</string>
 </resources>

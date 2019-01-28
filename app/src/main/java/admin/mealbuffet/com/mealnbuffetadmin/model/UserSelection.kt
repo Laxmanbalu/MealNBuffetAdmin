@@ -38,3 +38,12 @@ data class BuffetOrder(val date: String, val orderId: String, val mobileNumber: 
                        val id: String, val status: Int)
 
 data class BuffetOrderRawData(val responseStatus: StandardResponse, val buffetOrderList: List<BuffetOrder>)
+
+data class MealIOrderItem(var restaurantId: String, var categoryId: String, var itemCode: String, var item: String,
+                          var image: String, var type: String, var price: Float, var status: String, var desc : String,
+                          var date: String, var qty: Int, var id: String)
+
+data class MealOrders(var userId: String, var mealOrderId: String, var restaurantId: String, var date: String, var mobileNumber: String,
+                      var emailId: String, var status: Int, var restaurantName: String, var quantity: Int, var billedAmount: Float, var mealList: List<List<MealIOrderItem>>)
+
+data class MealOrderRawData(val responseStatus: StandardResponse, val mealOrders: List<MealOrders>)
