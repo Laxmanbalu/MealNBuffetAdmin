@@ -42,6 +42,7 @@ class BuffetOrderItemsAdapter(private val requireContext: Context, private val w
         init {
             itemView.buffet_order_update.setOnClickListener {
                 if (itemView.swipeLayout.isOpened) {
+                    itemView.swipeLayout.closeSecondaryView(true)
                     internalActionListener.onAction(UPDATE_BUFFET_ORDER_STATUS, it.tag as BuffetOrder)
                 }
             }

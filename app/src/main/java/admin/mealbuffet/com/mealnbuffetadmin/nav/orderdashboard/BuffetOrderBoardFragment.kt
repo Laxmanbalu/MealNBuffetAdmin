@@ -48,7 +48,6 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
                 })
             }
 
-
             override fun onNegativeBtnClick() {
                 //Nothing to do
             }
@@ -95,6 +94,6 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
     }
 
     companion object {
-        const val UPDATE_BUFFET_ORDER_STATUS = "UpdateBuffetOrderStatus"
+        const val UPDATE_BUFFET_ORDER_STATUS: String = "UpdateBuffetOrderStatus"
     }
 }

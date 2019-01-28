@@ -104,6 +104,6 @@
     <string name="bill_amount">BilledAmount: $%.2f</string>
     <string name="number_adults">Adults:%d</string>
     <string name="number_kids">Kids:%d</string>
-    <string name="present_status">Status : %s</string>
+    <string name="present_status">Status:%s</string>
     <string name="order_id">OrderId:%s</string>
 </resources>

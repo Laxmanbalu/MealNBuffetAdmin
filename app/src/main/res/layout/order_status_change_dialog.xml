@@ -19,7 +19,7 @@
             style="@style/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:text="UpdateOrderStatus"
             android:textAlignment="center"
@@ -35,7 +35,7 @@
             android:layout_alignParentStart="true"
             android:layout_margin="10dp"
             android:text="orderId"
-            android:textColor="@color/black" />
+            android:textColor="@color/orange_app" />
 
         <TextView
             android:id="@+id/buffet_order_status"
@@ -47,7 +47,7 @@
             android:layout_margin="10dp"
             android:text="@string/present_status"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/orange_app" />
 
         <Spinner
             android:id="@+id/buffet_order_status_spinner"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/buffet_order_status"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:entries="@array/buffet_order_status" />
 
