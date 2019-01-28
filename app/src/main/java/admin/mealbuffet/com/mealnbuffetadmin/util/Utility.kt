@@ -1,5 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.util
 
+import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import android.app.Activity
 import android.content.Context
@@ -20,10 +21,17 @@ fun hideKeyboard(activity: Activity) {
 //    COMPLETED-4 - admin
 //    REJECTED-5  - Admin
 //    CANCELED-6  - Client
-fun getBuffetOrderStatus(status: Int): String = when (status) {
-    BuffetOrderStatus.ACCEPTED.status -> "ACCEPTED"
-    BuffetOrderStatus.COMPLETED.status -> "COMPLETED"
-    BuffetOrderStatus.REJECTED.status -> "REJECTED"
+fun getBuffetOrderStatus(context: Context, status: Int): String = when (status) {
+    BuffetOrderStatus.ACCEPTED.status -> context.getString(R.string.buffet_order_accepted)
+    BuffetOrderStatus.COMPLETED.status -> context.getString(R.string.buffet_order_completed)
+    BuffetOrderStatus.REJECTED.status -> context.getString(R.string.buffet_order_rejected)
+    else -> context.getString(R.string.buffet_order_pending)
+}
+
+fun getBuffetOrderStatusValu(context: Context, status: String) = when (status) {
+    context.getString(R.string.buffet_order_accepted) -> BuffetOrderStatus.ACCEPTED.status
+    context.getString(R.string.buffet_order_completed) -> BuffetOrderStatus.COMPLETED.status
+    context.getString(R.string.buffet_order_rejected) -> BuffetOrderStatus.REJECTED.status
     else -> EMPTY_STRING
 }
 

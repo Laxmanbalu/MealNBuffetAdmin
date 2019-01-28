@@ -54,11 +54,12 @@ class BuffetOrderItemsAdapter(private val requireContext: Context, private val w
             itemView.buffet_billedamount.text = String.format(requireContext.getString(R.string.bill_amount), buffetOrder.billedAmount)
             itemView.buffet_adults.text = String.format(requireContext.getString(R.string.number_adults), buffetOrder.numerOfAudults)
             itemView.buffet_kids.text = String.format(requireContext.getString(R.string.number_kids), buffetOrder.numberOfKids)
-            itemView.buffet_order_status.text = getBuffetOrderStatus(buffetOrder.status)
+            itemView.buffet_order_status.text = getBuffetOrderStatus(requireContext, buffetOrder.status)
             when (buffetOrder.status) {
                 BuffetOrderStatus.ACCEPTED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_green))
                 BuffetOrderStatus.COMPLETED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
                 BuffetOrderStatus.REJECTED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_red))
+                else -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_brown))
             }
         }
     }

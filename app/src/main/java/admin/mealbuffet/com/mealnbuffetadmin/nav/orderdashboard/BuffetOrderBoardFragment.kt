@@ -5,6 +5,8 @@ import admin.mealbuffet.com.mealnbuffetadmin.custom.DialogClickListener
 import admin.mealbuffet.com.mealnbuffetadmin.custom.OrderStatusChangeDialog
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.updateBuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.BuffetOrdersViewModel
@@ -31,21 +33,25 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
 
     private fun displayOrderChangeDialog(buffetOrder: BuffetOrder) {
         val dialog = OrderStatusChangeDialog.newInstance(String.format(getString(R.string.order_id, buffetOrder.orderId)),
-                String.format(getString(R.string.present_status), getBuffetOrderStatus(buffetOrder.status)))
+                String.format(getString(R.string.present_status), getBuffetOrderStatus(requireContext(), buffetOrder.status)))
         dialog.setDialogActionListener(object : DialogClickListener {
-            override fun onPositiveBanClick() {
-                //EmptyCart
-                /* userAddedMeals.clear()
-                 fileUserAddedMeals.clear()
-                 JsonFileManager.deleteMealCartFile(requireContext())
-                 cart_badge.text = EMPTY_STRING*/
+            override fun onPositiveBanClick(data: Any?) {
+                updateBuffetOrderStatus(buffetOrder.orderId, data as Int, object : ResponseCallback {
+                    override fun onSuccess(data: Any?) {
+                        dialog.dismiss()
+                        fetchGetItemsList()
+                    }
+
+                    override fun onError(data: Any?) {
+                        showNetworkError()
+                    }
+                })
             }
+
 
             override fun onNegativeBtnClick() {
-                /*userAddedMeals = fileUserAddedMeals
-                actionListener?.onAction(SHOW_CART, userAddedMeals)*/
+                //Nothing to do
             }
-
         })
         dialog.show(activity?.supportFragmentManager, "ORDERSTATUSDIALOG")
 

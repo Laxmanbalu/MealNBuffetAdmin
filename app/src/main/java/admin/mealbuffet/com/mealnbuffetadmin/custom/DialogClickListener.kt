@@ -1,6 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.custom
 
 interface DialogClickListener {
-    fun onPositiveBanClick()
+    fun onPositiveBanClick(addToBackStack: Any? = null)
     fun onNegativeBtnClick()
 }

@@ -42,12 +42,14 @@
     <string name="dinner">Dinner</string>
     <string name="allday">AllDay</string>
 
+    <string name="buffet_order_pending">Pending</string>
     <string name="buffet_order_accepted">Accepted</string>
     <string name="buffet_order_completed">Completed</string>
     <string name="buffet_order_rejected">Rejected</string>
+    <string name="buffet_order_default">Change Order Status</string>
 
     <array name="buffet_order_status">
-        <item name="default">Change Order Status</item>
+        <item name="default">@string/buffet_order_default</item>
         <item name="buffet_order_accepted">@string/buffet_order_accepted</item>
         <item name="buffet_order_completed">@string/buffet_order_completed</item>
         <item name="buffet_order_rejected">@string/buffet_order_rejected</item>

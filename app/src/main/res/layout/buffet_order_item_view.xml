@@ -24,7 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:text="Completed"
+        android:text="Pending"
         android:textColor="@color/orange_app" />
 
     <TextView
