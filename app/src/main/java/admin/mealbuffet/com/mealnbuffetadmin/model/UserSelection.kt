@@ -30,3 +30,11 @@ data class MealBasicData(var mealName: String, var itemQty: Int, var mealDesc: S
 data class CreateMealItem(var status: Int, var typeDes: String, var itemsList: ArrayList<String>, var mealBasicData: MealBasicData)
 
 data class EditMealData(val mealBasicData: MealBasicData, val mealItem: MealItem)
+
+
+data class BuffetOrder(val date: String, val orderId: String, val mobileNumber: String, val emailId: String,
+                       val restaurantId: String, val userId: String, val billedAmount: Float, val numberOfKids: Int,
+                       val buffetName: String, val restaurantName: String, val numerOfAudults: Int, val buffetId: String,
+                       val id: String, val status: Int)
+
+data class BuffetOrderRawData(val responseStatus: StandardResponse, val buffetOrderList: List<BuffetOrder>)

@@ -149,7 +149,6 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
 
     open fun showFragment(fragment: Fragment, addToBackStack: Boolean = false) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.javaClass.simpleName)

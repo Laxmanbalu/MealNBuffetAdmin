@@ -48,11 +48,11 @@ class EditBuffetFragment : BaseFragment() {
     }
 
     private fun getFoodType(): Int {
-        return when (selectedBuffetItem.type) {
-            requireContext().getString(R.string.breakfast) -> 1
-            requireContext().getString(R.string.lunch) -> 2
-            requireContext().getString(R.string.dinner) -> 3
-            requireContext().getString(R.string.allday) -> 4
+        return when (selectedBuffetItem.type.toUpperCase()) {
+            requireContext().getString(R.string.breakfast).toUpperCase() -> 1
+            requireContext().getString(R.string.lunch).toUpperCase() -> 2
+            requireContext().getString(R.string.dinner).toUpperCase() -> 3
+            requireContext().getString(R.string.allday).toUpperCase() -> 4
             else -> 0
         }
     }

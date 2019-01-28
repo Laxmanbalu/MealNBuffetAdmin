@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yesNoCustom"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="UpdateOrderStatus"
+            android:textAlignment="center"
+            android:textColor="@color/orange_app"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/buffet_orderid"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_title"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:text="orderId"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/buffet_order_status"
+            style="@style/body2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_title"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:text="@string/present_status"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/buffet_order_status_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buffet_order_status"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:entries="@array/buffet_order_status" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/buffet_tv_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buffet_order_status_spinner"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/buffet_reason"
+                style="@style/body1_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Enter Comments"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -8,7 +8,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment.Companion.BUFFET_ADDED_SUCCESSFULLY
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.EditBuffetFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.AddMealFragment.Companion.MEAL_MOVE_NEXT
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFragment
@@ -45,7 +44,7 @@ class HomeActivity : NavigationSupportActivity() {
                 true
             }
             BuffetListFragment.ADD_BUFFET -> {
-                showAddBuffet()
+                showAddBuffet(true)
                 true
             }
             MealListFragment.ADD_MEAL -> {
@@ -80,7 +79,7 @@ class HomeActivity : NavigationSupportActivity() {
             BuffetListFragment.BUFFET_EDIT -> {
                 if (data != null) {
                     selectedBuffetItem = data as BuffetItem
-                    showEditBuffet(selectedBuffetItem)
+                    showEditBuffet(selectedBuffetItem, true)
                 }
                 true
             }
@@ -93,13 +92,15 @@ class HomeActivity : NavigationSupportActivity() {
                 true
             }
 
-            EditBuffetFragment.EDIT_BUFFET_MOVE_NEXT -> {
-                showBuffetEditFoodItemsFragment(data as EditBuffetData)
-                true
-            }
+
 
             EditMealFragment.MEAL_EDIT_MOVE_NEXT -> {
                 showMealEditFoodItemsFragment(data as EditMealData)
+                true
+            }
+
+            else -> {
+                super.onPerformAction(action, data)
                 true
             }
         }
@@ -110,10 +111,6 @@ class HomeActivity : NavigationSupportActivity() {
         itemsListFragment.isVisible -> super.onOptionsItemSelected(item)
         buffetsListFragment.isVisible -> super.onOptionsItemSelected(item)
 
-        addBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
-            onBackPressed()
-            true
-        }
         addMealFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -134,15 +131,12 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
-        editBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
-            onBackPressed()
-            true
-        }
+
         editMealFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
-        buffetOrderDashboard.isVisible && item.itemId == android.R.id.home -> {
+        buffetOrderDashboardFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
@@ -152,15 +146,13 @@ class HomeActivity : NavigationSupportActivity() {
     override fun onBackPressed() {
         when {
             buffetsListFragment.isVisible -> showHomepageFragment()
-            addBuffetFragment.isVisible -> showBuffetItemsFragment()
             addMealFragment.isVisible -> showMealListFragment()
             buffetFoodItemsFragment.isVisible -> showAddBuffet()
             mealFoodItemsFragment.isVisible -> showAddMealPage()
-            editBuffetFragment.isVisible -> showBuffetItemsFragment()
             editBuffetFoodItemsFragment.isVisible -> showEditBuffet(selectedBuffetItem)
             editMealFragment.isVisible -> showMealListFragment()
             editMealFoodItemsFragment.isVisible -> showEditMeal(selectedMealItem)
-            buffetOrderDashboard.isVisible -> showHomepageFragment()
+            buffetOrderDashboardFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }

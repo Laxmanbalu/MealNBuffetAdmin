@@ -6,25 +6,26 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoard
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
 abstract class NavigationSupportActivity : BaseActivity() {
-    //    protected val addItemFragment: AddItemFragment by lazy { AddItemFragment() }
     protected lateinit var addItemFragment: AddItemFragment
-    protected val addBuffetFragment: AddBuffetFragment by lazy { AddBuffetFragment() }
+    protected lateinit var addBuffetFragment: AddBuffetFragment
+    protected lateinit var editBuffetFragment: EditBuffetFragment
+
     protected val buffetFoodItemsFragment: BuffetFoodItemsFragment by lazy { BuffetFoodItemsFragment() }
     protected val mealFoodItemsFragment: MealFoodItemsFragment by lazy { MealFoodItemsFragment() }
     protected val editBuffetFoodItemsFragment: EditBuffetFoodItemsFragment by lazy { EditBuffetFoodItemsFragment() }
     protected val itemsListFragment: ItemsListFragment by lazy { ItemsListFragment() }
     protected val buffetsListFragment: BuffetListFragment by lazy { BuffetListFragment() }
-    protected val editBuffetFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
+    //    protected val editBuffetFragment: EditBuffetFragment by lazy { EditBuffetFragment() }
     protected val mealListFragment: MealListFragment by lazy { MealListFragment() }
     protected val addMealFragment: AddMealFragment by lazy { AddMealFragment() }
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
-    protected val buffetOrderDashboard: BuffetOrderBoard by lazy { BuffetOrderBoard() }
+    protected val buffetOrderDashboardFragment: BuffetOrderBoardFragment by lazy { BuffetOrderBoardFragment() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -77,9 +78,12 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(editMealFoodItemsFragment)
     }
 
-    protected fun showEditBuffet(selectedBuffetItem: BuffetItem) {
+    protected fun showEditBuffet(selectedBuffetItem: BuffetItem, create: Boolean = false) {
         title = getString(R.string.menu_edit_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
+        if (create) {
+            editBuffetFragment = EditBuffetFragment()
+        }
         editBuffetFragment.setSelectedBuffetData(selectedBuffetItem)
         showFragment(editBuffetFragment)
     }
@@ -104,9 +108,12 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(addMealFragment)
     }
 
-    protected fun showAddBuffet() {
+    protected fun showAddBuffet(create: Boolean = false) {
         title = getString(R.string.menu_add_buffet)
         setHomeIcon(R.drawable.ic_arrow_back_white)
+        if (create) {
+            addBuffetFragment = AddBuffetFragment()
+        }
         showFragment(addBuffetFragment)
     }
 
@@ -122,14 +129,31 @@ abstract class NavigationSupportActivity : BaseActivity() {
         menuItemId = R.id.leftNavBuffetOrderDashboard
         title = getString(R.string.menu_buffet_dashboard)
         setHomeIcon(R.drawable.ic_menu_white)
-        showFragment(buffetOrderDashboard)
+        showFragment(buffetOrderDashboardFragment)
     }
 
     abstract fun showHomepageFragment()
 
+    override fun onPerformAction(action: String, data: Any?): Boolean {
+        when (action) {
+            EditBuffetFragment.EDIT_BUFFET_MOVE_NEXT -> {
+                showBuffetEditFoodItemsFragment(data as EditBuffetData)
+                true
+            }
+        }
+        return false
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         ::addItemFragment.isInitialized && addItemFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        ::addBuffetFragment.isInitialized && addBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        ::editBuffetFragment.isInitialized && editBuffetFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
@@ -139,6 +163,8 @@ abstract class NavigationSupportActivity : BaseActivity() {
     override fun onBackPressed() {
         when {
             ::addItemFragment.isInitialized && addItemFragment.isVisible -> showHomepageFragment()
+            ::addBuffetFragment.isInitialized && addBuffetFragment.isVisible -> showBuffetItemsFragment()
+            ::editBuffetFragment.isInitialized && editBuffetFragment.isVisible -> showBuffetItemsFragment()
             else -> super.onBackPressed()
         }
     }

@@ -1,7 +1,6 @@
-package com.mealbuffet.custom
+package admin.mealbuffet.com.mealnbuffetadmin.custom
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.custom.DialogClickListener
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
