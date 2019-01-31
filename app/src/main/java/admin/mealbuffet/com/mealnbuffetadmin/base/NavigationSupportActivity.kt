@@ -8,6 +8,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -28,6 +29,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
     protected val buffetOrderDashboardFragment: BuffetOrderBoardFragment by lazy { BuffetOrderBoardFragment() }
     protected val mealOrderBoardFragment: MealOrderBoardFragment by lazy { MealOrderBoardFragment() }
+    protected val mealOrderUpdateFragment: MealOrderUpdateFragment by lazy { MealOrderUpdateFragment() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -44,6 +46,13 @@ abstract class NavigationSupportActivity : BaseActivity() {
         title = getString(R.string.menu_meal_dashboard)
         setHomeIcon(R.drawable.ic_menu_white)
         showFragment(mealOrderBoardFragment)
+    }
+
+    protected fun showMealOrderUpdateFragment(mealOrders: MealOrders) {
+        title = getString(R.string.menu_meal_dashboard)
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        mealOrderUpdateFragment.setMealOrder(mealOrders)
+        showFragment(mealOrderUpdateFragment)
     }
 
     protected fun showMealListFragment() {
@@ -175,6 +184,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
             ::addItemFragment.isInitialized && addItemFragment.isVisible -> showHomepageFragment()
             ::addBuffetFragment.isInitialized && addBuffetFragment.isVisible -> showBuffetItemsFragment()
             ::editBuffetFragment.isInitialized && editBuffetFragment.isVisible -> showBuffetItemsFragment()
+            mealOrderUpdateFragment.isVisible -> showMealOrderDashBoardFragment()
             else -> super.onBackPressed()
         }
     }

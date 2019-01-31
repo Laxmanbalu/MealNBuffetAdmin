@@ -1,6 +1,8 @@
 package admin.mealbuffet.com.mealnbuffetadmin.model
 
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 
 data class AddItem(var itemName: String, val price: Float, val foodType: String, val desc: String,
@@ -39,11 +41,14 @@ data class BuffetOrder(val date: String, val orderId: String, val mobileNumber: 
 
 data class BuffetOrderRawData(val responseStatus: StandardResponse, val buffetOrderList: List<BuffetOrder>)
 
-data class MealIOrderItem(var restaurantId: String, var categoryId: String, var itemCode: String, var item: String,
-                          var image: String, var type: String, var price: Float, var status: String, var desc : String,
-                          var date: String, var qty: Int, var id: String)
+data class MealList(var restaurantId: String, var categoryId: String, var itemCode: String, var item: String,
+                    var image: String, var type: String, var price: Float, var status: String, var desc : String,
+                    var date: String, var qty: Int, var id: String)
 
 data class MealOrders(var userId: String, var mealOrderId: String, var restaurantId: String, var date: String, var mobileNumber: String,
-                      var emailId: String, var status: Int, var restaurantName: String, var quantity: Int, var billedAmount: Float, var mealList: List<List<MealIOrderItem>>)
+                      var emailId: String, var status: Int, var restaurantName: String, var quantity: Int, var billedAmount: Float,
+                      @SerializedName("mealList")
+                      @Expose
+                      var mealList: List<List<MealList>> )
 
 data class MealOrderRawData(val responseStatus: StandardResponse, val mealOrders: List<MealOrders>)

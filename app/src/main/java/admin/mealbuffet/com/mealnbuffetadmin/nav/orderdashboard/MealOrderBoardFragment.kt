@@ -2,7 +2,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
-import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.MealOrdersViewModel
 import android.arch.lifecycle.Observer
@@ -14,13 +13,10 @@ import android.view.View
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mealdashboard.*
 
-class MealOrderBoardFragment : BaseFragment(), InternalActionListener {
+class MealOrderBoardFragment : BaseFragment() {
     private lateinit var mealOrderItemsAdapter: MealOrderItemsAdapter
     private lateinit var mealOrdersViewModel: MealOrdersViewModel
     private lateinit var mealOrders: List<MealOrders>
-    override fun onAction(action: String, data: Any?) {
-
-    }
 
     override fun layoutResource(): Int = R.layout.fragment_mealdashboard
 
@@ -43,7 +39,7 @@ class MealOrderBoardFragment : BaseFragment(), InternalActionListener {
     }
 
     private fun renderMealsListView() {
-        mealOrderItemsAdapter = MealOrderItemsAdapter(requireContext(), this as InternalActionListener)
+        mealOrderItemsAdapter = MealOrderItemsAdapter(requireContext(), wrapActionListener())
         rc_meal_dashboard.apply {
             adapter = mealOrderItemsAdapter
             layoutManager = LinearLayoutManager(requireContext())

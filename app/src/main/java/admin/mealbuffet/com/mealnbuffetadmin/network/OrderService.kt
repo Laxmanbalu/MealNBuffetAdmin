@@ -55,3 +55,18 @@ fun getMealOrdersHistory(restaurantId: String, responseCallBack: ResponseCallbac
     jsonObjectRequest.setShouldCache(false)
     requestQueue?.add(jsonObjectRequest)
 }
+
+
+fun updateMealOrderStatus(mealOrderId: String, status: Int, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(MealAdminUrls.UPDATE_MEALORDER_STATUS, mealOrderId, status)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val jsonObjectRequest = JsonObjectRequest(Request.Method.POST,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val dataType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), dataType)
+        responseCallBack.onSuccess(response)
+    }, Response.ErrorListener {
+        responseCallBack.onError()
+    })
+    requestQueue?.add(jsonObjectRequest)
+}

@@ -33,7 +33,7 @@ class OrderStatusChangeDialog : DialogFragment() {
         return AlertDialog.Builder(context!!)
                 .setView(view).setPositiveButton("Proceed") { dialog, which ->
                     val orderStatus: String = view.buffet_order_status_spinner.selectedItem.toString()
-                    if (orderStatus.equals(getString(R.string.buffet_order_default))) {
+                    if (orderStatus.equals(getString(R.string.choose_order_status_default))) {
                         dialog.dismiss()
                         return@setPositiveButton
                     }

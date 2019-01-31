@@ -13,6 +13,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -98,6 +99,10 @@ class HomeActivity : NavigationSupportActivity() {
                 true
             }
 
+            MealOrderBoardFragment.UPDATE_MEAL_ORDER_STATUS -> {
+                showMealOrderUpdateFragment(data as MealOrders)
+                true
+            }
             else -> {
                 super.onPerformAction(action, data)
                 true
@@ -132,6 +137,10 @@ class HomeActivity : NavigationSupportActivity() {
         }
 
         editMealFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        mealOrderUpdateFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }

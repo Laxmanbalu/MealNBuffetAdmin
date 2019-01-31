@@ -46,10 +46,10 @@
     <string name="buffet_order_accepted">Accepted</string>
     <string name="buffet_order_completed">Completed</string>
     <string name="buffet_order_rejected">Rejected</string>
-    <string name="buffet_order_default">Change Order Status</string>
+    <string name="choose_order_status_default">Change Order Status</string>
 
     <array name="buffet_order_status">
-        <item name="default">@string/buffet_order_default</item>
+        <item name="default">@string/choose_order_status_default</item>
         <item name="buffet_order_accepted">@string/buffet_order_accepted</item>
         <item name="buffet_order_completed">@string/buffet_order_completed</item>
         <item name="buffet_order_rejected">@string/buffet_order_rejected</item>
@@ -59,6 +59,15 @@
     <string name="meal_order_ready">ReadyToPickUp</string>
     <string name="meal_order_completed">Completed</string>
     <string name="meal_order_rejected">Rejected</string>
+
+    <array name="meal_order_status">
+        <item name="default">@string/choose_order_status_default</item>
+        <item name="buffet_order_accepted">@string/meal_order_inprogress</item>
+        <item name="buffet_order_completed">@string/meal_order_ready</item>
+        <item name="buffet_order_rejected">@string/meal_order_completed</item>
+        <item name="buffet_order_rejected">@string/meal_order_rejected</item>
+    </array>
+
 
     <array name="buffet_type">
         <item name="default">SelectBuffetType</item>
@@ -99,6 +108,7 @@
     <string name="buffet_desc">Description</string>
     <string name="buffet_starttime">StartTime</string>
     <string name="buffet_endtime">EndTime</string>
+    <string name="item_qty">Qty: %d</string>
 
     <string name="buffet_adult_price">AdultsPrice($)</string>
     <string name="buffet_kids_price">KidsPrice($)</string>

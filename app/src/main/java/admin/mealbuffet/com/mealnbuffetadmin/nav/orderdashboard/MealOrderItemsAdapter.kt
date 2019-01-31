@@ -2,7 +2,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
-import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment.Companion.UPDATE_MEAL_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.MealOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
@@ -11,11 +10,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mealbuffet.controller.ActionListener
 import kotlinx.android.synthetic.main.meal_order_item_view.view.*
 import kotlinx.android.synthetic.main.view_holder_meal_order_item.view.*
 
 
-class MealOrderItemsAdapter(private val requireContext: Context, private val wrapActionListener: InternalActionListener) : RecyclerView.Adapter<MealOrderItemsAdapter.BuffetOrderItemViewHolder>() {
+class MealOrderItemsAdapter(private val requireContext: Context, private val wrapActionListener: ActionListener) : RecyclerView.Adapter<MealOrderItemsAdapter.BuffetOrderItemViewHolder>() {
 
     private var ordersLst: ArrayList<MealOrders>? = null
 
@@ -38,7 +38,7 @@ class MealOrderItemsAdapter(private val requireContext: Context, private val wra
         ordersLst?.get(position)?.let { buffetOrderItemViewHolder.setData(it) }
     }
 
-    class BuffetOrderItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
+    class BuffetOrderItemViewHolder(itemView: View, private val internalActionListener: ActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.meal_order_update.setOnClickListener {
                 if (itemView.swipeLayout.isOpened) {

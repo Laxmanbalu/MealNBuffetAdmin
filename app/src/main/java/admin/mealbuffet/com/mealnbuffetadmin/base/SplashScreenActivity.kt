@@ -51,7 +51,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        mHandler.postDelayed(showNextActivity, 3000)
+        mHandler.postDelayed(showNextActivity, 30)
     }
 
     override fun onStop() {
