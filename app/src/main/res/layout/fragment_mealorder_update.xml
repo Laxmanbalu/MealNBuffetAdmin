@@ -1,56 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/meal_orderid"
-        style="@style/body1_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp"
-        android:text="orderId"
-        android:textColor="@color/orange_app"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/meal_order_status"
-        style="@style/body2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dialog_title"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:text="@string/present_status"
-        android:textAlignment="center"
-        android:textColor="@color/orange_app"
-        android:textStyle="bold" />
-
-    <!--<Spinner
-        android:id="@+id/meal_order_status_spinner"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/meal_order_status"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:entries="@array/buffet_order_status" />-->
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/meals_views"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/meal_order_status"
-        android:orientation="vertical" />
+        <TextView
+            android:id="@+id/meal_orderid"
+            style="@style/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:text="orderId"
+            android:textColor="@color/orange_app"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/mealorder_proceed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_round"
-        android:text="Proceed"
-        android:textColor="@color/white" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/meal_order_status"
+            style="@style/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_title"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:text="@string/present_status"
+            android:textAlignment="center"
+            android:textColor="@color/orange_app"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/meals_views"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meal_order_status"
+            android:orientation="vertical" />
+
+        <Spinner
+            android:id="@+id/meal_order_status_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meals_views"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:entries="@array/meal_order_status" />
+
+        <Button
+            android:id="@+id/mealorder_proceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meal_order_status_spinner"
+            android:layout_margin="20dp"
+            android:background="@drawable/button_round"
+            android:text="Proceed"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</ScrollView>

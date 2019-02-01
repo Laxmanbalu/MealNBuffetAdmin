@@ -122,4 +122,6 @@
     <string name="present_status">Status:%s</string>
     <string name="order_id">OrderId:%s</string>
     <string name="total_num_meal">NoOfMeals:%d</string>
+    <string name="meal_id">Meal %d</string>
+    <string name="select_status_change">Change the Order Status</string>
 </resources>

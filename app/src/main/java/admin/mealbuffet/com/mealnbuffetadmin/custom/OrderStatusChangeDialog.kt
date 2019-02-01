@@ -1,7 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.custom
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatusValu
+import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatusValue
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
@@ -37,7 +37,7 @@ class OrderStatusChangeDialog : DialogFragment() {
                         dialog.dismiss()
                         return@setPositiveButton
                     }
-                    dialogClickListener?.onPositiveBanClick(getBuffetOrderStatusValu(activity?.applicationContext!!, orderStatus))
+                    dialogClickListener?.onPositiveBanClick(getBuffetOrderStatusValue(activity?.applicationContext!!, orderStatus))
                 }.setNegativeButton("Cancel") { dialog, _ ->
                     //                    dialogClickListener?.onNegativeBtnClick()
                     dialog.dismiss()

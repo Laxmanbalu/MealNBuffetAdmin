@@ -31,7 +31,7 @@ class MealOrderBoardFragment : BaseFragment() {
             if (it == null) {
                 showNetworkError()
             } else {
-                mealOrders = it.mealOrders
+                mealOrders = it.mealOrders as List<MealOrders>
                 renderMealsListView()
             }
         })

@@ -1,7 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.util
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import android.app.Activity
 import android.content.Context
 import android.view.View
@@ -36,13 +35,19 @@ fun getMealOrderStatus(context: Context, status: Int): String = when (status) {
     else -> context.getString(R.string.order_pending)
 }
 
-fun getBuffetOrderStatusValu(context: Context, status: String) = when (status) {
+fun getBuffetOrderStatusValue(context: Context, status: String) = when (status) {
     context.getString(R.string.buffet_order_accepted) -> BuffetOrderStatus.ACCEPTED.status
     context.getString(R.string.buffet_order_completed) -> BuffetOrderStatus.COMPLETED.status
     context.getString(R.string.buffet_order_rejected) -> BuffetOrderStatus.REJECTED.status
-    else -> EMPTY_STRING
+    else -> -1
 }
 
-
+fun getMealOrderStatusValue(context: Context, status: String) = when (status) {
+    context.getString(R.string.meal_order_inprogress) -> MealOrderStatus.IN_PROGRESS.status
+    context.getString(R.string.meal_order_ready) -> MealOrderStatus.READY_TO_PICKUP.status
+    context.getString(R.string.meal_order_completed) -> MealOrderStatus.COMPLETED.status
+    context.getString(R.string.meal_order_rejected) -> MealOrderStatus.REJECTED.status
+    else -> -1
+}
 
 

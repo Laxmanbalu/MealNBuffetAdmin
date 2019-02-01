@@ -4,7 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment.Companion.UPDATE_MEAL_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.MealOrderStatus
-import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
+import admin.mealbuffet.com.mealnbuffetadmin.util.getMealOrderStatus
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -53,8 +53,8 @@ class MealOrderItemsAdapter(private val requireContext: Context, private val wra
             itemView.meal_order_update.tag = mealOrders
             itemView.meal_orderid.text = String.format(requireContext.getString(R.string.order_id), mealOrders.mealOrderId)
             itemView.meal_billedamount.text = String.format(requireContext.getString(R.string.bill_amount), mealOrders.billedAmount)
-            itemView.meal_order_status.text = getBuffetOrderStatus(requireContext, mealOrders.status)
-            itemView.total_meals_num.text = String.format(requireContext.getString(R.string.total_num_meal), mealOrders.mealList.size)
+            itemView.meal_order_status.text = getMealOrderStatus(requireContext, mealOrders.status!!)
+            itemView.total_meals_num.text = String.format(requireContext.getString(R.string.total_num_meal), mealOrders.mealList?.size)
             when (mealOrders.status) {
                 MealOrderStatus.IN_PROGRESS.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
                 MealOrderStatus.READY_TO_PICKUP.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))

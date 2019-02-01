@@ -1,8 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.model
 
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
 
 data class AddItem(var itemName: String, val price: Float, val foodType: String, val desc: String,
@@ -41,14 +39,37 @@ data class BuffetOrder(val date: String, val orderId: String, val mobileNumber: 
 
 data class BuffetOrderRawData(val responseStatus: StandardResponse, val buffetOrderList: List<BuffetOrder>)
 
-data class MealList(var restaurantId: String, var categoryId: String, var itemCode: String, var item: String,
-                    var image: String, var type: String, var price: Float, var status: String, var desc : String,
-                    var date: String, var qty: Int, var id: String)
+data class MealList(
+        val date: String? = null,
+        val image: String? = null,
+        val item: String? = null,
+        val price: Float? = null,
+        val itemCode: String? = null,
+        val qty: Int? = null,
+        val id: String? = null,
+        val restaurantId: String? = null,
+        val type: String? = null,
+        val categoryId: String? = null,
+        val desc: String? = null,
+        val status: String? = null
+)
 
-data class MealOrders(var userId: String, var mealOrderId: String, var restaurantId: String, var date: String, var mobileNumber: String,
-                      var emailId: String, var status: Int, var restaurantName: String, var quantity: Int, var billedAmount: Float,
-                      @SerializedName("mealList")
-                      @Expose
-                      var mealList: List<List<MealList>> )
+data class MealOrders(
+        val date: String? = null,
+        val billedAmount: Float? = null,
+        val mealList: List<List<MealList?>?>? = null,
+        val quantity: Int? = null,
+        val restaurantName: String? = null,
+        val mobileNumber: Any? = null,
+        val mealOrderId: String? = null,
+        val emailId: String? = null,
+        val id: String? = null,
+        val restaurantId: String? = null,
+        val userId: String? = null,
+        val status: Int? = null
+)
 
-data class MealOrderRawData(val responseStatus: StandardResponse, val mealOrders: List<MealOrders>)
+data class MealOrderRawData(
+        val mealOrders: List<MealOrders?>? = null,
+        val responseStatus: StandardResponse? = null
+)

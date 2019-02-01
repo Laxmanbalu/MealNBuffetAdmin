@@ -9,6 +9,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment.Companion.MEAL_ORDER_UPDATE_SUCCESS
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -157,6 +158,11 @@ abstract class NavigationSupportActivity : BaseActivity() {
         when (action) {
             EditBuffetFragment.EDIT_BUFFET_MOVE_NEXT -> {
                 showBuffetEditFoodItemsFragment(data as EditBuffetData)
+                true
+            }
+
+            MEAL_ORDER_UPDATE_SUCCESS -> {
+                showMealOrderDashBoardFragment()
                 true
             }
         }
