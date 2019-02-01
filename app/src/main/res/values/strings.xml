@@ -124,4 +124,9 @@
     <string name="total_num_meal">NoOfMeals:%d</string>
     <string name="meal_id">Meal %d</string>
     <string name="select_status_change">Change the Order Status</string>
+    <string name="menu_item_sign_out">SignOut</string>
+    <string name="sign_out_dialog_title">Sign Out?</string>
+    <string name="sign_out_dialog_msg">Are you sure you want to sign out?</string>
+    <string name="sign_out_button">SIGN OUT</string>
+    <string name="cancel">CANCEL</string>
 </resources>

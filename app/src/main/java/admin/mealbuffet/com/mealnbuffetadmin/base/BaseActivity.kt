@@ -1,7 +1,12 @@
 package com.mealbuffet.controller
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.auth.LoginActivity
+import admin.mealbuffet.com.mealnbuffetadmin.custom.DialogClickListener
+import admin.mealbuffet.com.mealnbuffetadmin.custom.YesNoDialogFragment
+import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -16,6 +21,7 @@ import android.view.MenuItem
 import com.mealbuffet.custom.ProgressDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.left_menu_view.*
+import kotlinx.android.synthetic.main.nav_drawer_footer.*
 import kotlinx.android.synthetic.main.nav_drawer_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -83,9 +89,9 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
         return true
     }
 
-    open fun handleNavigationItemSelected(item: MenuItem){}
+    open fun handleNavigationItemSelected(item: MenuItem) {}
 
-    fun updateMenuSelection() {
+    private fun updateMenuSelection() {
         if (menuItemId > 0) {
             leftNavMenu.setCheckedItem(menuItemId)
         }
@@ -103,7 +109,35 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
         val headerView = leftNavMenu.getHeaderView(0)
         headerView.nav_header_username.text = PreferencesHelper.getRestaurantId(this)
 
+        leftNavSignOut.setOnClickListener {
+            showSignOutDialog()
+        }
     }
+
+    private fun showSignOutDialog() {
+        val dialog = YesNoDialogFragment.newInstance(
+                resources.getString(R.string.sign_out_dialog_title),
+                resources.getString(R.string.sign_out_dialog_msg))
+
+        dialog.setDialogActionListener(object : DialogClickListener {
+            override fun onPositiveBanClick(addToBackStack: Any?) {
+                dialog.dismiss()
+                PreferencesHelper.storeRestaurantDetails(applicationContext, EMPTY_STRING)
+                //Move to login activity
+                var intent = Intent(applicationContext, LoginActivity::class.java)
+                intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+            }
+
+            override fun onNegativeBtnClick() {
+                dialog.dismiss()
+            }
+
+        })
+        dialog.setButtonLabels(resources.getString(R.string.sign_out_button), resources.getString(R.string.cancel))
+        dialog.show(supportFragmentManager, EMPTY_STRING)
+    }
+
 
     private fun viewUpdateOnResume() {
         if (!runOnResume.isEmpty()) {
