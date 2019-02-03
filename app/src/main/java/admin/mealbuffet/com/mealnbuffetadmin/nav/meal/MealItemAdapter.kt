@@ -81,7 +81,7 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
                 }
 
                 override fun onError(data: Any?) {
-                    internalActionListener.onAction(MealListFragment.PUBLISHED_MEAL_FAILED)
+                    internalActionListener.onAction(MealListFragment.PUBLISHED_MEAL_FAILED, data)
                 }
             })
         }

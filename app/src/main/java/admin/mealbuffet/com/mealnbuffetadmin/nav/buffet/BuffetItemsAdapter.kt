@@ -84,7 +84,7 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
                 }
 
                 override fun onError(data: Any?) {
-                    internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_FAILED)
+                    internalActionListener.onAction(BuffetListFragment.PUBLISHED_BUFFET_FAILED, data)
                 }
             })
         }

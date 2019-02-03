@@ -29,7 +29,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
                 showCustomError(getString(R.string.publish_item_successfully))
                 getBuffetsListData()
             }
-            PUBLISHED_BUFFET_FAILED -> showNetworkError()
+            PUBLISHED_BUFFET_FAILED -> showCustomError(data as String)
             BUFFET_EDIT -> wrapActionListener().onAction(BUFFET_EDIT, data)
         }
     }

@@ -48,6 +48,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPD
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_MEAL
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.Response.ErrorListener
 import com.android.volley.error.AuthFailureError
 import com.android.volley.request.JsonArrayRequest
 import com.android.volley.request.JsonObjectRequest
@@ -74,7 +75,7 @@ fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: Re
     val smr = object : SimpleMultiPartRequest(Request.Method.POST, ADD_ITEM,
             Response.Listener<String> { response ->
                 responseCallBack.onSuccess()
-            }, Response.ErrorListener {
+            }, ErrorListener {
         responseCallBack.onSuccess()
     }) {
         override fun getParams(): MutableMap<String, String> {
@@ -97,7 +98,7 @@ fun getCategoriesList(responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<List<Category>>() {}.type
         val categoriesLst = Gson().fromJson<List<Category>>(it.toString(), listType)
         responseCallBack.onSuccess(categoriesLst)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError()
     })
     requestQueue?.add(arrayRequest)
@@ -111,7 +112,7 @@ fun getFoodItemsList(restaurantId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<List<FoodItem>>() {}.type
         val categoriesLst = Gson().fromJson<List<FoodItem>>(it.toString(), listType)
         responseCallBack.onSuccess(categoriesLst)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError()
     })
     arrayRequest.setShouldCache(false)
@@ -127,7 +128,7 @@ fun getBuffetsList(restaurantId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<List<BuffetItem>>() {}.type
         val buffetItemsList = Gson().fromJson<List<BuffetItem>>(it.toString(), listType)
         responseCallBack.onSuccess(buffetItemsList)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError()
     })
     arrayRequest.setShouldCache(false)
@@ -142,7 +143,7 @@ fun deleteFoodItems(itemId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<StandardResponse>() {}.type
         val buffetRawData = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(buffetRawData)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     })
     requestQueue?.add(deleteObjectRequest)
@@ -157,7 +158,7 @@ fun unpublishItems(array: ArrayList<String>, responseCallBack: ResponseCallback)
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -182,7 +183,7 @@ fun publishItems(array: ArrayList<String>, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -211,7 +212,7 @@ fun authenticateUser(user: User, responseCallBack: ResponseCallback) {
     val stringRequest = object : StringRequest(Request.Method.POST,
             requestUrl, Response.Listener<String> {
         responseCallBack.onSuccess(it)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -233,7 +234,7 @@ fun deleteBuffetItem(requestUrl: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<StandardResponse>() {}.type
         val buffetRawData = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(buffetRawData)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     })
     requestQueue?.add(deleteObjectRequest)
@@ -247,7 +248,7 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<User>() {}.type
         val userDetails = Gson().fromJson<User>(it.toString(), listType)
         responseCallBack.onSuccess(userDetails)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     })
     requestQueue?.add(objectRequest)
@@ -255,15 +256,19 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
 
 fun changeSelectedItemPublishTypeService(requestUrl: String, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
-
-
     val stringRequest = object : JsonObjectRequest(Request.Method.POST,
             requestUrl, null, Response.Listener<JSONObject> {
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
-        responseCallBack.onError(it)
+    }, ErrorListener { error ->
+        val networkResponse = error.networkResponse
+        if (networkResponse?.data != null) {
+            val jsonError = String(networkResponse.data)
+            val listType = object : TypeToken<StandardResponse>() {}.type
+            val response = Gson().fromJson<StandardResponse>(jsonError.toString(), listType)
+            responseCallBack.onError(response.shortDescription)
+        }
     }) {
         override fun getBodyContentType(): String {
             return "application/json"
@@ -280,7 +285,7 @@ fun getActiveItemsList(restaurantId: String, responseCallBack: ResponseCallback)
         val listType = object : TypeToken<HashMap<String, List<FoodItem>>>() {}.type
         val activeFoodItems = Gson().fromJson<HashMap<String, Any>>(it.toString(), listType)
         responseCallBack.onSuccess(activeFoodItems)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError()
     })
     arrayRequest.setShouldCache(false)
@@ -320,7 +325,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -368,7 +373,7 @@ fun updateSelectedBuffetItem(buffetItem: CreateBuffetItem, buffetId: String, res
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -392,7 +397,7 @@ fun getMealsList(restaurantId: String, responseCallBack: ResponseCallback) {
         val listType = object : TypeToken<List<MealItem>>() {}.type
         val buffetItemsList = Gson().fromJson<List<MealItem>>(it.toString(), listType)
         responseCallBack.onSuccess(buffetItemsList)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError()
     })
     arrayRequest.setShouldCache(false)
@@ -425,7 +430,7 @@ fun createMealService(mealItem: CreateMealItem, responseCallBack: ResponseCallba
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {
@@ -467,7 +472,7 @@ fun updateSelectedMeal(mealItem: CreateMealItem, mealId: String, responseCallBac
         val listType = object : TypeToken<StandardResponse>() {}.type
         val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
         responseCallBack.onSuccess(response.shortDescription)
-    }, Response.ErrorListener {
+    }, ErrorListener {
         responseCallBack.onError(it)
     }) {
         override fun getBodyContentType(): String {

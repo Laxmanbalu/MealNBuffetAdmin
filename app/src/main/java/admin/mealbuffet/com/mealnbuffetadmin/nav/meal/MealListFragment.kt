@@ -28,7 +28,7 @@ class MealListFragment : BaseFragment(), InternalActionListener {
                 showCustomError(getString(R.string.publish_item_successfully))
                 fetchMealsList()
             }
-            PUBLISHED_MEAL_FAILED -> showNetworkError()
+            PUBLISHED_MEAL_FAILED -> showCustomError(data as String)
             MEAL_EDIT -> wrapActionListener().onAction(MealListFragment.MEAL_EDIT, data)
         }
     }
