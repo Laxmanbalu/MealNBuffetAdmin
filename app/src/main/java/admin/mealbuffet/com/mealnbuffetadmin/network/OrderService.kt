@@ -84,6 +84,7 @@ fun getRestaurantDetails(restaurantId: String, responseCallBack: ResponseCallbac
     }, Response.ErrorListener {
         responseCallBack.onError(it)
     })
+    objectRequest.setShouldCache(false)
     requestQueue?.add(objectRequest)
 }
 
@@ -91,6 +92,7 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
 
     val restaurantDetailsObject = JSONObject()
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ID, resDetails._id)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_ID, resDetails.restaurantId)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_CITY, resDetails.city)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_BUFFET_AVAILABLE, resDetails.isBuffetAvailable)
@@ -102,8 +104,11 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     restaurantDetailsObject.put(MealAdminUrls.PARAM_ZIP_CODE, resDetails.zipCode)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_ONE, resDetails.tax1)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ICON, resDetails.icon)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_PHONENUMBER, resDetails.phoneNumber)
 
-    var foodTypes = JSONArray()
+    val foodTypes = JSONArray()
     resDetails.foodType.forEach {
         foodTypes.put(it)
     }
@@ -120,7 +125,7 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
         if (networkResponse?.data != null) {
             val jsonError = String(networkResponse.data)
             val listType = object : TypeToken<StandardResponse>() {}.type
-            val response = Gson().fromJson<StandardResponse>(jsonError.toString(), listType)
+            val response = Gson().fromJson<StandardResponse>(jsonError, listType)
             responseCallBack.onError(response.shortDescription)
         }
     }) {

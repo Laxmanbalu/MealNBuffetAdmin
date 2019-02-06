@@ -70,6 +70,9 @@ class MealAdminUrls {
         const val PARAM_TAX_ONE = "tax1"
         const val PARAM_TAX_TWO = "tax2"
         const val PARAM_ZIP_CODE = "zipCode"
+        const val PARAM_ID = "_id"
+        const val PARAM_ICON = "icon"
+        const val PARAM_PHONENUMBER = "phoneNumber"
 
     }
 }

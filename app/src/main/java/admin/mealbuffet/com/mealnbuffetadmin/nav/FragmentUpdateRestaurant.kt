@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_updatedetails.*
 
 
 class FragmentUpdateRestaurant : BaseFragment() {
+    private lateinit var currentRestaurnt: RestaurantDetails
+
     override fun layoutResource(): Int = admin.mealbuffet.com.mealnbuffetadmin.R.layout.fragment_updatedetails
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,6 +27,11 @@ class FragmentUpdateRestaurant : BaseFragment() {
     }
 
     private fun updateRestaurantDetails() {
+
+        if (!::currentRestaurnt.isInitialized) {
+            showNetworkError()
+            return
+        }
         showProgress()
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         val foodTypes = edit_food_type.text.toString().split(",")
@@ -32,7 +39,7 @@ class FragmentUpdateRestaurant : BaseFragment() {
                 tax1 = edit_tax_one.text.toString(), tax2 = edit_tax_two.text.toString(),
                 street = edit_street.text.toString(), city = edit_city.text.toString(), zipCode = edit_zipcode.text.toString().toInt(), state = edit_state.text.toString(),
                 phoneNumber = edit_phonenumber.text.toString(), foodType = foodTypes, restaurantName = edit_res_name.text.toString(),
-                restaurantId = restaurantId)
+                restaurantId = restaurantId, _id = currentRestaurnt.id, icon = currentRestaurnt.icon)
 
 
         updateRestaurantInformation(updateRestaurantDetails, object : ResponseCallback {
@@ -45,7 +52,6 @@ class FragmentUpdateRestaurant : BaseFragment() {
                 hideProgress()
                 showCustomError(data as String)
             }
-
         })
     }
 
@@ -55,7 +61,8 @@ class FragmentUpdateRestaurant : BaseFragment() {
         getRestaurantDetails(resId, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
                 hideProgress()
-                initViewDetails(data as RestaurantDetails)
+                currentRestaurnt = data as RestaurantDetails
+                initViewDetails(currentRestaurnt)
             }
 
             override fun onError(data: Any?) {
@@ -69,7 +76,7 @@ class FragmentUpdateRestaurant : BaseFragment() {
         buffet_switchButton.isChecked = restaurantDetails.isBuffetAvailable
         meal_switchButton.isChecked = restaurantDetails.mealAvailable
         edit_tax_one.setText(restaurantDetails.tax1.toString())
-        edit_tax_two.setText(restaurantDetails.tax1.toString())
+        edit_tax_two.setText(restaurantDetails.tax2.toString())
         edit_street.setText(restaurantDetails.street)
         edit_city.setText(restaurantDetails.city)
         edit_state.setText(restaurantDetails.state)

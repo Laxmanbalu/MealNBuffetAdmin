@@ -1,135 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <EditText
-            android:id="@+id/et_buffetname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/buffet_name"
-            android:inputType="text"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/black" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <EditText
-            android:id="@+id/et_buffetdisplayname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/buffet_display_name"
-            android:inputType="text"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/black" />
-    </android.support.design.widget.TextInputLayout>
-
-    <Spinner
-        android:id="@+id/spin_buffettype"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:entries="@array/buffet_type" />
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <EditText
-            android:id="@+id/et_buffetdesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/buffet_desc"
-            android:inputType="text"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/black" />
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <EditText
-            android:id="@+id/et_buffetstartTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/start_time"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/black" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <EditText
-            android:id="@+id/et_buffetendTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/end_time"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            android:textColor="@android:color/black" />
-    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1">
+            android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/et_buffetadult_price"
+                android:id="@+id/et_buffetname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/buffet_adult_price"
-                android:inputType="numberDecimal"
+                android:hint="@string/buffet_name"
+                android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textAlignment="textStart"
@@ -137,40 +29,153 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1">
+            android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/et_buffetkids_price"
+                android:id="@+id/et_buffetdisplayname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/buffet_kids_price"
-                android:inputType="numberDecimal"
+                android:hint="@string/buffet_display_name"
+                android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textAlignment="textStart"
                 android:textColor="@android:color/black" />
         </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spin_buffettype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:entries="@array/buffet_type" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/et_buffetdesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/buffet_desc"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/et_buffetstartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/start_time"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/et_buffetendTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/end_time"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/et_buffetadult_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/buffet_adult_price"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/et_buffetkids_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/buffet_kids_price"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/transparent" />
+
+        <Button
+            android:id="@+id/buffet_movenext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="20dp"
+            android:background="@drawable/button_round"
+            android:text="@string/btn_move_next"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/transparent" />
-
-    <Button
-        android:id="@+id/buffet_movenext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="20dp"
-        android:textAllCaps="false"
-        android:background="@drawable/button_round"
-        android:text="@string/btn_move_next"
-        android:textColor="@color/white" />
-</LinearLayout>
+</ScrollView>
