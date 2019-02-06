@@ -5,6 +5,7 @@
     <color name="colorAccent">@color/orange_app</color>
     <color name="orange_app">#e74f0e</color>
     <color name="orange_app_aplha_75">#B3e74f0e</color>
+    <color name="orange_app_aplha_40">#40e74f0e</color>
 
     <color name="theme_light_black_500_87">#DE000000</color>
     <color name="theme_light_brand_500_100">#FF052467</color>

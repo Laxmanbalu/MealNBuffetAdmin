@@ -24,4 +24,9 @@
         android:id="@+id/leftNavMealOrderDashboard"
         android:icon="@drawable/ic_meal"
         android:title="@string/menu_meal_dashboard" />
+
+    <item
+        android:id="@+id/leftNavUpdateDetails"
+        android:icon="@drawable/ic_update_details"
+        android:title="@string/menu_update_details" />
 </menu>

@@ -3,7 +3,9 @@ package admin.mealbuffet.com.mealnbuffetadmin.network
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
+import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.request.JsonObjectRequest
@@ -69,4 +71,18 @@ fun updateMealOrderStatus(mealOrderId: String, status: Int, responseCallBack: Re
         responseCallBack.onError()
     })
     requestQueue?.add(jsonObjectRequest)
+}
+
+fun getRestaurantDetails(restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val requestUrl = String.format(RESTAURANT_GET_DETAILS, restaurantId)
+    val objectRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<RestaurantDetails>() {}.type
+        val restaurantsDetails = Gson().fromJson<RestaurantDetails>(it.toString(), listType)
+        responseCallBack.onSuccess(restaurantsDetails)
+    }, Response.ErrorListener {
+        responseCallBack.onError(it)
+    })
+    requestQueue?.add(objectRequest)
 }

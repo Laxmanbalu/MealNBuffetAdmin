@@ -28,7 +28,8 @@
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BaseThemeWithToolbar">
+            android:theme="@style/BaseThemeWithToolbar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

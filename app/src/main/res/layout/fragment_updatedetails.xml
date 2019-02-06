@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/common_background">
+
+            <TextView
+                android:id="@+id/tv_available_header"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/availability"
+                android:textColor="@color/orange_app"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_buffet"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_available_header"
+                android:layout_marginLeft="10dp"
+                android:text="Buffet"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/buffet_switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_available_header"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tv_meal"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_buffet"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Meal"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/meal_switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buffet_switchButton"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/common_background">
+
+            <TextView
+                android:id="@+id/tv_tax_header"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/tax_details"
+                android:textColor="@color/orange_app"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_tax_one"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tax_header"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/tax1"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_tax_one"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tv_tax_header"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tv_tax_two"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tax_one"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="Tax2"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_tax_two"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_tax_one"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/edit_text_background"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/common_background">
+
+            <TextView
+                android:id="@+id/tv_address_header"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Location Details"
+                android:textColor="@color/orange_app"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_street"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_address_header"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/street"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_street"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tv_address_header"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:inputType="text"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_street"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/city"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_city"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_street"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:inputType="text"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tv_zipcode"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_city"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/zipcode"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_zipcode"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_city"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_text_background"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:maxLength="6"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/common_background">
+
+            <TextView
+                android:id="@+id/tv_basic_details"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Basic Details"
+                android:textColor="@color/orange_app"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_res_name"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_basic_details"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/restaurant_name"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_res_name"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tv_basic_details"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:inputType="text"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_res_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/cusinietype"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_food_type"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_res_name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="Indian,Chinese.."
+                android:inputType="text"
+                android:minWidth="155dp"
+                android:padding="5dp"
+                android:textColorHint="@color/theme_light_black_200_100" />
+
+            <TextView
+                android:id="@+id/tv_phonenumber"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_type"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/phone_number"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_phonenumber"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_food_type"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_background"
+                android:digits="0123456789-"
+                android:inputType="phone"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_phonenumber"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/tv_image"
+                    style="@style/subheading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/res_icon"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Restaurant Icon"
+                    android:textColor="@color/black"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/update_item_image"
+                    style="@style/body2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/res_icon"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toRightOf="@+id/tv_image"
+                    android:background="@drawable/common_background"
+                    android:padding="10dp"
+                    android:text="@string/choose_file"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/res_icon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/update_item_image"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

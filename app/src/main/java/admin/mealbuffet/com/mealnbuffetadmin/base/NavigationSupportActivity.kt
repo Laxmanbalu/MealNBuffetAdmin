@@ -4,6 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.FragmentUpdateRestaurant
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
@@ -29,8 +30,9 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
     protected val buffetOrderDashboardFragment: BuffetOrderBoardFragment by lazy { BuffetOrderBoardFragment() }
-    protected val mealOrderBoardFragment: MealOrderBoardFragment by lazy { MealOrderBoardFragment() }
+    private val mealOrderBoardFragment: MealOrderBoardFragment by lazy { MealOrderBoardFragment() }
     protected val mealOrderUpdateFragment: MealOrderUpdateFragment by lazy { MealOrderUpdateFragment() }
+    protected val fragmentUpdateRestaurant: FragmentUpdateRestaurant by lazy { FragmentUpdateRestaurant() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -39,7 +41,15 @@ abstract class NavigationSupportActivity : BaseActivity() {
             R.id.leftNavMealList -> showMealListFragment()
             R.id.leftNavBuffetOrderDashboard -> showBuffetOrderDashBoardFragment()
             R.id.leftNavMealOrderDashboard -> showMealOrderDashBoardFragment()
+            R.id.leftNavUpdateDetails -> showRestaurantDetailsFragment()
         }
+    }
+
+    private fun showRestaurantDetailsFragment() {
+        menuItemId = R.id.leftNavUpdateDetails
+        title = getString(R.string.title_update_details)
+        setHomeIcon(R.drawable.ic_menu_white)
+        showFragment(fragmentUpdateRestaurant)
     }
 
     private fun showMealOrderDashBoardFragment() {
