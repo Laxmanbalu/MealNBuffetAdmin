@@ -1,16 +1,16 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
-import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
-import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_UPDATE_DETAILS
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.error.AuthFailureError
 import com.android.volley.request.JsonObjectRequest
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
 import org.json.JSONObject
 
 fun updateBuffetOrderStatus(buffetId: String, status: Int, responseCallBack: ResponseCallback) {
@@ -85,4 +85,54 @@ fun getRestaurantDetails(restaurantId: String, responseCallBack: ResponseCallbac
         responseCallBack.onError(it)
     })
     requestQueue?.add(objectRequest)
+}
+
+fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val restaurantDetailsObject = JSONObject()
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_ID, resDetails.restaurantId)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_CITY, resDetails.city)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_BUFFET_AVAILABLE, resDetails.isBuffetAvailable)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_MEAL_AVAILABLE, resDetails.mealAvailable)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_MEAL_AVAILABLE, resDetails.mealAvailable)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_NAME, resDetails.restaurantName)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_STREET, resDetails.street)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_STATE, resDetails.state)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ZIP_CODE, resDetails.zipCode)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_ONE, resDetails.tax1)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
+
+    var foodTypes = JSONArray()
+    resDetails.foodType.forEach {
+        foodTypes.put(it)
+    }
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TYPE, foodTypes)
+
+
+    val objectRequest = object : JsonObjectRequest(Request.Method.POST,
+            RESTAURANT_UPDATE_DETAILS, null, Response.Listener<JSONObject> {
+        val listType = object : TypeToken<StandardResponse>() {}.type
+        val response = Gson().fromJson<StandardResponse>(it.toString(), listType)
+        responseCallBack.onSuccess(response.shortDescription)
+    }, Response.ErrorListener { error ->
+        val networkResponse = error.networkResponse
+        if (networkResponse?.data != null) {
+            val jsonError = String(networkResponse.data)
+            val listType = object : TypeToken<StandardResponse>() {}.type
+            val response = Gson().fromJson<StandardResponse>(jsonError.toString(), listType)
+            responseCallBack.onError(response.shortDescription)
+        }
+    }) {
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            return restaurantDetailsObject.toString().toByteArray()
+        }
+    }
+    requestQueue?.add(objectRequest)
+
 }

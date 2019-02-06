@@ -183,13 +183,14 @@
             <EditText
                 android:id="@+id/edit_street"
                 style="@style/subheading_text"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_address_header"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/edit_text_background"
                 android:inputType="text"
+                android:maxLines="10"
                 android:minWidth="155dp"
                 android:padding="5dp" />
 
@@ -220,14 +221,44 @@
                 android:minWidth="155dp"
                 android:padding="5dp" />
 
+
             <TextView
-                android:id="@+id/tv_zipcode"
+                android:id="@+id/tv_state"
                 style="@style/subheading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_city"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/str_state"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_state"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/edit_city"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_text_background"
+                android:inputType="text"
+                android:minWidth="155dp"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tv_zipcode"
+                style="@style/subheading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_state"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="10dp"
                 android:text="@string/zipcode"
                 android:textColor="@color/black"
@@ -238,7 +269,7 @@
                 style="@style/subheading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_below="@+id/edit_city"
+                android:layout_below="@+id/edit_state"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -366,6 +397,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/res_icon"
+                    android:layout_marginTop="20dp"
                     android:paddingTop="10dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="10dp"
@@ -379,8 +411,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/res_icon"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_margin="20dp"
                     android:layout_toRightOf="@+id/tv_image"
                     android:background="@drawable/common_background"
                     android:padding="10dp"
@@ -400,5 +431,18 @@
 
             </RelativeLayout>
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_update_details"
+            style="@style/body1_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_round"
+            android:padding="10dp"
+            android:text="@string/updatedetails"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

@@ -139,4 +139,6 @@
     <string name="restaurant_name">Restaurant Name</string>
     <string name="cusinietype">Cuisine Type</string>
     <string name="phone_number">Phone Number</string>
+    <string name="updatedetails">UpdateDetails</string>
+    <string name="str_state">State</string>
 </resources>

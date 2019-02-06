@@ -28,6 +28,7 @@ class MealAdminUrls {
         const val MEAL_ORDERS_HISTORY = "http://13.250.63.91:8080/mealnbuffet/mealOrderHistoryByResId/%s"
         const val UPDATE_MEALORDER_STATUS = "http://13.250.63.91:8080/mealnbuffet/updateMealOrderId/%s/%s"
         const val RESTAURANT_GET_DETAILS = "http://13.250.63.91:8080/mealnbuffet/getRestaurant/%s"
+        const val RESTAURANT_UPDATE_DETAILS = "http://13.250.63.91:8080/mealnbuffet/updateRestaurant"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"
@@ -59,6 +60,16 @@ class MealAdminUrls {
         const val PARAM_MAX_ITEMS_QTY = "itemsQty"
         const val PARAM_MEAL_NAME = "mealName"
         const val PARAM_MEAL_ID = "mealId"
+        const val PARAM_CITY = "city"
+        const val PARAM_IS_BUFFET_AVAILABLE = "isBuffetAvailable"
+        const val PARAM_IS_MEAL_AVAILABLE = "isMealAvailable"
+        const val PARAM_MEAL_AVAILABLE = "mealAvailable"
+        const val PARAM_RESTAURANT_NAME = "restaurantName"
+        const val PARAM_STREET = "street"
+        const val PARAM_STATE = "state"
+        const val PARAM_TAX_ONE = "tax1"
+        const val PARAM_TAX_TWO = "tax2"
+        const val PARAM_ZIP_CODE = "zipCode"
 
     }
 }
