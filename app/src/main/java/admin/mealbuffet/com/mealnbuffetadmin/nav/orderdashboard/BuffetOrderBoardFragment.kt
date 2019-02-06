@@ -52,7 +52,6 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
             }
         })
         dialog.show(activity?.supportFragmentManager, "ORDERSTATUSDIALOG")
-
     }
 
     override fun layoutResource(): Int = R.layout.fragment_buffetdashboard

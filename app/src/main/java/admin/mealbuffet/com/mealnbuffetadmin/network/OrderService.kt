@@ -107,6 +107,7 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_ICON, resDetails.icon)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_PHONENUMBER, resDetails.phoneNumber)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TIMEZONE, resDetails.timeZone)
 
     val foodTypes = JSONArray()
     resDetails.foodType.forEach {

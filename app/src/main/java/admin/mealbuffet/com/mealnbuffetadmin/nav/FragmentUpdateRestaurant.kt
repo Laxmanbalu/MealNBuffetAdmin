@@ -39,7 +39,7 @@ class FragmentUpdateRestaurant : BaseFragment() {
                 tax1 = edit_tax_one.text.toString(), tax2 = edit_tax_two.text.toString(),
                 street = edit_street.text.toString(), city = edit_city.text.toString(), zipCode = edit_zipcode.text.toString().toInt(), state = edit_state.text.toString(),
                 phoneNumber = edit_phonenumber.text.toString(), foodType = foodTypes, restaurantName = edit_res_name.text.toString(),
-                restaurantId = restaurantId, _id = currentRestaurnt.id, icon = currentRestaurnt.icon)
+                restaurantId = restaurantId, _id = currentRestaurnt.id, icon = currentRestaurnt.icon, timeZone = currentRestaurnt.timeZone)
 
 
         updateRestaurantInformation(updateRestaurantDetails, object : ResponseCallback {

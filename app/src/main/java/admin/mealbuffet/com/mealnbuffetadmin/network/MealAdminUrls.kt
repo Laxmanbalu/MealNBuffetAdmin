@@ -73,6 +73,7 @@ class MealAdminUrls {
         const val PARAM_ID = "_id"
         const val PARAM_ICON = "icon"
         const val PARAM_PHONENUMBER = "phoneNumber"
+        const val PARAM_TIMEZONE = "timeZone"
 
     }
 }

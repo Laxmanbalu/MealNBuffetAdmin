@@ -33,11 +33,12 @@ class OrderStatusChangeDialog : DialogFragment() {
         return AlertDialog.Builder(context!!)
                 .setView(view).setPositiveButton("Proceed") { dialog, which ->
                     val orderStatus: String = view.buffet_order_status_spinner.selectedItem.toString()
-                    if (orderStatus.equals(getString(R.string.choose_order_status_default))) {
+                    val orderStatusValue = getBuffetOrderStatusValue(activity?.applicationContext!!, orderStatus)
+                    if (orderStatus == getString(R.string.choose_order_status_default)) {
                         dialog.dismiss()
                         return@setPositiveButton
                     }
-                    dialogClickListener?.onPositiveBanClick(getBuffetOrderStatusValue(activity?.applicationContext!!, orderStatus))
+                    dialogClickListener?.onPositiveBanClick(orderStatusValue)
                 }.setNegativeButton("Cancel") { dialog, _ ->
                     //                    dialogClickListener?.onNegativeBtnClick()
                     dialog.dismiss()
@@ -48,13 +49,13 @@ class OrderStatusChangeDialog : DialogFragment() {
 
     private fun getSpannableTitle(title: String?): SpannableString {
         val wordSpan = SpannableString(title)
-        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.order_id).length-2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.order_id).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         return wordSpan
     }
 
     private fun getSpannableStatus(status: String?): SpannableString {
         val wordSpan = SpannableString(status)
-        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.present_status).length-2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.present_status).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         return wordSpan
     }
 

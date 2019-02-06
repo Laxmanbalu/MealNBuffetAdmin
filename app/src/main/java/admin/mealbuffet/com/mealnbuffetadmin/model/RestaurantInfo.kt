@@ -9,7 +9,7 @@ data class RestaurantDetails(
         val city: String? = null,
         val icon: String = EMPTY_STRING,
         val rating: Double? = null,
-        val timeZone: String? = null,
+        val timeZone: String = EMPTY_STRING,
         val discount: Int? = null,
         val restaurantId: String? = null,
         val accountNumber: String? = null,
@@ -32,4 +32,4 @@ data class RestaurantDetails(
 data class UpdateRestaurantDetails(val isBuffetAvailable: Boolean = false, val mealAvailable: Boolean = false,
                                    val tax1: String, val tax2: String, val street: String, val city: String, val state : String,
                                    val zipCode: Int, val restaurantName: String, val phoneNumber: String, val foodType: List<String>,
-                                   val restaurantId: String, val _id : String, val icon : String)
+                                   val restaurantId: String, val _id : String, val icon : String, val timeZone : String)
