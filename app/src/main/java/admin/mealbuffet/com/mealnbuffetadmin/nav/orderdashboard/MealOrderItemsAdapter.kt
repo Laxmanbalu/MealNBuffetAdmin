@@ -58,8 +58,14 @@ class MealOrderItemsAdapter(private val requireContext: Context, private val wra
             when (mealOrders.status) {
                 MealOrderStatus.IN_PROGRESS.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
                 MealOrderStatus.READY_TO_PICKUP.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
-                MealOrderStatus.COMPLETED.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
-                MealOrderStatus.REJECTED.status -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_red))
+                MealOrderStatus.COMPLETED.status -> {
+                    itemView.swipeLayout.setLockDrag(true)
+                    itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
+                }
+                MealOrderStatus.REJECTED.status -> {
+                    itemView.swipeLayout.setLockDrag(true)
+                    itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_red))
+                }
                 else -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_brown))
             }
         }

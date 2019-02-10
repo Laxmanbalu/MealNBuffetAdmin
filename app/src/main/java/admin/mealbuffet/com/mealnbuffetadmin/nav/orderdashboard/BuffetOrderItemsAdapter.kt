@@ -58,8 +58,14 @@ class BuffetOrderItemsAdapter(private val requireContext: Context, private val w
             itemView.buffet_order_status.text = getBuffetOrderStatus(requireContext, buffetOrder.status)
             when (buffetOrder.status) {
                 BuffetOrderStatus.ACCEPTED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_green))
-                BuffetOrderStatus.COMPLETED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
-                BuffetOrderStatus.REJECTED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_red))
+                BuffetOrderStatus.COMPLETED.status -> {
+                    itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
+                    itemView.swipeLayout.setLockDrag(true)
+                }
+                BuffetOrderStatus.REJECTED.status -> {
+                    itemView.swipeLayout.setLockDrag(true)
+                    itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_red))
+                }
                 else -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_brown))
             }
         }
