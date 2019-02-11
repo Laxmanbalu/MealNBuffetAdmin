@@ -34,7 +34,6 @@
     <array name="food_type">
         <item name="veg">Veg</item>
         <item name="non-veg">NonVeg</item>
-        <item
     </array>
 
     <string name="buffet_fooditems_select">Select atleast one Food item to Buffet</string>

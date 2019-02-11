@@ -1,7 +1,15 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.*
+import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.Category
+import admin.mealbuffet.com.mealnbuffetadmin.model.CreateBuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.CreateMealItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.model.User
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
@@ -20,7 +28,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_NAME
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_PRICE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_STATUS
-import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADD_ITEM_TYPE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_ADULT_PRICE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_PASSWORD
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_ROLE
@@ -68,7 +75,7 @@ fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: Re
     addItemObject.put(PARAM_ADD_ITEM_NAME, addItem.itemName)
     addItemObject.put(PARAM_ADD_ITEM_DESC, addItem.desc)
     addItemObject.put(PARAM_ADD_ITEM_PRICE, addItem.price.toString())
-    addItemObject.put(PARAM_ADD_ITEM_TYPE, addItem.foodType)
+//    addItemObject.put(PARAM_ADD_ITEM_TYPE, addItem.foodType)
     addItemObject.put(PARAM_ADD_ITEM_STATUS, "Active")
     addItemObject.put(PARAM_ADD_ITEM_CATEGORY_ID, addItem.category)
 

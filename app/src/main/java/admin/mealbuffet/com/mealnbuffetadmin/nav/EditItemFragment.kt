@@ -9,6 +9,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import com.bumptech.glide.Glide
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_additem.*
 
@@ -41,13 +42,18 @@ class EditItemFragment : BaseFragment() {
 
     private fun addSpinnerClickListener() {
         additem_category_spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryLst)
+        categoryLst.forEachIndexed { index, category ->
+            if (category.categoryName == selectedFoodItem.categoryId) {
+                additem_category_spinner.setSelection(index)
+            }
+        }
     }
 
     private fun initView() {
         et_additem_name.setText(selectedFoodItem.item)
         et_additem_price.setText(selectedFoodItem.price.toString())
         et_additem_desc.setText(selectedFoodItem.desc)
-        val foodTypes = getResources().getStringArray(R.array.food_type)
+        Glide.with(requireContext()).load(selectedFoodItem.image).into(item_image)
     }
 
     fun setSelectedFoodItem(argFoodItem: FoodItem) {
