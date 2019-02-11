@@ -28,6 +28,10 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
                 showCustomError(getString(R.string.deleted_item_successfully))
                 fetchGetItemsList()
             }
+
+            EDIT_FOOD_ITEM -> {
+                wrapActionListener().onAction(EDIT_FOOD_ITEM, data)
+            }
         }
     }
 
@@ -131,6 +135,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
     }
 
     companion object {
+        const val EDIT_FOOD_ITEM: String = "editFoodItem"
         const val ADD_FOOD_ITEM: String = "addFoodItem"
         const val DELETE_ITEM_SUCCESSFULLY: String = "DeletedSuccessfully"
         const val DELETE_ITEM_FAILED: String = "DeleteItemFailed"

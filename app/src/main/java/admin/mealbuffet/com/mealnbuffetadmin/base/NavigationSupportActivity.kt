@@ -1,12 +1,29 @@
 package admin.mealbuffet.com.mealnbuffetadmin.base
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.model.*
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.EditBuffetData
+import admin.mealbuffet.com.mealnbuffetadmin.model.EditMealData
+import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealBasicData
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.EditItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.FragmentUpdateRestaurant
-import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
-import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.EDIT_FOOD_ITEM
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetFoodItemsFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.EditBuffetFoodItemsFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.EditBuffetFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.AddMealFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFoodItemsFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment
@@ -16,6 +33,7 @@ import com.mealbuffet.controller.BaseActivity
 
 abstract class NavigationSupportActivity : BaseActivity() {
     protected lateinit var addItemFragment: AddItemFragment
+    protected lateinit var editItemFragment: EditItemFragment
     protected lateinit var addBuffetFragment: AddBuffetFragment
     protected lateinit var editBuffetFragment: EditBuffetFragment
 
@@ -132,6 +150,14 @@ abstract class NavigationSupportActivity : BaseActivity() {
         showFragment(addItemFragment)
     }
 
+    protected fun showEditItemFragment(foodItem: FoodItem) {
+        title = getString(R.string.menu_edit_item)
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        editItemFragment = EditItemFragment()
+        editItemFragment.setSelectedFoodItem(foodItem)
+        showFragment(editItemFragment)
+    }
+
     protected fun showAddMealPage() {
         title = getString(R.string.menu_add_meal)
         setHomeIcon(R.drawable.ic_arrow_back_white)
@@ -175,12 +201,20 @@ abstract class NavigationSupportActivity : BaseActivity() {
                 showMealOrderDashBoardFragment()
                 true
             }
+
+            EDIT_FOOD_ITEM -> {
+                showEditItemFragment(data as FoodItem)
+            }
         }
         return false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         ::addItemFragment.isInitialized && addItemFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        ::editItemFragment.isInitialized && editItemFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }
@@ -197,6 +231,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
 
     override fun onBackPressed() {
         when {
+            ::editItemFragment.isInitialized && editItemFragment.isVisible -> showHomepageFragment()
             ::addItemFragment.isInitialized && addItemFragment.isVisible -> showHomepageFragment()
             ::addBuffetFragment.isInitialized && addBuffetFragment.isVisible -> showBuffetItemsFragment()
             ::editBuffetFragment.isInitialized && editBuffetFragment.isVisible -> showBuffetItemsFragment()

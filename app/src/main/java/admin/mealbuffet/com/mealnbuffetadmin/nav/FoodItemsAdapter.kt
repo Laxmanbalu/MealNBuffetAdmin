@@ -4,6 +4,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.DELETE_ITEM_FAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.DELETE_ITEM_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.EDIT_FOOD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.deleteFoodItems
 import android.content.Context
@@ -60,7 +61,15 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
             }
 
             itemView.delete.setOnClickListener {
-                deleteSelectedItem(it.tag as FoodItem)
+                if (itemView.swipeLayout.isOpened) {
+                    deleteSelectedItem(it.tag as FoodItem)
+                }
+            }
+
+            itemView.edit.setOnClickListener {
+                if (itemView.swipeLayout.isOpened) {
+                    internalActionListener.onAction(EDIT_FOOD_ITEM, it.tag as FoodItem)
+                }
             }
         }
 
@@ -80,6 +89,7 @@ class FoodItemsAdapter(private val requireContext: Context, private val wrapActi
 
         fun setData(foodItem: FoodItem) {
             itemView.tag = foodItem
+            itemView.edit.tag = foodItem
             itemView.delete.tag = foodItem
             itemView.food_items_desc.text = foodItem.desc
             itemView.food_item_name.text = foodItem.item
