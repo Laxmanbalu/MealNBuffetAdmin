@@ -6,6 +6,9 @@ import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 data class AddItem(var itemName: String, val price: Float, val foodType: String, val desc: String,
                    val category: String, val imagePath: String)
 
+data class updateFoodItem(var itemName: String, val price: Float, val foodType: String, val desc: String,
+                   val category: String, val imagePath: String, val itemCode : String)
+
 data class User(var id: String? = EMPTY_STRING,
                 var firstName: String? = EMPTY_STRING,
                 var lastName: String? = EMPTY_STRING,

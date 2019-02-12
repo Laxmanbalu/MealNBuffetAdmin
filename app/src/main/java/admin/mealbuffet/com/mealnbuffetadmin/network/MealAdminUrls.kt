@@ -3,6 +3,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.network
 class MealAdminUrls {
     companion object {
         const val ADD_ITEM = "http://13.250.63.91:8080/admin/addItem"
+        const val UPDATE_ITEM = "http://13.250.63.91:8080/admin/updateItem"
         const val DELETE_ITEM = "http://13.250.63.91:8080/admin/deleteItem/%s"
         const val GET_CATEGORIES = "http://13.250.63.91:8080/mealnbuffet/getCategories"
         const val GET_FOOD_ITEMS_LIST = "http://13.250.63.91:8080/admin/getItems/%s"

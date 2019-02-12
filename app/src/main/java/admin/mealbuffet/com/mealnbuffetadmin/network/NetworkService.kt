@@ -1,15 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.Category
-import admin.mealbuffet.com.mealnbuffetadmin.model.CreateBuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.CreateMealItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
-import admin.mealbuffet.com.mealnbuffetadmin.model.User
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
@@ -52,6 +44,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_BUFFET
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_MEAL
 import com.android.volley.Request
 import com.android.volley.Response
@@ -83,7 +76,7 @@ fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: Re
             Response.Listener<String> { response ->
                 responseCallBack.onSuccess()
             }, ErrorListener {
-        responseCallBack.onSuccess()
+        responseCallBack.onError()
     }) {
         override fun getParams(): MutableMap<String, String> {
             val params = HashMap<String, String>()
@@ -93,6 +86,40 @@ fun addItemToServer(addItem: AddItem, restaurantId: String, responseCallBack: Re
         }
     }
     smr.addFile(PARAM_ADD_ITEM_FILE, addItem.imagePath)
+    smr.addMultipartParam("item", "application/json", addItemObject.toString())
+    smr.isFixedStreamingMode = true
+    requestQueue?.add(smr)
+}
+
+fun updateItem(updateFoodItem: updateFoodItem, restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val addItemObject = JSONObject()
+    addItemObject.put(PARAM_RESTAURANT_ID, restaurantId)
+    addItemObject.put(PARAM_ADD_ITEM_NAME, updateFoodItem.itemName)
+    addItemObject.put(PARAM_ADD_ITEM_DESC, updateFoodItem.desc)
+    addItemObject.put(PARAM_ADD_ITEM_PRICE, updateFoodItem.price.toString())
+    addItemObject.put(PARAM_ADD_ITEM_STATUS, "Active")
+    addItemObject.put(PARAM_ADD_ITEM_CATEGORY_ID, updateFoodItem.category)
+    addItemObject.put("itemCode", updateFoodItem.itemCode)
+
+    val smr = object : SimpleMultiPartRequest(Request.Method.POST, UPDATE_ITEM,
+            Response.Listener<String> { _ ->
+                responseCallBack.onSuccess()
+            }, ErrorListener {
+        val networkResponse = it.networkResponse
+        responseCallBack.onError()
+    }) {
+        override fun getParams(): MutableMap<String, String> {
+            val params = HashMap<String, String>()
+            params["Accept"] = "application/json"
+            headers["Content-Type"] = "application/json; charset=utf-8"
+            return params
+        }
+    }
+    if (updateFoodItem.imagePath.isNotEmpty()) {
+        smr.addFile(PARAM_ADD_ITEM_FILE, updateFoodItem.imagePath)
+    }
     smr.addMultipartParam("item", "application/json", addItemObject.toString())
     smr.isFixedStreamingMode = true
     requestQueue?.add(smr)
