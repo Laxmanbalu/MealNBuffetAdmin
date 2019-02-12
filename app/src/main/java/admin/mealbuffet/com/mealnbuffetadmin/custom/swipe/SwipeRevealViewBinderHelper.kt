@@ -2,7 +2,10 @@ package com.lowes.android.associate.uielements.swipeview
 
 import admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.SwipeRevealLayout
 import android.os.Bundle
-import java.util.*
+import java.util.Arrays
+import java.util.Collections
+import java.util.HashMap
+import java.util.HashSet
 
 class SwipeRevealViewBinderHelper {
 

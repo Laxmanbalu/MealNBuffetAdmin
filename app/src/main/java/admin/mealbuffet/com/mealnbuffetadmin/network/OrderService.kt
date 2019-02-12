@@ -1,7 +1,11 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.*
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
+import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
+import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.model.UpdateRestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_UPDATE_DETAILS
 import com.android.volley.Request
@@ -127,7 +131,11 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
             val jsonError = String(networkResponse.data)
             val listType = object : TypeToken<StandardResponse>() {}.type
             val response = Gson().fromJson<StandardResponse>(jsonError, listType)
-            responseCallBack.onError(response.shortDescription)
+            if(response != null) {
+                responseCallBack.onError(response.shortDescription)
+            } else {
+                responseCallBack.onError("Something went wrong. Check Network Settings and try again")
+            }
         }
     }) {
         override fun getBodyContentType(): String {

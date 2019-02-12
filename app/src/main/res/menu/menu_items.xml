@@ -5,28 +5,43 @@
         android:id="@+id/leftNavHome"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_item_home" />
-    <item
-        android:id="@+id/leftNavBuffetList"
-        android:icon="@drawable/ic_buffet"
-        android:title="@string/menu_buffets_list" />
 
-    <item
-        android:id="@+id/leftNavMealList"
-        android:icon="@drawable/ic_meal"
-        android:title="@string/menu_meal_list" />
 
-    <item
-        android:id="@+id/leftNavBuffetOrderDashboard"
-        android:icon="@drawable/ic_meal"
-        android:title="@string/menu_buffet_dashboard" />
+    <item android:title="FoodTypes">
+        <menu>
+            <item
+                android:id="@+id/leftNavBuffetList"
+                android:icon="@drawable/ic_buffet"
+                android:title="@string/menu_buffets_list" />
 
-    <item
-        android:id="@+id/leftNavMealOrderDashboard"
-        android:icon="@drawable/ic_meal"
-        android:title="@string/menu_meal_dashboard" />
+            <item
+                android:id="@+id/leftNavMealList"
+                android:icon="@drawable/ic_meal"
+                android:title="@string/menu_meal_list" />
+        </menu>
+    </item>
 
-    <item
-        android:id="@+id/leftNavUpdateDetails"
-        android:icon="@drawable/ic_update_details"
-        android:title="@string/menu_update_details" />
+    <item android:title="@string/orderdashboard">
+        <menu>
+            <item
+                android:id="@+id/leftNavBuffetOrderDashboard"
+                android:icon="@drawable/ic_meal"
+                android:title="@string/menu_buffet_dashboard" />
+
+            <item
+                android:id="@+id/leftNavMealOrderDashboard"
+                android:icon="@drawable/ic_meal"
+                android:title="@string/menu_meal_dashboard" />
+        </menu>
+    </item>
+
+
+    <item android:title="Details">
+        <menu>
+            <item
+                android:id="@+id/leftNavUpdateDetails"
+                android:icon="@drawable/ic_update_details"
+                android:title="@string/menu_update_details" />
+        </menu>
+    </item>
 </menu>

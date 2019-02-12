@@ -142,4 +142,5 @@
     <string name="phone_number">Phone Number</string>
     <string name="updatedetails">UpdateDetails</string>
     <string name="str_state">State</string>
+    <string name="orderdashboard">OrderDashBoard</string>
 </resources>

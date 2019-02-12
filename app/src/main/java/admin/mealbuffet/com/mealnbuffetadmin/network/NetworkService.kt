@@ -1,7 +1,16 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.*
+import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.Category
+import admin.mealbuffet.com.mealnbuffetadmin.model.CreateBuffetItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.CreateMealItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
+import admin.mealbuffet.com.mealnbuffetadmin.model.User
+import admin.mealbuffet.com.mealnbuffetadmin.model.updateFoodItem
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER

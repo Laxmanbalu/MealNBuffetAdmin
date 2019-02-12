@@ -36,6 +36,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
     }
 
     private fun fetchGetItemsList() {
+        showProgress()
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         foodItemListViewModel.getFoodItemsData(restaurantId)
     }
@@ -99,6 +100,7 @@ class ItemsListFragment : BaseFragment(), View.OnClickListener, InternalActionLi
     private fun initFoodItemsListViewModel() {
         foodItemListViewModel = ViewModelProviders.of(this).get(FoodItemListViewModel::class.java)
         foodItemListViewModel.liveData.observe(this, Observer {
+            hideProgress()
             if (it == null) {
                 showNetworkError()
             } else {
