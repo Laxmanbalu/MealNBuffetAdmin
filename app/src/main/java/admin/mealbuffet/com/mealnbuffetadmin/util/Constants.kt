@@ -2,6 +2,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.util
 
 object Constants {
     const val EMPTY_STRING = ""
+    const val NEW_LINE = "\n"
     const val SPACING_STRING = " "
 }
 
