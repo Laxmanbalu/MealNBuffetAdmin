@@ -16,9 +16,9 @@ data class RestaurantDetails(
         val type: List<String?>? = null,
         val complementary: Any? = null,
         val isBuffetAvailable: Boolean = false,
-        val tax1: Int? = null,
+        val tax1: Double? = null,
         val buffetMap: Any? = null,
-        val tax2: Int? = null,
+        val tax2: Double? = null,
         val mealAvailable: Boolean = false,
         val phoneNumber: String? = null,
         val discountApplicable: Boolean? = null,
@@ -30,6 +30,6 @@ data class RestaurantDetails(
         val state: String? = null)
 
 data class UpdateRestaurantDetails(val isBuffetAvailable: Boolean = false, val mealAvailable: Boolean = false,
-                                   val tax1: String, val tax2: String, val street: String, val city: String, val state : String,
+                                   val tax1: Double, val tax2: Double, val street: String, val city: String, val state: String,
                                    val zipCode: Int, val restaurantName: String, val phoneNumber: String, val foodType: List<String>,
-                                   val restaurantId: String, val _id : String, val icon : String, val timeZone : String)
+                                   val restaurantId: String, val _id: String, val icon: String, val timeZone: String)

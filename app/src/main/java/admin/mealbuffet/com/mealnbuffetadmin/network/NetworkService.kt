@@ -1,16 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.network
 
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
-import admin.mealbuffet.com.mealnbuffetadmin.model.AddItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.Category
-import admin.mealbuffet.com.mealnbuffetadmin.model.CreateBuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.CreateMealItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
-import admin.mealbuffet.com.mealnbuffetadmin.model.User
-import admin.mealbuffet.com.mealnbuffetadmin.model.updateFoodItem
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.ADD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.AUTH_USER
@@ -55,6 +46,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNP
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_MEAL
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.Response.ErrorListener
@@ -130,6 +122,62 @@ fun updateItem(updateFoodItem: updateFoodItem, restaurantId: String, responseCal
         smr.addFile(PARAM_ADD_ITEM_FILE, updateFoodItem.imagePath)
     }
     smr.addMultipartParam("item", "application/json", addItemObject.toString())
+    smr.isFixedStreamingMode = true
+    requestQueue?.add(smr)
+}
+
+fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCallBack: ResponseCallback) {
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+
+    val restaurantDetailsObject = JSONObject()
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ID, resDetails._id)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_ID, resDetails.restaurantId)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_CITY, resDetails.city)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_BUFFET_AVAILABLE, resDetails.isBuffetAvailable)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_MEAL_AVAILABLE, resDetails.mealAvailable)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_NAME, resDetails.restaurantName)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_STREET, resDetails.street)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_STATE, resDetails.state)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ZIP_CODE, resDetails.zipCode)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_ONE, resDetails.tax1)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_PHONENUMBER, resDetails.phoneNumber)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TIMEZONE, resDetails.timeZone)
+
+    val foodTypes = JSONArray()
+    resDetails.foodType.forEach {
+        foodTypes.put(it)
+    }
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_TYPE, foodTypes)
+
+
+    val smr = object : SimpleMultiPartRequest(Request.Method.POST, MealAdminUrls.RESTAURANT_UPDATE_DETAILS,
+            Response.Listener<String> { _ ->
+                responseCallBack.onSuccess()
+            }, ErrorListener {
+        val networkResponse = it.networkResponse
+        if (networkResponse?.data != null) {
+            val jsonError = String(networkResponse.data)
+            val listType = object : TypeToken<StandardResponse>() {}.type
+            val response = Gson().fromJson<StandardResponse>(jsonError, listType)
+            Log.d("TEST123", "Response: " + response.shortDescription)
+            responseCallBack.onError(response.shortDescription)
+        } else {
+            responseCallBack.onError("Something Went wrong try again")
+        }
+
+    }) {
+        override fun getParams(): MutableMap<String, String> {
+            val params = HashMap<String, String>()
+            params["Accept"] = "application/json"
+            headers["Content-Type"] = "application/json; charset=utf-8"
+            return params
+        }
+    }
+    if (resDetails.icon.isNotEmpty()) {
+        smr.addFile(PARAM_ADD_ITEM_FILE, resDetails.icon)
+    }
+    smr.addMultipartParam("restaurant", "application/json", restaurantDetailsObject.toString())
     smr.isFixedStreamingMode = true
     requestQueue?.add(smr)
 }

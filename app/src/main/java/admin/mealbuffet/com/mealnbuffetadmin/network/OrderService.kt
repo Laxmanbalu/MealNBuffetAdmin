@@ -5,16 +5,12 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
-import admin.mealbuffet.com.mealnbuffetadmin.model.UpdateRestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
-import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_UPDATE_DETAILS
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.error.AuthFailureError
 import com.android.volley.request.JsonObjectRequest
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
 import org.json.JSONObject
 
 fun updateBuffetOrderStatus(buffetId: String, status: Int, responseCallBack: ResponseCallback) {
@@ -92,6 +88,7 @@ fun getRestaurantDetails(restaurantId: String, responseCallBack: ResponseCallbac
     requestQueue?.add(objectRequest)
 }
 
+/*
 fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
 
@@ -101,7 +98,6 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     restaurantDetailsObject.put(MealAdminUrls.PARAM_CITY, resDetails.city)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_BUFFET_AVAILABLE, resDetails.isBuffetAvailable)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_IS_MEAL_AVAILABLE, resDetails.mealAvailable)
-    restaurantDetailsObject.put(MealAdminUrls.PARAM_MEAL_AVAILABLE, resDetails.mealAvailable)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_NAME, resDetails.restaurantName)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_STREET, resDetails.street)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_STATE, resDetails.state)
@@ -144,9 +140,10 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
 
         @Throws(AuthFailureError::class)
         override fun getBody(): ByteArray {
+            Log.d("TEST123", "Restaurant " + restaurantDetailsObject.toString())
             return restaurantDetailsObject.toString().toByteArray()
         }
     }
     requestQueue?.add(objectRequest)
 
-}
+}*/
