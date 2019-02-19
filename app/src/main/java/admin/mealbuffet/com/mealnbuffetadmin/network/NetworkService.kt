@@ -46,7 +46,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNP
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UPDATE_MEAL
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.Response.ErrorListener
@@ -160,7 +159,6 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
             val jsonError = String(networkResponse.data)
             val listType = object : TypeToken<StandardResponse>() {}.type
             val response = Gson().fromJson<StandardResponse>(jsonError, listType)
-            Log.d("TEST123", "Response: " + response.shortDescription)
             responseCallBack.onError(response.shortDescription)
         } else {
             responseCallBack.onError("Something Went wrong try again")
