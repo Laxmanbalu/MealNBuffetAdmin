@@ -23,6 +23,10 @@ class MealOrderBoardFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initMealOrdersView()
+        swipeToRefresh.setOnRefreshListener {
+            swipeToRefresh.isRefreshing = false
+            fetchMealOrdersList()
+        }
     }
 
     private fun initMealOrdersView() {
@@ -35,7 +39,7 @@ class MealOrderBoardFragment : BaseFragment() {
                 renderMealsListView()
             }
         })
-        fetchGetItemsList()
+        fetchMealOrdersList()
     }
 
     private fun renderMealsListView() {
@@ -49,7 +53,7 @@ class MealOrderBoardFragment : BaseFragment() {
         mealOrderItemsAdapter.notifyDataSetChanged()
     }
 
-    private fun fetchGetItemsList() {
+    private fun fetchMealOrdersList() {
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         mealOrdersViewModel.getMealOrdersList(restaurantId)
     }

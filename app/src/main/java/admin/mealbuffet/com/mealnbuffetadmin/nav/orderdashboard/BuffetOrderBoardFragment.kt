@@ -38,7 +38,7 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
                 updateBuffetOrderStatus(buffetOrder.orderId, data as Int, object : ResponseCallback {
                     override fun onSuccess(data: Any?) {
                         dialog.dismiss()
-                        fetchGetItemsList()
+                        fetchBuffetOrdersList()
                     }
 
                     override fun onError(data: Any?) {
@@ -60,6 +60,10 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBuffetOrdersViewModel()
+        swipeToRefresh.setOnRefreshListener {
+            swipeToRefresh.isRefreshing = false
+            fetchBuffetOrdersList()
+        }
     }
 
     private fun initBuffetOrdersViewModel() {
@@ -72,10 +76,10 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
                 renderFoodItemsView()
             }
         })
-        fetchGetItemsList()
+        fetchBuffetOrdersList()
     }
 
-    private fun fetchGetItemsList() {
+    private fun fetchBuffetOrdersList() {
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         buffetOrdersViewModel.getBuffetOrdersList(restaurantId)
     }
