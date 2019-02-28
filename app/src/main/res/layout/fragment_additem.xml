@@ -118,37 +118,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/item_image"
-                android:layout_marginTop="30dp"
+                android:layout_centerVertical="true"
                 android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
                 android:text="Image"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/add_item_image"
-                style="@style/body2_text"
+            <LinearLayout
+                android:id="@+id/image_takeview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/item_image"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/tv_image"
-                android:background="@drawable/common_background"
-                android:padding="10dp"
-                android:text="@string/choose_file"
-                android:textColor="@color/black" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/add_item_image"
+                    style="@style/caption_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_background"
+                    android:padding="10dp"
+                    android:text="@string/choose_file"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/item_take_picture"
+                    style="@style/caption_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/common_background"
+                    android:padding="10dp"
+                    android:text="TakePicture"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/item_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
-                android:layout_toRightOf="@+id/add_item_image"
+                android:layout_toRightOf="@+id/image_takeview"
                 android:visibility="visible" />
 
         </RelativeLayout>

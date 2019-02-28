@@ -1,5 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.nav
 
+import admin.mealbuffet.com.mealnbuffetadmin.custom.ExifUtil.rotateBitmap
 import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.model.UpdateRestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
@@ -28,17 +29,20 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_updatedetails.*
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
-import java.util.*
+import java.util.UUID
 
 
 class FragmentUpdateRestaurant : BaseFragment() {
 
-    private val REQUEST_STORAGE_PERMISSION = 1001
+    private val REQUEST_LOADIMAGE_PERMISSION = 1001
+    private val REQUEST_TAKEPICTURE_PERMISSION = 1002
     private val RESULT_LOAD_IMAGE = 1
+    private val CAMERA_REQUEST = 2
     protected var uploadBitmapImage: Bitmap? = null
     private var filePath: String = Constants.EMPTY_STRING
 
@@ -53,17 +57,34 @@ class FragmentUpdateRestaurant : BaseFragment() {
             updateRestaurantDetails()
         }
 
+        take_picture.setOnClickListener {
+            takePicture()
+        }
         update_item_image.setOnClickListener {
             loadImageFromGallery()
         }
     }
 
+    private fun takePicture() {
+        if (ActivityCompat.checkSelfPermission(activity!!,
+                        Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_TAKEPICTURE_PERMISSION)
+
+        } else {
+            launchCameraApp()
+        }
+    }
+
+    private fun launchCameraApp() {
+        val photoCaptureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(photoCaptureIntent, CAMERA_REQUEST)
+    }
+
     private fun loadImageFromGallery() {
         if (ActivityCompat.checkSelfPermission(activity!!,
                         Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    REQUEST_STORAGE_PERMISSION)
+            requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_LOADIMAGE_PERMISSION)
+
         } else {
             browsePickFromGallery()
         }
@@ -77,11 +98,16 @@ class FragmentUpdateRestaurant : BaseFragment() {
 
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_STORAGE_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                browsePickFromGallery()
+        if (requestCode == REQUEST_LOADIMAGE_PERMISSION || requestCode == REQUEST_TAKEPICTURE_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                if (requestCode == REQUEST_TAKEPICTURE_PERMISSION) {
+                    launchCameraApp()
+                } else {
+                    browsePickFromGallery()
+                }
             } else {
-                showCustomError("To access Gallery App, need to Accepting Permissions")
+                showCustomError("To access Gallery App, Need Accept Permissions")
             }
         }
     }
@@ -102,13 +128,27 @@ class FragmentUpdateRestaurant : BaseFragment() {
                     showCustomError("Loading Image Failed.. try from camera Folder")
                     itemImageView.visibility = View.GONE
                 }
+            } else if (requestCode == CAMERA_REQUEST) {
+                val photo = data?.extras?.get("data") as Bitmap
+                val tempUri = getImageUri(requireContext(), photo)
+                filePath = getPath(tempUri) ?: Constants.EMPTY_STRING
+                val bitmap = rotateBitmap(requireContext(), tempUri, photo)
+                itemImageView.setImageBitmap(bitmap)
             }
         } else {
             showCustomError("Loading Image Failed...")
         }
     }
 
-    protected fun getPath(uri: Uri): String? {
+
+    private fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+        return Uri.parse(path)
+    }
+
+    private fun getPath(uri: Uri): String? {
         val projection = arrayOf(MediaStore.MediaColumns.DATA)
         val cursor = context?.contentResolver?.query(uri, projection, null, null, null)
         val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
@@ -179,8 +219,6 @@ class FragmentUpdateRestaurant : BaseFragment() {
         edit_phonenumber.setText(restaurantDetails.phoneNumber)
         val foodType = android.text.TextUtils.join(",", restaurantDetails.type)
         edit_food_type.setText(foodType)
-//        Glide.with(requireContext()).load(restaurantDetails.icon).into(res_icon)
-
         Glide.with(requireContext())
                 .load(restaurantDetails.icon)
                 .listener(object : RequestListener<Drawable> {

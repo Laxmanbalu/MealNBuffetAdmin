@@ -157,7 +157,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/common_background">
+            android:background="@drawable/common_background"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/tv_address_header"
@@ -291,6 +292,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
+
             android:background="@drawable/common_background">
 
             <TextView
@@ -391,7 +393,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_phonenumber"
+                android:layout_below="@+id/edit_phonenumber"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp">
@@ -410,18 +412,35 @@
                     android:textColor="@color/black"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:id="@+id/update_item_image"
-                    style="@style/body2_text"
+                <LinearLayout
+                    android:id="@+id/image_takeview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/res_icon"
-                    android:layout_margin="20dp"
                     android:layout_toRightOf="@+id/tv_image"
-                    android:background="@drawable/common_background"
-                    android:padding="10dp"
-                    android:text="@string/choose_file"
-                    android:textColor="@color/black" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/update_item_image"
+                        style="@style/caption_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/common_background"
+                        android:padding="10dp"
+                        android:text="@string/choose_file"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/take_picture"
+                        style="@style/caption_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/common_background"
+                        android:padding="10dp"
+                        android:text="TakePicture"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/res_icon"
@@ -431,7 +450,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_toRightOf="@+id/update_item_image"
+                    android:layout_toRightOf="@+id/image_takeview"
                     android:visibility="visible" />
 
             </RelativeLayout>
