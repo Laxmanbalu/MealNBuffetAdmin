@@ -19,6 +19,7 @@ data class RestaurantDetails(
         val tax1: Double? = null,
         val buffetMap: Any? = null,
         val tax2: Double? = null,
+        @SerializedName("isMealAvailable")
         val mealAvailable: Boolean = false,
         val phoneNumber: String? = null,
         val discountApplicable: Boolean? = null,
