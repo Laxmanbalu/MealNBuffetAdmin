@@ -107,7 +107,7 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
     // initializing the navigation drawer views
     private fun initNavigationDrawer() {
         val headerView = leftNavMenu.getHeaderView(0)
-        headerView.nav_header_username.text = PreferencesHelper.getRestaurantId(this)
+        headerView.nav_header_username.text = PreferencesHelper.getRestaurantDisplayName(this)
 
         leftNavSignOut.setOnClickListener {
             showSignOutDialog()

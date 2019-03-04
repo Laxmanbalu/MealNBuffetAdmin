@@ -5,6 +5,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.model.User
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.authenticateUser
 import admin.mealbuffet.com.mealnbuffetadmin.network.getUserDetails
+import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.os.Bundle
 import android.view.View
@@ -41,6 +42,8 @@ class LoginFragment : BaseFragment() {
             override fun onSuccess(data: Any?) {
                 val userInfo = data as User
                 userInfo.restaurantId?.let { PreferencesHelper.storeRestaurantDetails(requireContext(), it) }
+                PreferencesHelper.storeRestaurantDisplayName(requireContext(), userInfo.firstName
+                        ?: EMPTY_STRING)
                 actionListener?.onAction(MOVE_HOME_ACTIVITY)
                 hideProgress()
             }
