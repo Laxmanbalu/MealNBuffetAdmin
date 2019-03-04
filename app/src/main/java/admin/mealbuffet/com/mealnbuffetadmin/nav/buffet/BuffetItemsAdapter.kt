@@ -6,6 +6,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.BUFFET_EDIT
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_FAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.DELETED_BUFFET_SUCCESSFULLY
+import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.BuffetListFragment.Companion.SHOW_BUFFET_ITEMS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PUBLISH_BUFFET
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.UNPUBLISH_BUFFET
@@ -47,20 +48,23 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
 
     class BuffetItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
+            itemView.buffet_item_view.setOnClickListener {
+                internalActionListener.onAction(SHOW_BUFFET_ITEMS, it.tag as BuffetItem)
+            }
             itemView.delete.setOnClickListener {
-                if(itemView.swipeLayout.isOpened) {
+                if (itemView.swipeLayout.isOpened) {
                     deleteSelectedItem(it.tag as BuffetItem)
                 }
             }
 
             itemView.publish.setOnClickListener {
-                if(itemView.swipeLayout.isOpened) {
+                if (itemView.swipeLayout.isOpened) {
                     changePublishTypeOfBuffet(it.tag as BuffetItem)
                 }
             }
 
             itemView.edit.setOnClickListener {
-                if(itemView.swipeLayout.isOpened) {
+                if (itemView.swipeLayout.isOpened) {
                     internalActionListener.onAction(BUFFET_EDIT, it.tag as BuffetItem)
                 }
             }
@@ -111,6 +115,7 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
             itemView.delete.tag = buffetItem
             itemView.publish.tag = buffetItem
             itemView.edit.tag = buffetItem
+            itemView.buffet_item_view.tag = buffetItem
 
             itemView.buffet_item_name.text = buffetItem.buffetName
             itemView.buffet_items_desc.text = buffetItem.typeDesc

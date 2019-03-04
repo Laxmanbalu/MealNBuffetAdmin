@@ -31,6 +31,7 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
             }
             PUBLISHED_BUFFET_FAILED -> showCustomError(data as String)
             BUFFET_EDIT -> wrapActionListener().onAction(BUFFET_EDIT, data)
+            SHOW_BUFFET_ITEMS -> wrapActionListener().onAction(SHOW_BUFFET_ITEMS, data)
         }
     }
 
@@ -96,5 +97,6 @@ class BuffetListFragment : BaseFragment(), InternalActionListener {
         const val BUFFET_EDIT = "EditBuffetItem"
         const val PUBLISHED_BUFFET_FAILED = "PublishedBuffetItemFailed"
         const val ADD_BUFFET: String = "addBuffet"
+        const val SHOW_BUFFET_ITEMS = "showBuffetItems"
     }
 }

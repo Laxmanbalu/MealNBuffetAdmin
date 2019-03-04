@@ -2,12 +2,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.home
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.base.NavigationSupportActivity
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetBasicData
-import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.EditMealData
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealBasicData
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
+import admin.mealbuffet.com.mealnbuffetadmin.model.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.AddItemFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.AddBuffetFragment
@@ -68,7 +63,7 @@ class HomeActivity : NavigationSupportActivity() {
             }
 
             BUFFET_ADDED_SUCCESSFULLY -> {
-                showBuffetItemsFragment()
+                showBuffetsListFragment()
                 true
             }
 
@@ -108,12 +103,24 @@ class HomeActivity : NavigationSupportActivity() {
                 showMealOrderUpdateFragment(data as MealOrders)
                 true
             }
+            BuffetListFragment.SHOW_BUFFET_ITEMS -> {
+                showBuffetDetailedFragment(data as BuffetItem)
+                true
+            }
             else -> {
                 super.onPerformAction(action, data)
                 true
             }
         }
         return false
+    }
+
+    private fun showBuffetDetailedFragment(buffetItem: BuffetItem) {
+        title = buffetItem.buffetName
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        buffetDetailedFragment.buffetItem = buffetItem
+        showFragment(buffetDetailedFragment)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
@@ -149,6 +156,11 @@ class HomeActivity : NavigationSupportActivity() {
             onBackPressed()
             true
         }
+        buffetDetailedFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+
         else -> super.onOptionsItemSelected(item)
     }
 
