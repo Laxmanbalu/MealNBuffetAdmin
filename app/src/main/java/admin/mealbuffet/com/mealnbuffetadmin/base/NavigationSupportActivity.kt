@@ -22,7 +22,8 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected lateinit var addBuffetFragment: AddBuffetFragment
     protected lateinit var editBuffetFragment: EditBuffetFragment
 
-    protected val buffetDetailedFragment : BuffetDetailedFragment by lazy { BuffetDetailedFragment() }
+    protected val buffetDetailedFragment: BuffetDetailedFragment by lazy { BuffetDetailedFragment() }
+    protected val mealDetailedFragment: MealDetailedFragment by lazy { MealDetailedFragment() }
     protected val buffetFoodItemsFragment: BuffetFoodItemsFragment by lazy { BuffetFoodItemsFragment() }
     protected val mealFoodItemsFragment: MealFoodItemsFragment by lazy { MealFoodItemsFragment() }
     protected val editBuffetFoodItemsFragment: EditBuffetFoodItemsFragment by lazy { EditBuffetFoodItemsFragment() }
@@ -223,6 +224,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
             ::editBuffetFragment.isInitialized && editBuffetFragment.isVisible -> showBuffetsListFragment()
             mealOrderUpdateFragment.isVisible -> showMealOrderDashBoardFragment()
             buffetDetailedFragment.isVisible -> showBuffetsListFragment()
+            mealDetailedFragment.isVisible -> showMealListFragment()
             else -> super.onBackPressed()
         }
     }

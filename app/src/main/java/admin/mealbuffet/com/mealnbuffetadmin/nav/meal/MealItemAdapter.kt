@@ -3,6 +3,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.meal
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealItem
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment.Companion.SHOW_MEAL_DETAILED
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.DELETE_MEAL
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
@@ -44,6 +45,9 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
     class MealItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
 
         init {
+            itemView.meal_item.setOnClickListener {
+                internalActionListener.onAction(SHOW_MEAL_DETAILED, it.tag as MealItem)
+            }
             itemView.delete.setOnClickListener {
                 if (itemView.swipeLayout.isOpened) {
                     deleteSelectedItem(it.tag as MealItem)
@@ -108,6 +112,7 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
             itemView.delete.tag = mealItem
             itemView.publish.tag = mealItem
             itemView.edit.tag = mealItem
+            itemView.meal_item.tag = mealItem
 
             itemView.meal_item_name.text = mealItem.mealName
             itemView.meal_items_desc.text = mealItem.complimentory

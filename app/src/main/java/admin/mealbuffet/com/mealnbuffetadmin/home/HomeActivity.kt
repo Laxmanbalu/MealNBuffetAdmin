@@ -13,6 +13,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment.Companion.SHOW_MEAL_DETAILED
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import android.os.Bundle
 import android.view.MenuItem
@@ -107,6 +108,10 @@ class HomeActivity : NavigationSupportActivity() {
                 showBuffetDetailedFragment(data as BuffetItem)
                 true
             }
+            SHOW_MEAL_DETAILED -> {
+                showMealDetailedFragment(data as MealItem)
+
+            }
             else -> {
                 super.onPerformAction(action, data)
                 true
@@ -122,6 +127,14 @@ class HomeActivity : NavigationSupportActivity() {
         showFragment(buffetDetailedFragment)
 
     }
+
+    private fun showMealDetailedFragment(mealItem: MealItem) {
+        title = mealItem.mealName
+        setHomeIcon(R.drawable.ic_arrow_back_white)
+        mealDetailedFragment.mealItem = mealItem
+        showFragment(mealDetailedFragment)
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         itemsListFragment.isVisible -> super.onOptionsItemSelected(item)
@@ -157,6 +170,11 @@ class HomeActivity : NavigationSupportActivity() {
             true
         }
         buffetDetailedFragment.isVisible && item.itemId == android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+
+        mealDetailedFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
         }

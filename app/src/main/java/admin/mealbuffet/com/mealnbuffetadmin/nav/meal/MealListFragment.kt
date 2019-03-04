@@ -30,6 +30,7 @@ class MealListFragment : BaseFragment(), InternalActionListener {
             }
             PUBLISHED_MEAL_FAILED -> showCustomError(data as String)
             MEAL_EDIT -> wrapActionListener().onAction(MealListFragment.MEAL_EDIT, data)
+            SHOW_MEAL_DETAILED -> wrapActionListener().onAction(SHOW_MEAL_DETAILED, data)
         }
     }
 
@@ -93,5 +94,6 @@ class MealListFragment : BaseFragment(), InternalActionListener {
         const val MEAL_EDIT: String = "EditMealItem"
         const val PUBLISHED_MEAL_FAILED: String = "PublishedMealItemFailed"
         const val ADD_MEAL: String = "addMeal"
+        const val SHOW_MEAL_DETAILED = "ShowMealItemsDetaild"
     }
 }

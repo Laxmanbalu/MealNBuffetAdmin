@@ -2,7 +2,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.buffet
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BMFoodItem
-import admin.mealbuffet.com.mealnbuffetadmin.model.FoodItem
 import android.content.Context
 import android.graphics.Typeface
 import android.view.LayoutInflater
@@ -47,17 +46,6 @@ class BuffetDetailedItemsListAdapter(var context: Context) : BaseExpandableListA
         convertView?.food_item_name?.text = foodItemDetails.item
         convertView?.food_items_desc?.text = foodItemDetails.desc
         convertView?.food_icon?.let { updateRestaurantImage(it, foodItemDetails) }
-        convertView?.tag = foodItemDetails
-        convertView?.setOnClickListener {
-            val foodItemDetails = it.tag as FoodItem
-            if (foodItemDetails.checked == true) {
-                foodItemDetails.checked = false
-                it.food_item_check.visibility = View.INVISIBLE
-            } else {
-                foodItemDetails.checked = true
-                it.food_item_check.visibility = View.VISIBLE
-            }
-        }
         return convertView!!
     }
 
