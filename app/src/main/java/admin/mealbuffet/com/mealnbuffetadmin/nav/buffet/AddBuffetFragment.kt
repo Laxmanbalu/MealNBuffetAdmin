@@ -84,6 +84,9 @@ class AddBuffetFragment : BaseFragment() {
                         if (startTimeHour > endTimeHour || (startTimeHour == endTimeHour && startTimeMin > endTimeMin)) {
                             showTimeErrorDialog("Start Time Should be Before End Time.")
                             return@OnTimeSetListener
+                        } else if (startTimeHour == endTimeHour && startTimeMin == endTimeMin) {
+                            showTimeErrorDialog("StartTime &amp; EndTime are Same")
+                            return@OnTimeSetListener
                         }
                     }
                     et_buffetstartTime.setText(String.format("%02d:%02d", hourOfDay, minute))
@@ -99,6 +102,9 @@ class AddBuffetFragment : BaseFragment() {
                     endTimeMin = minute
                     if (hourOfDay < startTimeHour || (hourOfDay == startTimeHour && minute < startTimeMin)) {
                         showTimeErrorDialog("End Time Should be After Start Time.")
+                        return@OnTimeSetListener
+                    } else if (startTimeHour == endTimeHour && startTimeMin == endTimeMin) {
+                        showTimeErrorDialog("StartTime & EndTime are Same")
                         return@OnTimeSetListener
                     }
                     et_buffetendTime.setText(String.format("%02d:%02d", hourOfDay, minute))
