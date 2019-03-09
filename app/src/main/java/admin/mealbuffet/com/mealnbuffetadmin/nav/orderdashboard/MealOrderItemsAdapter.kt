@@ -62,10 +62,10 @@ class MealOrderItemsAdapter(private val requireContext: Context, private val wra
                     itemView.swipeLayout.setLockDrag(true)
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
                 }
-                MealOrderStatus.REJECTED.status -> {
+               /* MealOrderStatus.REJECTED.status -> {
                     itemView.swipeLayout.setLockDrag(true)
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_red))
-                }
+                }*/
                 else -> itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_brown))
             }
         }
