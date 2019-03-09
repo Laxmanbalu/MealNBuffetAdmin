@@ -144,4 +144,5 @@
     <string name="str_state">State</string>
     <string name="orderdashboard">OrderDashBoard</string>
     <string name="time_format">%0</string>
+    <string name="order_cut_off_time">Order Cut Off Time</string>
 </resources>

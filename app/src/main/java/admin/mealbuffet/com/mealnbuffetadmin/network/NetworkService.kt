@@ -24,6 +24,8 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PAR
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_PASSWORD
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_ROLE
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_AUTH_USERID
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_CUTOFFTIME
+import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_CUTOFFTIME_FLAG
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ID
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_ITEMS
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.PARAM_BUFFET_NAME
@@ -384,18 +386,20 @@ fun getActiveItemsList(restaurantId: String, responseCallBack: ResponseCallback)
 fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
 
-    val addItemObject = JSONObject()
-    addItemObject.put(PARAM_RESTAURANT_ID, buffetItem.buffetBasicData.restaurantId)
-    addItemObject.put(PARAM_ACTIVE_FLAG, true)
-    addItemObject.put(PARAM_ADULT_PRICE, buffetItem.buffetBasicData.adultPrice)
-    addItemObject.put(PARAM_BUFFET_NAME, buffetItem.buffetBasicData.buffetName)
-    addItemObject.put(PARAM_DISPLAY_NAME, buffetItem.buffetBasicData.displayName)
-    addItemObject.put(PARAM_END_TIME, buffetItem.buffetBasicData.endTime)
-    addItemObject.put(PARAM_KIDS_PRICE, buffetItem.buffetBasicData.kidsPrice)
-    addItemObject.put(PARAM_START_TIME, buffetItem.buffetBasicData.startTime)
-    addItemObject.put(PARAM_STATUS, 1)
-    addItemObject.put(PARAM_TYPE_DESC, buffetItem.buffetBasicData.desc)
-    addItemObject.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
+    val addBuffet = JSONObject()
+    addBuffet.put(PARAM_RESTAURANT_ID, buffetItem.buffetBasicData.restaurantId)
+    addBuffet.put(PARAM_ACTIVE_FLAG, true)
+    addBuffet.put(PARAM_ADULT_PRICE, buffetItem.buffetBasicData.adultPrice)
+    addBuffet.put(PARAM_BUFFET_NAME, buffetItem.buffetBasicData.buffetName)
+    addBuffet.put(PARAM_DISPLAY_NAME, buffetItem.buffetBasicData.displayName)
+    addBuffet.put(PARAM_END_TIME, buffetItem.buffetBasicData.endTime)
+    addBuffet.put(PARAM_KIDS_PRICE, buffetItem.buffetBasicData.kidsPrice)
+    addBuffet.put(PARAM_START_TIME, buffetItem.buffetBasicData.startTime)
+    addBuffet.put(PARAM_STATUS, 1)
+    addBuffet.put(PARAM_BUFFET_CUTOFFTIME, buffetItem.buffetBasicData.buffetCutOffTime)
+    addBuffet.put(PARAM_BUFFET_CUTOFFTIME_FLAG, true)
+    addBuffet.put(PARAM_TYPE_DESC, buffetItem.buffetBasicData.desc)
+    addBuffet.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
 
     val buffetItemsObject = JSONObject()
     val array = JSONArray()
@@ -403,7 +407,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
         array.put(it)
     }
     buffetItemsObject.put(PARAM_ITEMS_LST, array)
-    addItemObject.put(PARAM_BUFFET_ITEMS, buffetItemsObject)
+    addBuffet.put(PARAM_BUFFET_ITEMS, buffetItemsObject)
 
     val stringRequest = object : JsonObjectRequest(Request.Method.POST,
             ADD_BUFFET, null, Response.Listener<JSONObject> {
@@ -419,7 +423,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
 
         @Throws(AuthFailureError::class)
         override fun getBody(): ByteArray {
-            return addItemObject.toString().toByteArray()
+            return addBuffet.toString().toByteArray()
         }
     }
     requestQueue?.add(stringRequest)
@@ -442,6 +446,8 @@ fun updateSelectedBuffetItem(buffetItem: CreateBuffetItem, buffetId: String, res
     updateBuffet.put(PARAM_STATUS, 1)
     updateBuffet.put(PARAM_TYPE_DESC, buffetItem.buffetBasicData.desc)
     updateBuffet.put(PARAM_TYPE, buffetItem.buffetBasicData.type)
+    updateBuffet.put(PARAM_BUFFET_CUTOFFTIME, buffetItem.buffetBasicData.buffetCutOffTime)
+    updateBuffet.put(PARAM_BUFFET_CUTOFFTIME_FLAG, true)
 
     val buffetItemsObject = JSONObject()
     val array = JSONArray()

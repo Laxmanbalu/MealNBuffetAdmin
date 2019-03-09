@@ -57,7 +57,8 @@ class AddBuffetFragment : BaseFragment() {
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         return BuffetBasicData(buffetName = et_buffetname.text.toString(), desc = et_buffetdesc.text.toString(), type = spin_buffettype.selectedItem.toString(),
                 startTime = et_buffetstartTime.text.toString(), endTime = et_buffetendTime.text.toString(), adultPrice = et_buffetadult_price.text.toString().toDouble(),
-                kidsPrice = et_buffetkids_price.text.toString().toDouble(), displayName = et_buffetdisplayname.text.toString(), restaurantId = restaurantId)
+                kidsPrice = et_buffetkids_price.text.toString().toDouble(), displayName = et_buffetdisplayname.text.toString(), restaurantId = restaurantId,
+                buffetCutOffTime = et_cutoff_time.text.toString())
     }
 
     private fun showFoodSelectionError(message: String) {
@@ -108,6 +109,7 @@ class AddBuffetFragment : BaseFragment() {
                         return@OnTimeSetListener
                     }
                     et_buffetendTime.setText(String.format("%02d:%02d", hourOfDay, minute))
+                    et_cutoff_time.setText(String.format("%02d:%02d", hourOfDay, minute))
                 }, 0, 0, false)
         timePickerDialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         timePickerDialog.show()

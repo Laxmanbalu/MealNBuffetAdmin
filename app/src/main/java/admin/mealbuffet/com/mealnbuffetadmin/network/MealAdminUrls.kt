@@ -75,6 +75,8 @@ class MealAdminUrls {
         const val PARAM_ICON = "icon"
         const val PARAM_PHONENUMBER = "phoneNumber"
         const val PARAM_TIMEZONE = "timeZone"
+        const val PARAM_BUFFET_CUTOFFTIME = "orderCutOffTime"
+        const val PARAM_BUFFET_CUTOFFTIME_FLAG = "orderCutOffFlag"
 
     }
 }
