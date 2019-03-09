@@ -36,6 +36,12 @@ class AddBuffetFragment : BaseFragment() {
             hideKeyboard(requireActivity())
             showEndTimePickerDialog()
         }
+
+        et_cutoff_time.inputType = InputType.TYPE_NULL
+        et_cutoff_time.setOnClickListener {
+            showCutOffTimePickerDialog()
+        }
+
         buffet_movenext.setOnClickListener {
             val data = makeBuffetBasicObject()
             if (data != null) {
@@ -43,6 +49,7 @@ class AddBuffetFragment : BaseFragment() {
             }
         }
     }
+
 
     private fun makeBuffetBasicObject(): BuffetBasicData? {
         if (showDataError(et_buffetname) || showDataError((et_buffetdisplayname)) || showDataError(et_buffetdesc) || showDataError((et_buffetstartTime)) ||
@@ -74,6 +81,20 @@ class AddBuffetFragment : BaseFragment() {
             etData.error = null
             false
         }
+    }
+
+    private fun showCutOffTimePickerDialog() {
+        val timePickerDialog = TimePickerDialog(requireContext(), android.R.style.Theme_Holo_Light_Dialog,
+                TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                    if (hourOfDay in startTimeHour..endTimeHour) {
+                        et_cutoff_time.setText(String.format("%02d:%02d", hourOfDay, minute))
+                    } else {
+                        showTimeErrorDialog("Order CutOff Time Should be Between Start and End Time")
+                    }
+                }, 0, 0, false)
+        timePickerDialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        timePickerDialog.show()
+
     }
 
     private fun showStartTimePickerDialog() {
