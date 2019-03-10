@@ -2,6 +2,8 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
+import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBaseFragment.Companion.UPDATE_BUFFET_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
 import android.content.Context
@@ -9,11 +11,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mealbuffet.controller.ActionListener
 import kotlinx.android.synthetic.main.buffet_order_item_view.view.*
 
 
-class BuffetOrderItemsAdapter(private val requireContext: Context, private val wrapActionListener: ActionListener) : RecyclerView.Adapter<BuffetOrderItemsAdapter.BuffetOrderItemViewHolder>() {
+class BuffetOrderItemsAdapter(private val requireContext: Context, private val wrapActionListener: InternalActionListener) : RecyclerView.Adapter<BuffetOrderItemsAdapter.BuffetOrderItemViewHolder>() {
 
     private var buffetOrdersLst: ArrayList<BuffetOrder>? = null
 
@@ -36,10 +37,11 @@ class BuffetOrderItemsAdapter(private val requireContext: Context, private val w
         buffetOrdersLst?.get(position)?.let { buffetOrderItemViewHolder.setData(it) }
     }
 
-    class BuffetOrderItemViewHolder(itemView: View, private val internalActionListener: ActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
+    class BuffetOrderItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.btn_buffet_complete.setOnClickListener {
-                
+                val completeBuffetOrder = it.tag as BuffetOrder
+                internalActionListener.onAction(UPDATE_BUFFET_ORDER_STATUS, completeBuffetOrder)
             }
         }
 
