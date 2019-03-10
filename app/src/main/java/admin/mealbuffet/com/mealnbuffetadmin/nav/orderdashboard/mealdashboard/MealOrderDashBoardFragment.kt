@@ -35,7 +35,7 @@ class MealOrderDashBoardFragment : BaseFragment() {
     }
 
     private fun initMealOrdersViewModel() {
-        mealOrdersViewModel = ViewModelProviders.of(this).get(MealOrdersViewModel::class.java)
+        mealOrdersViewModel = ViewModelProviders.of(requireActivity()).get(MealOrdersViewModel::class.java)
         mealOrdersViewModel.liveData.observe(this, Observer {
             if (it == null) {
                 showNetworkError()
@@ -56,7 +56,7 @@ class MealOrderDashBoardFragment : BaseFragment() {
 
         //ToUpdate Ordered tab title
         val mealOrderedOrdersHistory = mealOrdersHistory.filter {
-            it.status == MealOrderStatus.IN_PROGRESS.status || it.status == MealOrderStatus.READY_TO_PICKUP.status
+            it.status == MealOrderStatus.IN_PROGRESS.status || it.status == MealOrderStatus.READY_TO_PICKUP.status || it.status == MealOrderStatus.ORDERED.status
         }
 
         val acceptedTitle = String.format(getString(R.string.ordered), mealOrderedOrdersHistory.size)
@@ -77,7 +77,8 @@ class MealOrderDashBoardFragment : BaseFragment() {
         val mealRejectedOrdersHistory = mealOrdersHistory.filter {
             it.status != MealOrderStatus.IN_PROGRESS.status &&
                     it.status != MealOrderStatus.COMPLETED.status &&
-                    it.status != MealOrderStatus.READY_TO_PICKUP.status
+                    it.status != MealOrderStatus.READY_TO_PICKUP.status &&
+                    it.status != MealOrderStatus.ORDERED.status
         }
 
         val rejectedTitle = String.format(getString(R.string.other), mealRejectedOrdersHistory.size)
