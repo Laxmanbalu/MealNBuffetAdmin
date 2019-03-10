@@ -6,7 +6,7 @@ class BuffetOrderOtherFragment : BuffetOrderBaseFragment() {
     override fun getBuffetOrdersHistory() {
         val ordersList = getBuffetOrdersList()
         val mealOrdersPendingHistory = ordersList?.filter {
-            it.status != BuffetOrderStatus.COMPLETED.status && it.status != BuffetOrderStatus.ACCEPTED.status
+            it.status != BuffetOrderStatus.COMPLETED.status && it.status != BuffetOrderStatus.ORDERED.status
         }
         updateViews(mealOrdersPendingHistory)
     }

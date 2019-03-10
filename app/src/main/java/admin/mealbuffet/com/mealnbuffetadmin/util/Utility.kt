@@ -16,12 +16,12 @@ fun hideKeyboard(activity: Activity) {
 }
 
 //    ORDERED  -0 - client
-//    ACCEPTED -1 - admin
+//    ORDERED -1 - admin
 //    COMPLETED-4 - admin
 //    REJECTED-5  - Admin
 //    CANCELED-6  - Client
 fun getBuffetOrderStatus(context: Context, status: Int): String = when (status) {
-    BuffetOrderStatus.ACCEPTED.status -> context.getString(R.string.buffet_order_accepted)
+    BuffetOrderStatus.ORDERED.status -> context.getString(R.string.buffet_order_accepted)
     BuffetOrderStatus.COMPLETED.status -> context.getString(R.string.buffet_order_completed)
     BuffetOrderStatus.REJECTED.status -> context.getString(R.string.buffet_order_rejected)
     else -> context.getString(R.string.order_pending)
@@ -36,7 +36,7 @@ fun getMealOrderStatus(context: Context, status: Int): String = when (status) {
 }
 
 fun getBuffetOrderStatusValue(context: Context, status: String): Int = when (status) {
-    context.getString(R.string.buffet_order_accepted) -> BuffetOrderStatus.ACCEPTED.status
+    context.getString(R.string.buffet_order_accepted) -> BuffetOrderStatus.ORDERED.status
     context.getString(R.string.buffet_order_completed) -> BuffetOrderStatus.COMPLETED.status
     context.getString(R.string.buffet_order_rejected) -> BuffetOrderStatus.REJECTED.status
     else -> -1

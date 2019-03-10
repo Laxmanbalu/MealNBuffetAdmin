@@ -25,7 +25,7 @@ abstract class BuffetOrderBaseFragment : BaseFragment() {
 
     fun getBuffetOrdersList(): ArrayList<BuffetOrder>? {
         val buffetOrdersHistory = ViewModelProviders.of(requireActivity()).get(BuffetOrdersViewModel::class.java).liveData.value
-        return buffetOrdersHistory?.let { it as ArrayList<BuffetOrder> }
+        return buffetOrdersHistory?.let { it.buffetOrderList as ArrayList<BuffetOrder> }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

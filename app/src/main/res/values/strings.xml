@@ -146,6 +146,7 @@
     <string name="time_format">%0</string>
     <string name="order_cut_off_time">Order Cut Off Time</string>
 
+    <string name="cost">$%.2f</string>
     <string name="ordered">Ordered(%s)</string>
     <string name="completed">Completed(%s)</string>
     <string name="other">Other(%s)</string>

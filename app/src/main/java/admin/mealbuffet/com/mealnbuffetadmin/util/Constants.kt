@@ -9,11 +9,12 @@ object Constants {
 enum class BuffetOrderStatus(var status: Int) {
 
     //    ORDERED  -0 - client
-//    ACCEPTED -1 - admin
+//    ORDERED -1 - admin
 //    COMPLETED-4 - admin
 //    REJECTED-5  - Admin
 //    CANCELED-6  - Client
-    ACCEPTED(1),
+//    ORDERED(0),
+    ORDERED(0),
     COMPLETED(4),
     REJECTED(5)
 }

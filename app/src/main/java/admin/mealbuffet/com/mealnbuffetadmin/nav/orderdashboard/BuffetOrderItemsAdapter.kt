@@ -2,7 +2,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment.Companion.UPDATE_BUFFET_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
 import android.content.Context
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.mealbuffet.controller.ActionListener
 import kotlinx.android.synthetic.main.buffet_order_item_view.view.*
-import kotlinx.android.synthetic.main.view_holder_buffet_order_item.view.*
 
 
 class BuffetOrderItemsAdapter(private val requireContext: Context, private val wrapActionListener: ActionListener) : RecyclerView.Adapter<BuffetOrderItemsAdapter.BuffetOrderItemViewHolder>() {
@@ -40,33 +38,33 @@ class BuffetOrderItemsAdapter(private val requireContext: Context, private val w
 
     class BuffetOrderItemViewHolder(itemView: View, private val internalActionListener: ActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
-            itemView.buffet_order_update.setOnClickListener {
-                if (itemView.swipeLayout.isOpened) {
-                    itemView.swipeLayout.closeSecondaryView(true)
-                    internalActionListener.onAction(UPDATE_BUFFET_ORDER_STATUS, it.tag as BuffetOrder)
-                }
+            itemView.btn_buffet_complete.setOnClickListener {
+                
             }
         }
 
         fun setData(buffetOrder: BuffetOrder) {
             itemView.tag = buffetOrder
-            itemView.buffet_order_update.tag = buffetOrder
             itemView.buffet_orderid.text = buffetOrder.orderId
-            itemView.buffet_billedamount.text = String.format(requireContext.getString(R.string.bill_amount), buffetOrder.billedAmount)
-            itemView.buffet_adults.text = String.format(requireContext.getString(R.string.number_adults), buffetOrder.numerOfAudults)
-            itemView.buffet_kids.text = String.format(requireContext.getString(R.string.number_kids), buffetOrder.numberOfKids)
+            itemView.buffet_amt.text = String.format(requireContext.getString(R.string.cost), buffetOrder.billedAmount)
+            itemView.adults_count.text = buffetOrder.numerOfAudults.toString()
+            itemView.kids_count.text = buffetOrder.numberOfKids.toString()
+            itemView.order_date.text = buffetOrder.date
             itemView.buffet_order_status.text = getBuffetOrderStatus(requireContext, buffetOrder.status)
             when (buffetOrder.status) {
-                BuffetOrderStatus.ACCEPTED.status -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_green))
+                BuffetOrderStatus.ORDERED.status -> {
+                    itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_green))
+                    itemView.btn_buffet_complete.visibility = View.VISIBLE
+                    itemView.btn_buffet_complete.tag = buffetOrder
+                }
                 BuffetOrderStatus.COMPLETED.status -> {
                     itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
-                    itemView.swipeLayout.setLockDrag(true)
+                    itemView.btn_buffet_complete.visibility = View.GONE
                 }
-                /*BuffetOrderStatus.REJECTED.status -> {
-                    itemView.swipeLayout.setLockDrag(true)
+                else -> {
                     itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_red))
-                }*/
-                else -> itemView.buffet_order_status.setTextColor(requireContext.getColor(R.color.color_brown))
+                    itemView.btn_buffet_complete.visibility = View.GONE
+                }
             }
         }
     }

@@ -2,7 +2,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
-import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.BuffetOrdersViewModel
 import android.arch.lifecycle.Observer
@@ -17,7 +17,7 @@ import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_buffetdashboard.*
 import java.util.*
 
-class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
+class BuffetOrderBoardFragment : BaseFragment() {
 
     private var buffetOrdersList = ArrayList<BuffetOrder>()
     private val buffetOrderedFragment by lazy { BuffetOrderedFragment() }
@@ -25,10 +25,6 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
     private val buffetOtherFragment by lazy { BuffetOrderOtherFragment() }
     private val pageAdapter by lazy { ViewPagerAdapter(childFragmentManager) }
     private lateinit var buffetOrdersViewModel: BuffetOrdersViewModel
-
-    override fun onAction(action: String, data: Any?) {
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,16 +51,54 @@ class BuffetOrderBoardFragment : BaseFragment(), InternalActionListener {
     }
 
     private fun initBuffetOrdersViewModel() {
-        buffetOrdersViewModel = ViewModelProviders.of(this).get(BuffetOrdersViewModel::class.java)
+        buffetOrdersViewModel = ViewModelProviders.of(requireActivity()).get(BuffetOrdersViewModel::class.java)
         buffetOrdersViewModel.liveData.observe(this, Observer {
             if (it == null) {
                 showNetworkError()
             } else {
                 buffetOrdersList = it.buffetOrderList as ArrayList<BuffetOrder>
-
+                updateTabTitles(buffetOrdersList)
+                when (buffet_orders_viewpager.currentItem) {
+                    0 -> buffetOrderedFragment.refreshView()
+                    1 -> buffetCompletedFragment.refreshView()
+                    2 -> buffetOtherFragment.refreshView()
+                }
             }
         })
         fetchBuffetOrdersList()
+    }
+
+
+    private fun updateTabTitles(mealOrdersHistory: ArrayList<BuffetOrder>) {
+
+        //ToUpdate Ordered tab title
+        val mealOrderedOrdersHistory = mealOrdersHistory?.filter {
+            it.status == BuffetOrderStatus.ORDERED.status
+        }
+
+        val acceptedTitle = String.format(getString(R.string.ordered), mealOrderedOrdersHistory?.size)
+        val acceptedTab = buffet_orders_tab.getTabAt(0)
+        acceptedTab!!.text = acceptedTitle
+
+
+        //Method to update Completed Tab title
+        val mealCompletedOrdersHistory = mealOrdersHistory?.filter {
+            it.status == BuffetOrderStatus.ORDERED.status
+        }
+        val completedTitle = String.format(getString(R.string.completed), mealCompletedOrdersHistory?.size)
+        val completedTab = buffet_orders_tab.getTabAt(1)
+        completedTab!!.text = completedTitle
+
+
+        //ToUpdate Other tab title
+        val mealRejectedOrdersHistory = mealOrdersHistory?.filter {
+            it.status != BuffetOrderStatus.ORDERED.status && it.status == BuffetOrderStatus.COMPLETED.status
+        }
+
+        val rejectedTitle = String.format(getString(R.string.other), mealRejectedOrdersHistory?.size)
+        val rejectedTab = buffet_orders_tab.getTabAt(2)
+        rejectedTab!!.text = rejectedTitle
+
     }
 
     private fun fetchBuffetOrdersList() {

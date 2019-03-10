@@ -4,23 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout
-        android:id="@+id/swipeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:dragEdge="right">
+    <!-- <admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout
+         android:id="@+id/swipeLayout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:dragEdge="right">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/buffet_order_update"
-                layout="@layout/buffet_order_swipe_view_update" />
-        </LinearLayout>
+             <include
+                 android:id="@+id/buffet_order_update"
+                 layout="@layout/buffet_order_swipe_view_update" />
+         </LinearLayout>
 
-        <include layout="@layout/buffet_order_item_view" />
-    </admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout>
+         <include layout="@layout/buffet_order_item_view" />
+     </admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.ItemSwipeRevealLayout>
+ -->
+    <include layout="@layout/buffet_order_item_view" />
 
     <View
         android:layout_width="match_parent"
