@@ -83,7 +83,7 @@ class BuffetOrderBoardFragment : BaseFragment() {
 
         //Method to update Completed Tab title
         val mealCompletedOrdersHistory = mealOrdersHistory?.filter {
-            it.status == BuffetOrderStatus.ORDERED.status
+            it.status == BuffetOrderStatus.COMPLETED.status
         }
         val completedTitle = String.format(getString(R.string.completed), mealCompletedOrdersHistory?.size)
         val completedTab = buffet_orders_tab.getTabAt(1)
