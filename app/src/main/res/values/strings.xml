@@ -150,4 +150,9 @@
     <string name="ordered">Ordered(%s)</string>
     <string name="completed">Completed(%s)</string>
     <string name="other">Other(%s)</string>
+
+    <string name="complete">Complete</string>
+    <string name="ready_to_pickUp">ReadyToPickUp</string>
+    <string name="inprogress">InProgress</string>
+    <string name="str_ordered">Ordered</string>
 </resources>

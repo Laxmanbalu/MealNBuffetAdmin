@@ -50,4 +50,12 @@ fun getMealOrderStatusValue(context: Context, status: String): Int = when (statu
     else -> -1
 }
 
+fun getNextStepOfMealOrderStatus(curStatus: Int): Int {
+    return when (curStatus) {
+        MealOrderStatus.ORDERED.status -> MealOrderStatus.IN_PROGRESS.status
+        MealOrderStatus.IN_PROGRESS.status -> MealOrderStatus.READY_TO_PICKUP.status
+        else -> MealOrderStatus.COMPLETED.status
+    }
+}
+
 

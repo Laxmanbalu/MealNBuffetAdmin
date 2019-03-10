@@ -42,7 +42,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:text="Pending"
         android:textColor="@color/orange_app" />
 
     <LinearLayout
@@ -72,7 +71,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/header_adults"
-            android:text="5"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -102,7 +100,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/header_kids"
-            android:text="1"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -134,7 +131,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/buffet_amt_header"
-            android:text="$10.24"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -179,7 +175,7 @@
         android:background="@drawable/common_background_green"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="Complete"
+        android:text="@string/complete"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 

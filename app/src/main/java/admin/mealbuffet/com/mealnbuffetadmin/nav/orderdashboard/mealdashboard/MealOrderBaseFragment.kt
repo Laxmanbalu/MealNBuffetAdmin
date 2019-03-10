@@ -3,7 +3,10 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
+import admin.mealbuffet.com.mealnbuffetadmin.network.updateMealOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
+import admin.mealbuffet.com.mealnbuffetadmin.util.getNextStepOfMealOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.viewmodel.MealOrdersViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -24,15 +27,18 @@ abstract class MealOrderBaseFragment : BaseFragment(), InternalActionListener {
     }
 
     private fun updateOrderStatus(mealOrder: MealOrders) {
-        /* updateBuffetOrderStatus(buffetOrder.orderId, BuffetOrderStatus.COMPLETED.status, object : ResponseCallback {
-             override fun onSuccess(data: Any?) {
-                 updateMealOrders()
-             }
+        val nextStatus = getNextStepOfMealOrderStatus(mealOrder.status ?: 0)
+        mealOrder.mealOrderId?.let {
+            updateMealOrderStatus(it, nextStatus, object : ResponseCallback {
+                override fun onSuccess(data: Any?) {
+                    updateMealOrders()
+                }
 
-             override fun onError(data: Any?) {
-                 showNetworkError()
-             }
-         })*/
+                override fun onError(data: Any?) {
+                    showNetworkError()
+                }
+            })
+        }
     }
 
     override fun layoutResource(): Int = R.layout.meal_orders_page

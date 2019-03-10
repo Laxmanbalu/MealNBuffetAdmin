@@ -3,6 +3,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrders
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderBaseFragment.Companion.UPDATE_MEAL_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.MealOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.getMealOrderStatus
 import android.content.Context
@@ -38,33 +39,38 @@ class MealOrderItemsAdapter(private val requireContext: Context, private val wra
 
     class MealOrderItemViewHolder(itemView: View, private val internalActionListener: InternalActionListener, private val requireContext: Context) : RecyclerView.ViewHolder(itemView) {
         init {
-
+            itemView.btn_meal_status_update.setOnClickListener {
+                val mealOrders = it.tag as MealOrders
+                internalActionListener.onAction(UPDATE_MEAL_ORDER_STATUS, mealOrders)
+            }
         }
 
-        fun setData(mealOrders: MealOrders) {
-            itemView.tag = mealOrders
-            itemView.meal_orderid.text = mealOrders.mealOrderId.toString()
-            itemView.meal_billed_amt.text = String.format(requireContext.getString(R.string.cost), mealOrders.billedAmount)
-            itemView.meal_order_status.text = getMealOrderStatus(requireContext, mealOrders.status!!)
-            itemView.meal_qty_val.text = mealOrders.mealList?.size.toString()
-            when (mealOrders.status) {
+        fun setData(mealOrder: MealOrders) {
+            itemView.tag = mealOrder
+            itemView.btn_meal_status_update.tag = mealOrder
+            itemView.meal_orderid.text = mealOrder.mealOrderId.toString()
+            itemView.meal_billed_amt.text = String.format(requireContext.getString(R.string.cost), mealOrder.billedAmount)
+            itemView.meal_order_status.text = getMealOrderStatus(requireContext, mealOrder.status!!)
+            itemView.meal_qty_val.text = mealOrder.mealList?.size.toString()
+            itemView.meal_order_date.text = mealOrder.date
+            when (mealOrder.status) {
                 MealOrderStatus.ORDERED.status -> {
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
                     itemView.btn_meal_status_update.visibility = View.VISIBLE
-                    itemView.btn_meal_status_update.text = "InProgress"
-                    itemView.meal_order_status.text = "Ordered"
+                    itemView.btn_meal_status_update.text = requireContext.getString(R.string.inprogress)
+                    itemView.meal_order_status.text = requireContext.getString(R.string.str_ordered)
                 }
                 MealOrderStatus.IN_PROGRESS.status -> {
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
                     itemView.btn_meal_status_update.visibility = View.VISIBLE
-                    itemView.btn_meal_status_update.text = "ReadyToPickUp"
-                    itemView.meal_order_status.text = "InProgress"
+                    itemView.btn_meal_status_update.text = requireContext.getString(R.string.ready_to_pickUp)
+                    itemView.meal_order_status.text = requireContext.getString(R.string.inprogress)
                 }
                 MealOrderStatus.READY_TO_PICKUP.status -> {
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.color_yellow))
                     itemView.btn_meal_status_update.visibility = View.VISIBLE
-                    itemView.btn_meal_status_update.text = "Completed"
-                    itemView.meal_order_status.text = "ReadyToPickUp"
+                    itemView.btn_meal_status_update.text = requireContext.getString(R.string.complete)
+                    itemView.meal_order_status.text = requireContext.getString(R.string.ready_to_pickUp)
                 }
                 else -> {
                     itemView.meal_order_status.setTextColor(requireContext.getColor(R.color.orange_app))
