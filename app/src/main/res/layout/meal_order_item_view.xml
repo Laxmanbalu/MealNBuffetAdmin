@@ -5,7 +5,138 @@
     android:layout_height="match_parent"
     android:background="@color/theme_light_white_500_100">
 
+    <LinearLayout
+        android:id="@+id/meal_order_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/meal_order_header"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:text="OrderID: "
+            android:textColor="@color/orange_app" />
+
+        <TextView
+            android:id="@+id/meal_orderid"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/buffet_amt_header"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
     <TextView
+        android:id="@+id/meal_order_status"
+        style="@style/subheading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:textColor="@color/orange_app" />
+
+    <LinearLayout
+        android:id="@+id/meal_order_qty_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_order_view">
+
+        <TextView
+            android:id="@+id/meal_order_qty"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order_status"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Quantity: "
+            android:textColor="@color/orange_app" />
+
+        <TextView
+            android:id="@+id/meal_qty_val"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order_status"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/header_adults"
+            android:text="5"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/meal_amt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_order_qty_header"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/meal_amt_header"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:text="BilledAmount: "
+            android:textColor="@color/orange_app" />
+
+        <TextView
+            android:id="@+id/meal_billed_amt"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/buffet_amt_header"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/meal_date_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_order_qty_header"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/meal_date_header"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_clock" />
+
+        <TextView
+            android:id="@+id/meal_order_date"
+            style="@style/body1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/buffet_amt_header"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <!--<TextView
         android:id="@+id/meal_orderid"
         style="@style/subheading_text"
         android:layout_width="wrap_content"
@@ -47,7 +178,23 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:text="Number of Meals : 3"
-        android:textColor="@color/black" />
+        android:textColor="@color/black" />-->
+
+    <Button
+        android:id="@+id/btn_meal_status_update"
+        style="@style/body1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meal_amt_view"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/common_background_green"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="Complete"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
     <View
         android:layout_width="match_parent"

@@ -26,6 +26,7 @@ enum class MealOrderStatus(var status: Int) {
 //    COMPLETED-4 - admin
 //    REJECTED-5  -Admin
 //    CANCELED-6  -Client
+    ORDERED(0),
     IN_PROGRESS(2),
     READY_TO_PICKUP(3),
     COMPLETED(4),

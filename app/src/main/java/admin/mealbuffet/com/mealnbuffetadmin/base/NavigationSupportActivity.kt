@@ -9,10 +9,10 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.EDIT_FOOD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment.Companion.MEAL_ORDER_UPDATE_SUCCESS
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard.BuffetOrderDashBoardFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderDashBoardFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderUpdateFragment
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderUpdateFragment.Companion.MEAL_ORDER_UPDATE_SUCCESS
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -35,7 +35,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
     protected val buffetOrderDashDashboardFragment: BuffetOrderDashBoardFragment by lazy { BuffetOrderDashBoardFragment() }
-    private val mealOrderBoardFragment: MealOrderBoardFragment by lazy { MealOrderBoardFragment() }
+    private val mealOrderDashBoardFragment: MealOrderDashBoardFragment by lazy { MealOrderDashBoardFragment() }
     protected val mealOrderUpdateFragment: MealOrderUpdateFragment by lazy { MealOrderUpdateFragment() }
     protected val fragmentUpdateRestaurant: FragmentUpdateRestaurant by lazy { FragmentUpdateRestaurant() }
 
@@ -61,7 +61,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
         menuItemId = R.id.leftNavMealOrderDashboard
         title = getString(R.string.menu_meal_dashboard)
         setHomeIcon(R.drawable.ic_menu_white)
-        showFragment(mealOrderBoardFragment)
+        showFragment(mealOrderDashBoardFragment)
     }
 
     protected fun showMealOrderUpdateFragment(mealOrders: MealOrders) {

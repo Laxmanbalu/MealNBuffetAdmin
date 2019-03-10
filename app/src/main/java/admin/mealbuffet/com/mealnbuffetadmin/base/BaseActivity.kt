@@ -125,7 +125,7 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
                 PreferencesHelper.storeRestaurantDetails(applicationContext, EMPTY_STRING)
                 //Move to login activity
                 var intent = Intent(applicationContext, LoginActivity::class.java)
-                intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
             }
 

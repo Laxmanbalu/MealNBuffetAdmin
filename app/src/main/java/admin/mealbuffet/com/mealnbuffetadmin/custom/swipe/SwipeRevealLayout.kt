@@ -884,7 +884,7 @@ open class SwipeRevealLayout @JvmOverloads constructor(
 
         if (animation) {
             mState = STATE_OPENING
-            mMainView?.let { mDragHelper?.smoothSlideViewTo(it, mRectMainOpen.left, mRectMainOpen.top) }
+            mMainView.let { mDragHelper?.smoothSlideViewTo(it, mRectMainOpen.left, mRectMainOpen.top) }
 
             if (mDragStateChangeListener != null) {
                 mDragStateChangeListener?.onDragStateChanged(mState)

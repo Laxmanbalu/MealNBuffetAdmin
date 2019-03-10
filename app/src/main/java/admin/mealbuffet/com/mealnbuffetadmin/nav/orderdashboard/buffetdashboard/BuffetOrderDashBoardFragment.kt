@@ -25,7 +25,6 @@ class BuffetOrderDashBoardFragment : BaseFragment() {
     private val pageAdapter by lazy { ViewPagerAdapter(childFragmentManager) }
     private lateinit var buffetOrdersViewModel: BuffetOrdersViewModel
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
@@ -72,30 +71,30 @@ class BuffetOrderDashBoardFragment : BaseFragment() {
     private fun updateTabTitles(mealOrdersHistory: ArrayList<BuffetOrder>) {
 
         //ToUpdate Ordered tab title
-        val mealOrderedOrdersHistory = mealOrdersHistory?.filter {
+        val mealOrderedOrdersHistory = mealOrdersHistory.filter {
             it.status == BuffetOrderStatus.ORDERED.status
         }
 
-        val acceptedTitle = String.format(getString(R.string.ordered), mealOrderedOrdersHistory?.size)
+        val acceptedTitle = String.format(getString(R.string.ordered), mealOrderedOrdersHistory.size)
         val acceptedTab = buffet_orders_tab.getTabAt(0)
         acceptedTab!!.text = acceptedTitle
 
 
         //Method to update Completed Tab title
-        val mealCompletedOrdersHistory = mealOrdersHistory?.filter {
+        val mealCompletedOrdersHistory = mealOrdersHistory.filter {
             it.status == BuffetOrderStatus.COMPLETED.status
         }
-        val completedTitle = String.format(getString(R.string.completed), mealCompletedOrdersHistory?.size)
+        val completedTitle = String.format(getString(R.string.completed), mealCompletedOrdersHistory.size)
         val completedTab = buffet_orders_tab.getTabAt(1)
         completedTab!!.text = completedTitle
 
 
         //ToUpdate Other tab title
-        val mealRejectedOrdersHistory = mealOrdersHistory?.filter {
+        val mealRejectedOrdersHistory = mealOrdersHistory.filter {
             it.status != BuffetOrderStatus.ORDERED.status && it.status != BuffetOrderStatus.COMPLETED.status
         }
 
-        val rejectedTitle = String.format(getString(R.string.other), mealRejectedOrdersHistory?.size)
+        val rejectedTitle = String.format(getString(R.string.other), mealRejectedOrdersHistory.size)
         val rejectedTab = buffet_orders_tab.getTabAt(2)
         rejectedTab!!.text = rejectedTitle
 

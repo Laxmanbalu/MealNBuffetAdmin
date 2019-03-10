@@ -29,7 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
             intent = Intent(this@SplashScreenActivity, HomeActivity::class.java)
 
         }
-        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finish()
     }

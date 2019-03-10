@@ -14,7 +14,6 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.EditMealFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealFoodItemsFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.MealListFragment.Companion.SHOW_MEAL_DETAILED
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import android.os.Bundle
 import android.view.MenuItem
 
@@ -100,10 +99,7 @@ class HomeActivity : NavigationSupportActivity() {
                 true
             }
 
-            MealOrderBoardFragment.UPDATE_MEAL_ORDER_STATUS -> {
-                showMealOrderUpdateFragment(data as MealOrders)
-                true
-            }
+
             BuffetListFragment.SHOW_BUFFET_ITEMS -> {
                 showBuffetDetailedFragment(data as BuffetItem)
                 true

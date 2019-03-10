@@ -24,7 +24,7 @@ class OrderStatusChangeDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Set dialog title, message, and buttons texts
-        val view = View.inflate(this!!.activity, R.layout.order_status_change_dialog, null)
+        val view = View.inflate(this.activity, R.layout.order_status_change_dialog, null)
         view.buffet_orderid.text = getSpannableTitle(arguments?.getString(ORDER_ID))
         view.buffet_order_status.text = getSpannableStatus(arguments?.getString(CURR_STATUS))
 
@@ -49,13 +49,13 @@ class OrderStatusChangeDialog : DialogFragment() {
 
     private fun getSpannableTitle(title: String?): SpannableString {
         val wordSpan = SpannableString(title)
-        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.order_id).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        wordSpan.setSpan(ForegroundColorSpan(getColor(this.context!!, R.color.black)), 0, getString(R.string.order_id).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         return wordSpan
     }
 
     private fun getSpannableStatus(status: String?): SpannableString {
         val wordSpan = SpannableString(status)
-        wordSpan.setSpan(ForegroundColorSpan(getColor(this!!.context!!, R.color.black)), 0, getString(R.string.present_status).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        wordSpan.setSpan(ForegroundColorSpan(getColor(this.context!!, R.color.black)), 0, getString(R.string.present_status).length - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         return wordSpan
     }
 

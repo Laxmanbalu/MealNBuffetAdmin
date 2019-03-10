@@ -177,8 +177,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/common_background_green"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:text="Complete"
         android:textAllCaps="false"
         android:textColor="@color/white" />
