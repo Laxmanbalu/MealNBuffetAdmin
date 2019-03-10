@@ -1,4 +1,4 @@
-package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
+package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
@@ -17,7 +17,7 @@ import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_buffetdashboard.*
 import java.util.*
 
-class BuffetOrderBoardFragment : BaseFragment() {
+class BuffetOrderDashBoardFragment : BaseFragment() {
     private var buffetOrdersList = ArrayList<BuffetOrder>()
     private val buffetOrderedFragment by lazy { BuffetOrderedFragment() }
     private val buffetCompletedFragment by lazy { BuffetOrderCompletedFragment() }

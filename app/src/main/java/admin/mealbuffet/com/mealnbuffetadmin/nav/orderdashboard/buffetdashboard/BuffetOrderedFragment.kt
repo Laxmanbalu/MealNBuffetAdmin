@@ -1,10 +1,8 @@
-package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
+package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 
 class BuffetOrderedFragment : BuffetOrderBaseFragment() {
-
-
 
     override fun getBuffetOrdersHistory() {
         val ordersList = getBuffetOrdersList()

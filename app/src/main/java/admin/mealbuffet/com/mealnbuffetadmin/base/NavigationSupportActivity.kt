@@ -9,10 +9,10 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.ItemsListFragment.Companion.EDIT_FOOD_ITEM
 import admin.mealbuffet.com.mealnbuffetadmin.nav.buffet.*
 import admin.mealbuffet.com.mealnbuffetadmin.nav.meal.*
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.MealOrderUpdateFragment.Companion.MEAL_ORDER_UPDATE_SUCCESS
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard.BuffetOrderDashBoardFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -34,7 +34,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     protected val addMealFragment: AddMealFragment by lazy { AddMealFragment() }
     protected val editMealFragment: EditMealFragment by lazy { EditMealFragment() }
     protected val editMealFoodItemsFragment: EditMealFoodItemsFragment by lazy { EditMealFoodItemsFragment() }
-    protected val buffetOrderDashboardFragment: BuffetOrderBoardFragment by lazy { BuffetOrderBoardFragment() }
+    protected val buffetOrderDashDashboardFragment: BuffetOrderDashBoardFragment by lazy { BuffetOrderDashBoardFragment() }
     private val mealOrderBoardFragment: MealOrderBoardFragment by lazy { MealOrderBoardFragment() }
     protected val mealOrderUpdateFragment: MealOrderUpdateFragment by lazy { MealOrderUpdateFragment() }
     protected val fragmentUpdateRestaurant: FragmentUpdateRestaurant by lazy { FragmentUpdateRestaurant() }
@@ -172,7 +172,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
         menuItemId = R.id.leftNavBuffetOrderDashboard
         title = getString(R.string.menu_buffet_dashboard)
         setHomeIcon(R.drawable.ic_menu_white)
-        showFragment(buffetOrderDashboardFragment)
+        showFragment(buffetOrderDashDashboardFragment)
     }
 
     abstract fun showHomepageFragment()

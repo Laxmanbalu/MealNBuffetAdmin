@@ -1,9 +1,9 @@
-package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
+package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
 import admin.mealbuffet.com.mealnbuffetadmin.nav.InternalActionListener
-import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.BuffetOrderBaseFragment.Companion.UPDATE_BUFFET_ORDER_STATUS
+import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard.BuffetOrderBaseFragment.Companion.UPDATE_BUFFET_ORDER_STATUS
 import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 import admin.mealbuffet.com.mealnbuffetadmin.util.getBuffetOrderStatus
 import android.content.Context

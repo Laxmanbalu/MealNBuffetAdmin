@@ -1,12 +1,12 @@
-package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
+package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.util.BuffetOrderStatus
 
-class BuffetOrderOtherFragment : BuffetOrderBaseFragment() {
+class BuffetOrderCompletedFragment : BuffetOrderBaseFragment() {
     override fun getBuffetOrdersHistory() {
         val ordersList = getBuffetOrdersList()
         val mealOrdersPendingHistory = ordersList?.filter {
-            it.status != BuffetOrderStatus.COMPLETED.status && it.status != BuffetOrderStatus.ORDERED.status
+            it.status == BuffetOrderStatus.COMPLETED.status
         }
         updateViews(mealOrdersPendingHistory)
     }

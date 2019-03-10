@@ -139,7 +139,7 @@ class HomeActivity : NavigationSupportActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
         itemsListFragment.isVisible -> super.onOptionsItemSelected(item)
         buffetsListFragment.isVisible -> super.onOptionsItemSelected(item)
-        buffetOrderDashboardFragment.isVisible -> super.onOptionsItemSelected(item)
+        buffetOrderDashDashboardFragment.isVisible -> super.onOptionsItemSelected(item)
         addMealFragment.isVisible && item.itemId == android.R.id.home -> {
             onBackPressed()
             true
@@ -191,7 +191,7 @@ class HomeActivity : NavigationSupportActivity() {
             editBuffetFoodItemsFragment.isVisible -> showEditBuffet(selectedBuffetItem)
             editMealFragment.isVisible -> showMealListFragment()
             editMealFoodItemsFragment.isVisible -> showEditMeal(selectedMealItem)
-            buffetOrderDashboardFragment.isVisible -> showHomepageFragment()
+            buffetOrderDashDashboardFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }

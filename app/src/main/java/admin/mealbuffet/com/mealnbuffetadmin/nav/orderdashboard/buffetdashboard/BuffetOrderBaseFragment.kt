@@ -1,4 +1,4 @@
-package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard
+package admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrder
