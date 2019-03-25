@@ -30,8 +30,8 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="15dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginBottom="15dp"
                 android:src="@drawable/username" />
 
             <android.support.design.widget.TextInputLayout
@@ -63,8 +63,8 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="15dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginBottom="15dp"
                 android:src="@drawable/password" />
 
             <android.support.design.widget.TextInputLayout
@@ -87,13 +87,59 @@
             </android.support.design.widget.TextInputLayout>
         </FrameLayout>
 
+        <LinearLayout
+            android:id="@+id/terms_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frame_password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/check_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/caption_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I agree to your "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_terms"
+                style="@style/body1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Terms of service "
+                android:textColor="@color/orange_app" />
+
+            <TextView
+                style="@style/caption_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&amp;"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_policy"
+                style="@style/body1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Privacy Policy"
+                android:textColor="@color/orange_app" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/frame_password"
+            android:layout_below="@+id/terms_view"
             android:layout_margin="20dp"
-            android:background="@drawable/button_round"
+            android:enabled="false"
+            android:background="@drawable/common_background_grey"
             android:text="@string/title_login"
             android:textAllCaps="false"
             android:textColor="@color/white" />

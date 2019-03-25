@@ -7,12 +7,40 @@ import admin.mealbuffet.com.mealnbuffetadmin.network.authenticateUser
 import admin.mealbuffet.com.mealnbuffetadmin.network.getUserDetails
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.CompoundButton
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment() {
+
+    protected val textwatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            takeCareOfBtnLogin()
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    }
+
+    private fun takeCareOfBtnLogin() {
+        val userId = et_username.text.toString()
+        val password = et_password.text.toString()
+        if (userId.isEmpty() || password.isEmpty() || !check_box.isChecked) {
+            btn_login.setBackgroundResource(R.drawable.common_background_grey)
+            btn_login.isEnabled = false
+        } else {
+            btn_login.setBackgroundResource(R.drawable.button_round)
+            btn_login.isEnabled = true
+        }
+    }
+
     override fun layoutResource(): Int = R.layout.fragment_login
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,6 +48,24 @@ class LoginFragment : BaseFragment() {
         btn_login.setOnClickListener {
             proceedLogin()
         }
+        et_username.addTextChangedListener(textwatcher)
+        et_password.addTextChangedListener(textwatcher)
+        check_box.setOnCheckedChangeListener { compoundButton: CompoundButton, b: Boolean ->
+            takeCareOfBtnLogin()
+        }
+
+        tv_terms.setOnClickListener {
+            launchWebBrowser("https://www.google.com")
+        }
+
+        tv_policy.setOnClickListener {
+            launchWebBrowser("https://www.google.com")
+        }
+    }
+
+    private fun launchWebBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun proceedLogin() {
