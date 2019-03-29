@@ -30,6 +30,7 @@ class MealAdminUrls {
         const val UPDATE_MEALORDER_STATUS = "http://13.250.63.91:8080/mealnbuffet/updateMealOrderId/%s/%s"
         const val RESTAURANT_GET_DETAILS = "http://13.250.63.91:8080/mealnbuffet/getRestaurant/%s"
         const val RESTAURANT_UPDATE_DETAILS = "http://13.250.63.91:8080/mealnbuffet/updateRestaurant"
+        const val GET_REPORT = "http://13.250.63.91:8080/mealnbuffet/getSalesReport/%s/%s"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"

@@ -1,6 +1,7 @@
 package admin.mealbuffet.com.mealnbuffetadmin.base
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.auth.LoginActivity
 import admin.mealbuffet.com.mealnbuffetadmin.home.HomeActivity
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.content.Intent
@@ -22,13 +23,12 @@ class SplashScreenActivity : AppCompatActivity() {
     private val showNextActivity = Runnable {
         var intent: Intent? = null
         val restaurantId = PreferencesHelper.getRestaurantId(this)
-        /*if (restaurantId.isEmpty()) {
+        if (restaurantId.isEmpty()) {
             intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
         } else {
             intent = Intent(this@SplashScreenActivity, HomeActivity::class.java)
 
-        }*/
-        intent = Intent(this@SplashScreenActivity, HomeActivity::class.java)
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finish()

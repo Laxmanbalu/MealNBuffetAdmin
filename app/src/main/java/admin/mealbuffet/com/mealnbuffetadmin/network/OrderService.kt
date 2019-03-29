@@ -3,6 +3,7 @@ package admin.mealbuffet.com.mealnbuffetadmin.network
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
+import admin.mealbuffet.com.mealnbuffetadmin.model.Report
 import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
@@ -147,3 +148,28 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     requestQueue?.add(objectRequest)
 
 }*/
+
+fun sendReport(selectedDate: String, restaurantId: String, responseCallBack: ResponseCallback) {
+    val requestUrl = String.format(MealAdminUrls.GET_REPORT, selectedDate, restaurantId)
+    val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
+    val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
+            requestUrl, null, Response.Listener<JSONObject> {
+        val dataType = object : TypeToken<Report>() {}.type
+        val report = Gson().fromJson<Report>(it.toString(), dataType)
+        responseCallBack.onSuccess(report)
+    }, Response.ErrorListener { error ->
+        val networkResponse = error.networkResponse
+        if (networkResponse?.data != null) {
+            val jsonError = String(networkResponse.data)
+            val listType = object : TypeToken<StandardResponse>() {}.type
+            val response = Gson().fromJson<StandardResponse>(jsonError, listType)
+            if (response != null) {
+                responseCallBack.onError(response.shortDescription)
+            } else {
+                responseCallBack.onError("Something went wrong. Check Network Settings and try again")
+            }
+        }
+    })
+    jsonObjectRequest.setShouldCache(false)
+    requestQueue?.add(jsonObjectRequest)
+}
