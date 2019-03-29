@@ -122,10 +122,12 @@ class MealItemAdapter(private val requireContext: Context, private val wrapActio
                 itemView.meal_item_status.setTextColor(requireContext.getColor(R.color.color_green))
                 itemView.meal_item_status.text = requireContext.getString(R.string.published)
                 itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.unpublish)
+                itemView.delete.visibility = View.GONE
             } else {
                 itemView.meal_item_status.setTextColor(requireContext.getColor(R.color.color_red))
                 itemView.meal_item_status.text = requireContext.getString(R.string.unpublished)
                 itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.publish)
+                itemView.delete.visibility = View.VISIBLE
             }
         }
 

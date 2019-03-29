@@ -8,7 +8,4 @@
     android:fitsSystemWindows="true"
     app:headerLayout="@layout/nav_drawer_header"
     app:menu="@menu/menu_items">
-
-    <include layout="@layout/nav_drawer_footer" />
-
 </android.support.design.widget.NavigationView>

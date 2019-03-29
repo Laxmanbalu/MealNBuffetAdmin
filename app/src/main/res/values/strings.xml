@@ -12,6 +12,7 @@
     <string name="menu_buffet_dashboard">BuffetDashBoard</string>
     <string name="menu_meal_dashboard">MealDashBoard</string>
     <string name="menu_update_details">UpdateDetails</string>
+    <string name="menu_report">Report</string>
     <string name="title_update_details">RestaurantDetails</string>
     <string name="error_network">Something went wrong. Check Network Settings and try again</string>
     <string name="title_meal">MealNBuffet</string>

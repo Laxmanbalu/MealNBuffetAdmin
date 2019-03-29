@@ -21,7 +21,6 @@ import android.view.MenuItem
 import com.mealbuffet.custom.ProgressDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.left_menu_view.*
-import kotlinx.android.synthetic.main.nav_drawer_footer.*
 import kotlinx.android.synthetic.main.nav_drawer_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -108,13 +107,9 @@ abstract class BaseActivity : AppCompatActivity(), ActionListener, NavigationVie
     private fun initNavigationDrawer() {
         val headerView = leftNavMenu.getHeaderView(0)
         headerView.nav_header_username.text = PreferencesHelper.getRestaurantDisplayName(this)
-
-        leftNavSignOut.setOnClickListener {
-            showSignOutDialog()
-        }
     }
 
-    private fun showSignOutDialog() {
+     fun showSignOutDialog() {
         val dialog = YesNoDialogFragment.newInstance(
                 resources.getString(R.string.sign_out_dialog_title),
                 resources.getString(R.string.sign_out_dialog_msg))

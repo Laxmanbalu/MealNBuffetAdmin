@@ -388,7 +388,7 @@ fun addNewBuffet(buffetItem: CreateBuffetItem, responseCallBack: ResponseCallbac
 
     val addBuffet = JSONObject()
     addBuffet.put(PARAM_RESTAURANT_ID, buffetItem.buffetBasicData.restaurantId)
-    addBuffet.put(PARAM_ACTIVE_FLAG, true)
+    addBuffet.put(PARAM_ACTIVE_FLAG, false)
     addBuffet.put(PARAM_ADULT_PRICE, buffetItem.buffetBasicData.adultPrice)
     addBuffet.put(PARAM_BUFFET_NAME, buffetItem.buffetBasicData.buffetName)
     addBuffet.put(PARAM_DISPLAY_NAME, buffetItem.buffetBasicData.displayName)
@@ -509,7 +509,7 @@ fun createMealService(mealItem: CreateMealItem, responseCallBack: ResponseCallba
 
     val addItemObject = JSONObject()
     addItemObject.put(PARAM_RESTAURANT_ID, mealItem.mealBasicData.restaurantId)
-    addItemObject.put(PARAM_ACTIVE_FLAG, true)
+    addItemObject.put(PARAM_ACTIVE_FLAG, false)
     addItemObject.put(PARAM_MEAL_NAME, mealItem.mealBasicData.mealName)
     addItemObject.put(PARAM_STATUS, 1)
     addItemObject.put(PARAM_TYPE_DESC, mealItem.mealBasicData.mealDesc)

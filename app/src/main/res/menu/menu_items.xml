@@ -42,6 +42,21 @@
                 android:id="@+id/leftNavUpdateDetails"
                 android:icon="@drawable/ic_update_details"
                 android:title="@string/menu_update_details" />
+
+            <item
+                android:id="@+id/leftNavReport"
+                android:icon="@drawable/ic_report"
+                android:title="@string/menu_report" />
+        </menu>
+
+    </item>
+
+    <item android:title="SignOut">
+        <menu>
+            <item
+                android:id="@+id/leftNavSignOut"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/menu_item_sign_out" />
         </menu>
     </item>
 </menu>

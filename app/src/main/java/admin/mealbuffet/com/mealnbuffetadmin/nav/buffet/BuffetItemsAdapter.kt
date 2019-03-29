@@ -130,10 +130,12 @@ class BuffetItemsAdapter(private val requireContext: Context, private val wrapAc
                 itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_green))
                 itemView.buffet_item_status.text = requireContext.getString(R.string.published)
                 itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.unpublish)
+                itemView.delete.visibility = View.GONE
             } else {
                 itemView.buffet_item_status.setTextColor(requireContext.getColor(R.color.color_red))
                 itemView.buffet_item_status.text = requireContext.getString(R.string.unpublished)
                 itemView.swipeLayout.publish.tv_publish.text = requireContext.getString(R.string.publish)
+                itemView.delete.visibility = View.VISIBLE
             }
         }
     }

@@ -13,6 +13,7 @@ import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.buffetdashboard.
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderDashBoardFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderUpdateFragment
 import admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard.MealOrderUpdateFragment.Companion.MEAL_ORDER_UPDATE_SUCCESS
+import admin.mealbuffet.com.mealnbuffetadmin.report.ReportFragment
 import android.view.MenuItem
 import com.mealbuffet.controller.BaseActivity
 
@@ -38,6 +39,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
     private val mealOrderDashBoardFragment: MealOrderDashBoardFragment by lazy { MealOrderDashBoardFragment() }
     protected val mealOrderUpdateFragment: MealOrderUpdateFragment by lazy { MealOrderUpdateFragment() }
     protected val fragmentUpdateRestaurant: FragmentUpdateRestaurant by lazy { FragmentUpdateRestaurant() }
+    protected val reportFragment: ReportFragment by lazy { ReportFragment() }
 
     override fun handleNavigationItemSelected(item: MenuItem) {
         when (item.itemId) {
@@ -47,7 +49,16 @@ abstract class NavigationSupportActivity : BaseActivity() {
             R.id.leftNavBuffetOrderDashboard -> showBuffetOrderDashBoardFragment()
             R.id.leftNavMealOrderDashboard -> showMealOrderDashBoardFragment()
             R.id.leftNavUpdateDetails -> showRestaurantDetailsFragment()
+            R.id.leftNavReport -> showReportFragment()
+            R.id.leftNavSignOut -> showSignOutDialog()
         }
+    }
+
+    private fun showReportFragment() {
+        menuItemId = R.id.leftNavReport
+        title = getString(R.string.menu_report)
+        setHomeIcon(R.drawable.ic_menu_white)
+        showFragment(reportFragment)
     }
 
     private fun showRestaurantDetailsFragment() {
@@ -225,6 +236,7 @@ abstract class NavigationSupportActivity : BaseActivity() {
             mealOrderUpdateFragment.isVisible -> showMealOrderDashBoardFragment()
             buffetDetailedFragment.isVisible -> showBuffetsListFragment()
             mealDetailedFragment.isVisible -> showMealListFragment()
+            reportFragment.isVisible -> showHomepageFragment()
             else -> super.onBackPressed()
         }
     }

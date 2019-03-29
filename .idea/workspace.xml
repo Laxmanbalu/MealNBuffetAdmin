@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82d99e8a-c03a-4033-b848-425a00f19ecd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/common_background_grey.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/report/ReportFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/common_background_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_report.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_report.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
@@ -31,18 +34,35 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_extensions_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_7_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_7_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_7_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_7_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__dev_dworks_libs_volleyplus_0_1_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__dev_dworks_libs_volleyplus_0_1_4_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/viewmodel/BuffetOrdersViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/viewmodel/BuffetOrdersViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MealNBuffetAdmin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MealNBuffetAdmin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/SplashScreenActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/SplashScreenActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetItemsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetItemsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealItemAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealItemAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_delete.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_delete.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_edit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_edit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_publish.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_publish.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_meal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_meal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/left_menu_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,17 +89,18 @@
     <session id="-1210749322">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="43" />
+          <entry key="project.closed" value="46" />
           <entry key="project.open.time.0" value="6" />
-          <entry key="project.open.time.1" value="19" />
+          <entry key="project.open.time.1" value="20" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="8" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.opened" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -87,8 +108,8 @@
           <entry key="class" value="2" />
           <entry key="gradle" value="2" />
           <entry key="java" value="14" />
-          <entry key="kt" value="449" />
-          <entry key="xml" value="200" />
+          <entry key="kt" value="462" />
+          <entry key="xml" value="227" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -96,22 +117,22 @@
           <entry key="CLASS" value="2" />
           <entry key="Groovy" value="2" />
           <entry key="JAVA" value="14" />
-          <entry key="Kotlin" value="449" />
-          <entry key="XML" value="200" />
+          <entry key="Kotlin" value="462" />
+          <entry key="XML" value="227" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="kt" value="12210" />
-          <entry key="txt" value="6" />
-          <entry key="xml" value="4985" />
+          <entry key="kt" value="12448" />
+          <entry key="txt" value="9" />
+          <entry key="xml" value="5095" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Kotlin" value="12210" />
-          <entry key="PLAIN_TEXT" value="6" />
-          <entry key="XML" value="4985" />
+          <entry key="Kotlin" value="12448" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="XML" value="5095" />
         </counts>
       </usages-collector>
     </session>
@@ -159,20 +180,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/report/ReportFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+              <folding>
+                <element signature="e#54#146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="119" column="77" selection-start-line="119" selection-start-column="77" selection-end-line="119" selection-end-column="77" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_report.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
+            <state relative-caret-position="75">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_meal.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="691">
+              <caret line="101" column="39" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -185,13 +228,12 @@
       <list>
         <option value="layoutResourceFile_vertical" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>choose</find>
-      <find>edit_street</find>
       <find>delete</find>
       <find>dlete</find>
       <find>update</find>
@@ -220,6 +262,8 @@
       <find>STATUS</find>
       <find>Buffet</find>
       <find>buffetOrdersViewModel</find>
+      <find>$</find>
+      <find>addbu</find>
     </findStrings>
     <replaceStrings>
       <replace>buffet_item_status_icon</replace>
@@ -2607,22 +2651,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetFoodItemsFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetDetailedFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/buffet_item_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetItemsAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/meal_item_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealItemAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealFoodItemsFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealDetailedFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealDetailedItemsListAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetDetailedItemsListAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_addbuffet.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/UserSelection.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/AddBuffetFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/EditBuffetFragment.kt" />
@@ -2651,13 +2679,29 @@
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderDashBoardFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/util/Utility.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderBaseFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderItemsAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/buffet_order_item_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/viewmodel/BuffetOrdersViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/buffetdashboard/BuffetOrderDashBoardFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetItemsAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealItemAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/common_background_border.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_edit.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_delete.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_publish.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/left_menu_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_report.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/SplashScreenActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_report.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_meal.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/report/ReportFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt" />
       </list>
     </option>
   </component>
@@ -2712,68 +2756,6 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="nav" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="nav" type="462c0819:PsiDirectoryNode" />
-              <item name="orderdashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="nav" type="462c0819:PsiDirectoryNode" />
-              <item name="orderdashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="mealdashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mealnbuffetadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MealNBuffetAdmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MealNBuffetAdmin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2783,12 +2765,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2817,7 +2800,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2841,12 +2823,9 @@
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.2.1" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/custom" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard" />
+      <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.meal" />
@@ -2861,9 +2840,12 @@
       <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.buffet" />
       <recent name="admin.mealbuffet.com.mealnbuffetadmin.home" />
     </key>
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard.mealdashboard" />
-      <recent name="admin.mealbuffet.com.mealnbuffetadmin.nav.orderdashboard" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/custom" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -3006,7 +2988,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.498779" visible="true" weight="0.327551" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.498779" weight="0.327551" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39795917" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -3024,7 +3006,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.32844934" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.20573871" />
       <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -3110,194 +3092,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/OrderService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="219" column="57" selection-start-line="219" selection-start-column="57" selection-end-line="219" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/BuffetItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/MealAdminUrls.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="77" column="41" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/EditBuffetFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1244">
-          <caret line="111" column="75" selection-start-line="111" selection-start-column="75" selection-end-line="111" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/AddBuffetFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="19" column="58" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="42" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_addbuffet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-215">
-          <caret line="154" column="33" lean-forward="true" selection-start-line="154" selection-start-column="33" selection-end-line="154" selection-end-column="33" />
-          <folding>
-            <element signature="e#6541#6568#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_color_selector.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/StandardResponse.kt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/util/PreferencesHelper.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mealorder_item_nohistory.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_nohistory.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderUpdateFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/buffetdashboard/BuffetOrderOtherFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_clock.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background_green.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background_color.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/buffetdashboard/BuffetOrderCompletedFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="52" lean-forward="true" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/custom/OrderStatusChangeDialog.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="e#1648#1695#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/ItemBaseFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_buffetdashboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buffet_orders_page.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="48" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/model/UserSelection.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/meal_orders_page.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/buffetdashboard/BuffetOrderBaseFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_holder_buffet_order_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -3320,20 +3114,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderCompletedFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -3404,13 +3184,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="156" column="29" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/orderdashboard/mealdashboard/MealOrderItemsAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -3453,18 +3226,239 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background_grey.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
+        <state relative-caret-position="2100">
           <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/auth/LoginFragment.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/network/NetworkService.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        <state relative-caret-position="1280">
+          <caret line="511" column="46" selection-start-line="511" selection-start-column="46" selection-end-line="511" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buffet_item_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealListFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetListFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="26" column="33" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/meal/MealItemAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="111" column="24" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_holder_meal_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background_color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/nav/buffet/BuffetItemsAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="114" column="24" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_holder_buffet_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/common_background_border.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_edit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_delete.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/food_item_swipe_view_publish.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_buffetlist.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_itemslist.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_header.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_drawer_footer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="35" />
+          <folding>
+            <element signature="e#1122#1150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/left_menu_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/BaseActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/home/HomeActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_meal.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_report.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_update_details.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_items.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="47" column="49" selection-end-line="61" selection-end-column="7" />
+          <folding>
+            <element signature="e#1567#1588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/SplashScreenActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="29" column="11" selection-start-line="24" selection-start-column="8" selection-end-line="29" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_report.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_meal.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="101" column="39" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/report/ReportFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <element signature="e#54#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/admin/mealbuffet/com/mealnbuffetadmin/base/NavigationSupportActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="119" column="77" selection-start-line="119" selection-start-column="77" selection-end-line="119" selection-end-column="77" />
         </state>
       </provider>
     </entry>
