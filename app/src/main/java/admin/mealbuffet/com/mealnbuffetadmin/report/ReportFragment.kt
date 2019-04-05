@@ -1,7 +1,6 @@
 package admin.mealbuffet.com.mealnbuffetadmin.report
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
-import admin.mealbuffet.com.mealnbuffetadmin.model.Report
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.sendReport
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
@@ -27,8 +26,8 @@ class ReportFragment : BaseFragment() {
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
         sendReport(selectedDate, restaurantId, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
-                val report = data as Report
-                showCustomError("Sent To : " + report.emailId)
+                val reportSendDescription = data as String
+                showCustomError(reportSendDescription)
             }
 
             override fun onError(data: Any?) {

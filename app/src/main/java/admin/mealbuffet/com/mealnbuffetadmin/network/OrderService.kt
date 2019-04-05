@@ -3,7 +3,6 @@ package admin.mealbuffet.com.mealnbuffetadmin.network
 import admin.mealbuffet.com.mealnbuffetadmin.MealNBuffetApplication
 import admin.mealbuffet.com.mealnbuffetadmin.model.BuffetOrderRawData
 import admin.mealbuffet.com.mealnbuffetadmin.model.MealOrderRawData
-import admin.mealbuffet.com.mealnbuffetadmin.model.Report
 import admin.mealbuffet.com.mealnbuffetadmin.model.RestaurantDetails
 import admin.mealbuffet.com.mealnbuffetadmin.model.StandardResponse
 import admin.mealbuffet.com.mealnbuffetadmin.network.MealAdminUrls.Companion.RESTAURANT_GET_DETAILS
@@ -154,9 +153,9 @@ fun sendReport(selectedDate: String, restaurantId: String, responseCallBack: Res
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
     val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
             requestUrl, null, Response.Listener<JSONObject> {
-        val dataType = object : TypeToken<Report>() {}.type
-        val report = Gson().fromJson<Report>(it.toString(), dataType)
-        responseCallBack.onSuccess(report)
+        val dataType = object : TypeToken<StandardResponse>() {}.type
+        val standardResponse = Gson().fromJson<StandardResponse>(it.toString(), dataType)
+        responseCallBack.onSuccess(standardResponse.shortDescription)
     }, Response.ErrorListener { error ->
         val networkResponse = error.networkResponse
         if (networkResponse?.data != null) {
