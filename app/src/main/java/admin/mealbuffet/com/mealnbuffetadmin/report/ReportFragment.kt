@@ -14,6 +14,7 @@ class ReportFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_submit.setOnClickListener {
+            report_status_view.visibility = View.GONE
             val day = report_date.dayOfMonth
             val month = report_date.month + 1
             val year = report_date.year
@@ -24,16 +25,19 @@ class ReportFragment : BaseFragment() {
 
     private fun submitReport(selectedDate: String) {
         val restaurantId = PreferencesHelper.getRestaurantId(requireContext())
+        showProgress()
         sendReport(selectedDate, restaurantId, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
                 val reportSendDescription = data as String
-                showCustomError(reportSendDescription)
+                report_status_view.visibility = View.VISIBLE
+                status_msg.text = reportSendDescription
+                hideProgress()
             }
 
             override fun onError(data: Any?) {
                 showCustomError(data as String)
+                hideProgress()
             }
         })
-
     }
 }
