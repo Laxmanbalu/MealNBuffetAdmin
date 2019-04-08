@@ -167,10 +167,11 @@ class FragmentUpdateRestaurant : BaseFragment() {
                 tax1 = edit_tax_one.text.toString().toDouble(), tax2 = edit_tax_two.text.toString().toDouble(),
                 street = edit_street.text.toString(), city = edit_city.text.toString(), zipCode = edit_zipcode.text.toString().toInt(), state = edit_state.text.toString(),
                 phoneNumber = edit_phonenumber.text.toString(), foodType = foodTypes, restaurantName = edit_res_name.text.toString(),
-                restaurantId = restaurantId, _id = currentRestaurnt.id, icon = filePath, timeZone = currentRestaurnt.timeZone)
+                restaurantId = restaurantId, _id = currentRestaurnt.id, icon = filePath, timeZone = currentRestaurnt.timeZone, email = edit_email.text.toString(),
+                minPrice = currentRestaurnt.minPrice)
 
 
-        updateRestaurantInformation(updateRestaurantDetails, object : ResponseCallback {
+        updateRestaurantInformation(updateRestaurantDetails, currentRestaurnt, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
                 showCustomError("Updated Successfully")
                 hideProgress()

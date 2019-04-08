@@ -35,4 +35,5 @@ data class RestaurantDetails(
 data class UpdateRestaurantDetails(val isBuffetAvailable: Boolean = false, val mealAvailable: Boolean = false,
                                    val tax1: Double, val tax2: Double, val street: String, val city: String, val state: String,
                                    val zipCode: Int, val restaurantName: String, val phoneNumber: String, val foodType: List<String>,
-                                   val restaurantId: String, val _id: String, val icon: String, val timeZone: String)
+                                   val restaurantId: String, val _id: String, val icon: String, val timeZone: String, val email: String,
+                                   val minPrice: Int?)

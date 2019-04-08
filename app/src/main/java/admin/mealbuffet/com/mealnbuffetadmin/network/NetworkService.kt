@@ -127,7 +127,7 @@ fun updateItem(updateFoodItem: updateFoodItem, restaurantId: String, responseCal
     requestQueue?.add(smr)
 }
 
-fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCallBack: ResponseCallback) {
+fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, currentDetails : RestaurantDetails, responseCallBack: ResponseCallback) {
     val requestQueue = MealNBuffetApplication.instance?.getVolleyRequestObject()
 
     val restaurantDetailsObject = JSONObject()
@@ -139,11 +139,17 @@ fun updateRestaurantInformation(resDetails: UpdateRestaurantDetails, responseCal
     restaurantDetailsObject.put(MealAdminUrls.PARAM_RESTAURANT_NAME, resDetails.restaurantName)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_STREET, resDetails.street)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_STATE, resDetails.state)
-    restaurantDetailsObject.put(MealAdminUrls.PARAM_ZIP_CODE, resDetails.zipCode)
+    restaurantDetailsObject.put(MealAdminUrls.PARAM_ZIP_CODE, resDetails.zipCode.toString())
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_ONE, resDetails.tax1)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TAX_TWO, resDetails.tax2)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_PHONENUMBER, resDetails.phoneNumber)
     restaurantDetailsObject.put(MealAdminUrls.PARAM_TIMEZONE, resDetails.timeZone)
+    restaurantDetailsObject.put("email", resDetails.email)
+    restaurantDetailsObject.put("minPrice", resDetails.minPrice)
+    restaurantDetailsObject.put("isDiscountApplicable", currentDetails.discountApplicable)
+    restaurantDetailsObject.put("minPrice", resDetails.minPrice)
+    restaurantDetailsObject.put("rating", currentDetails.rating)
+    restaurantDetailsObject.put("commission", currentDetails.commission)
 
     val foodTypes = JSONArray()
     resDetails.foodType.forEach {
