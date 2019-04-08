@@ -1,6 +1,5 @@
-package com.lowes.android.associate.uielements.swipeview
+package admin.mealbuffet.com.mealnbuffetadmin.custom.swipe
 
-import admin.mealbuffet.com.mealnbuffetadmin.custom.swipe.SwipeRevealLayout
 import android.os.Bundle
 import java.util.Arrays
 import java.util.Collections

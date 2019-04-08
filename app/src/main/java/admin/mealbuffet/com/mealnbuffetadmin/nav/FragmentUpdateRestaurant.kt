@@ -29,12 +29,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.mealbuffet.controller.BaseFragment
 import kotlinx.android.synthetic.main.fragment_updatedetails.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.OutputStream
-import java.util.UUID
+import java.io.*
+import java.util.*
 
 
 class FragmentUpdateRestaurant : BaseFragment() {
@@ -217,6 +213,8 @@ class FragmentUpdateRestaurant : BaseFragment() {
         edit_zipcode.setText(restaurantDetails.zipCode.toString())
         edit_res_name.setText(restaurantDetails.restaurantName)
         edit_phonenumber.setText(restaurantDetails.phoneNumber)
+        edit_email.setText(restaurantDetails.email)
+        tv_comission_value.text = restaurantDetails.commission.toString() + "%"
         val foodType = android.text.TextUtils.join(",", restaurantDetails.type)
         edit_food_type.setText(foodType)
         Glide.with(requireContext())

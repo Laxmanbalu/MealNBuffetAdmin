@@ -336,9 +336,9 @@ fun getUserDetails(userId: String, responseCallBack: ResponseCallback) {
     val requestUrl = String.format(GET_USER, userId)
     val objectRequest = JsonObjectRequest(Request.Method.GET,
             requestUrl, null, Response.Listener<JSONObject> {
-        val listType = object : TypeToken<User>() {}.type
-        val userDetails = Gson().fromJson<User>(it.toString(), listType)
-        responseCallBack.onSuccess(userDetails)
+        val listType = object : TypeToken<UserGetInfo>() {}.type
+        val userDetails = Gson().fromJson<UserGetInfo>(it.toString(), listType)
+        responseCallBack.onSuccess(userDetails.user)
     }, ErrorListener {
         responseCallBack.onError(it)
     })

@@ -28,6 +28,8 @@ data class RestaurantDetails(
         val minPrice: Int? = null,
         @SerializedName("_id")
         val id: String = EMPTY_STRING,
+        val email : String = EMPTY_STRING,
+        val commission : Double ?= null,
         val state: String? = null)
 
 data class UpdateRestaurantDetails(val isBuffetAvailable: Boolean = false, val mealAvailable: Boolean = false,
