@@ -1,10 +1,12 @@
 package admin.mealbuffet.com.mealnbuffetadmin.auth
 
 import admin.mealbuffet.com.mealnbuffetadmin.R
+import admin.mealbuffet.com.mealnbuffetadmin.custom.InfoDialog
 import admin.mealbuffet.com.mealnbuffetadmin.model.User
 import admin.mealbuffet.com.mealnbuffetadmin.network.ResponseCallback
 import admin.mealbuffet.com.mealnbuffetadmin.network.authenticateUser
 import admin.mealbuffet.com.mealnbuffetadmin.network.getUserDetails
+import admin.mealbuffet.com.mealnbuffetadmin.network.sendOtpToMailId
 import admin.mealbuffet.com.mealnbuffetadmin.util.Constants.EMPTY_STRING
 import admin.mealbuffet.com.mealnbuffetadmin.util.PreferencesHelper
 import android.content.Intent
@@ -45,6 +47,9 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as? LoginActivity)?.supportActionBar?.hide()
+
         btn_login.setOnClickListener {
             proceedLogin()
         }
@@ -61,6 +66,20 @@ class LoginFragment : BaseFragment() {
         tv_policy.setOnClickListener {
             launchWebBrowser("https://www.google.com")
         }
+
+        reset_pwd.setOnClickListener {
+            resetPassword()
+        }
+    }
+
+    private fun resetPassword() {
+        val userId = et_username.text.toString()
+        if (userId.isEmpty()) {
+            val dialog = InfoDialog.newInstance(getString(R.string.provide_userid))
+            dialog.show(activity?.supportFragmentManager, getString(R.string.provide_userid))
+            return
+        }
+        getUserInformation(userId, true)
     }
 
     private fun launchWebBrowser(url: String) {
@@ -83,15 +102,19 @@ class LoginFragment : BaseFragment() {
         })
     }
 
-    private fun getUserInformation(userId: String) {
+    private fun getUserInformation(userId: String, isForReset: Boolean = false) {
         getUserDetails(userId, object : ResponseCallback {
             override fun onSuccess(data: Any?) {
+                hideProgress()
                 val userInfo = data as User
                 userInfo.restaurantId?.let { PreferencesHelper.storeRestaurantDetails(requireContext(), it) }
                 PreferencesHelper.storeRestaurantDisplayName(requireContext(), userInfo.firstName
                         ?: EMPTY_STRING)
-                actionListener?.onAction(MOVE_HOME_ACTIVITY)
-                hideProgress()
+                if (isForReset) {
+                    userInfo.emailId?.let { RequestForOtp(it) }
+                } else {
+                    actionListener?.onAction(MOVE_HOME_ACTIVITY)
+                }
             }
 
             override fun onError(data: Any?) {
@@ -101,9 +124,26 @@ class LoginFragment : BaseFragment() {
         })
     }
 
+    private fun RequestForOtp(emailId: String) {
+        showProgress()
+        sendOtpToMailId(emailId, object : ResponseCallback {
+            override fun onSuccess(data: Any?) {
+                hideProgress()
+                actionListener?.onAction(OTP_VIEW, emailId)
+            }
+
+            override fun onError(data: Any?) {
+                hideProgress()
+                showCustomError(data as String)
+            }
+
+        })
+    }
+
     companion object {
         const val ROLE_ADMIN = "RA"
         const val MOVE_HOME_ACTIVITY = "moveHomeActivity"
+        const val OTP_VIEW = "OTPView"
     }
 
 }

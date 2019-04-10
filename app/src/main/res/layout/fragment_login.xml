@@ -138,12 +138,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/terms_view"
             android:layout_margin="20dp"
-            android:enabled="false"
             android:background="@drawable/common_background_grey"
+            android:enabled="false"
             android:text="@string/title_login"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/reset_pwd"
+        style="@style/subheading_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/reset_password"
+        android:textAlignment="center"
+        android:textColor="@color/orange_app"
+        android:textStyle="bold" />
 </RelativeLayout>

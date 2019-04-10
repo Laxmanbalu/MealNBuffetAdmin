@@ -365,6 +365,8 @@ fun changeSelectedItemPublishTypeService(requestUrl: String, responseCallBack: R
             val listType = object : TypeToken<StandardResponse>() {}.type
             val response = Gson().fromJson<StandardResponse>(jsonError.toString(), listType)
             responseCallBack.onError(response.shortDescription)
+        }else {
+            responseCallBack.onError("Something Went Wrong try again ..")
         }
     }) {
         override fun getBodyContentType(): String {

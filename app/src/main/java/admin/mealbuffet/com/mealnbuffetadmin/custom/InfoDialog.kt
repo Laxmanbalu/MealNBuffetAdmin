@@ -10,6 +10,7 @@ class InfoDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = AlertDialog.Builder(activity)
+                .setTitle(getString(R.string.app_name))
                 .setMessage(arguments?.getString(BODY))
                 .setPositiveButton(R.string.ok, null).create()
 

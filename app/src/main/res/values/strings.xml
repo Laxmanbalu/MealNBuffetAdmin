@@ -160,4 +160,8 @@
     <string name="submit">Submit</string>
     <string name="email">Email</string>
     <string name="comission">Comission</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="provide_userid">Please Provide UserId</string>
+    <string name="enter_your_otp">Enter Your OTP</string>
+    <string name="title_otpscreen">"OTP Screen"</string>
 </resources>
