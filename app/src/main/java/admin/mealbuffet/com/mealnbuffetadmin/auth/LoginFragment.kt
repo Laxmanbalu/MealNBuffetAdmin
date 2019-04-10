@@ -73,6 +73,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun resetPassword() {
+        PreferencesHelper.storeRestaurantDetails(requireContext(), EMPTY_STRING)
         val userId = et_username.text.toString()
         if (userId.isEmpty()) {
             val dialog = InfoDialog.newInstance(getString(R.string.provide_userid))
@@ -107,12 +108,13 @@ class LoginFragment : BaseFragment() {
             override fun onSuccess(data: Any?) {
                 hideProgress()
                 val userInfo = data as User
-                userInfo.restaurantId?.let { PreferencesHelper.storeRestaurantDetails(requireContext(), it) }
-                PreferencesHelper.storeRestaurantDisplayName(requireContext(), userInfo.firstName
-                        ?: EMPTY_STRING)
                 if (isForReset) {
+                    (activity as? LoginActivity)?.userId = userId
                     userInfo.emailId?.let { RequestForOtp(it) }
                 } else {
+                    userInfo.restaurantId?.let { PreferencesHelper.storeRestaurantDetails(requireContext(), it) }
+                    PreferencesHelper.storeRestaurantDisplayName(requireContext(), userInfo.firstName
+                            ?: EMPTY_STRING)
                     actionListener?.onAction(MOVE_HOME_ACTIVITY)
                 }
             }

@@ -164,4 +164,8 @@
     <string name="provide_userid">Please Provide UserId</string>
     <string name="enter_your_otp">Enter Your OTP</string>
     <string name="title_otpscreen">"OTP Screen"</string>
+    <string name="title_reset_password">"Reset Password"</string>
+    <string name="passwords_notmatching">Please Check both passwords are not same. Please Re-Enter..</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_new_password">Enter New Password</string>
 </resources>

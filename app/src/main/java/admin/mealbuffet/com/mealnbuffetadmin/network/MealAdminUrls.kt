@@ -33,6 +33,7 @@ class MealAdminUrls {
         const val GET_REPORT = "http://13.250.63.91:8080/mealnbuffet/sendReportInMail/%s/%s"
         const val SEND_OTP_MAIL = "http://13.250.63.91:8080/mealnbuffet/sendOTP/%s"
         const val VALIDATE_OTP = "http://13.250.63.91:8080/mealnbuffet/validateOTP/%s/%s"
+        const val USER_RESET_PASSWORD = "http://13.250.63.91:8080/mealnbuffet/resetPassword"
 
         const val PARAM_RESTAURANT_ID = "restaurantId"
         const val PARAM_BUFFET_ID = "buffetId"
